@@ -35,6 +35,24 @@ function fmtDate(v) {
   return Number.isNaN(d.getTime()) ? v : d.toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
 }
 
+function fmtEventDate(v) {
+  const d = new Date(`${v}T00:00:00`);
+  return Number.isNaN(d.getTime()) ? v : d.toLocaleDateString("ja-JP", { month: "numeric", day: "numeric" });
+}
+
+function formatEventDates(dates = [], limit = 4) {
+  if (!dates.length) return "日付未定";
+  const visible = dates.slice(0, limit).map(fmtEventDate);
+  return `${visible.join("・")}${dates.length > limit ? ` +${dates.length - limit}` : ""}`;
+}
+
+function formatSchedule(i) {
+  const dates = i.event_dates || [];
+  const original = i.schedule_text || "開催日の明示なし";
+  if (!dates.length) return original;
+  return `抽出日: ${formatEventDates(dates, 8)} / ${original}`;
+}
+
 function dateMatches(i, from, to, includeUnknown) {
   const dates = i.event_dates || [];
   if (!from && !to) return true;
@@ -42,12 +60,33 @@ function dateMatches(i, from, to, includeUnknown) {
   return dates.some((v) => (!from || v >= from) && (!to || v <= to));
 }
 
-function isOneDay(i) {
+function durationFlags(i) {
   const text = [i.course, i.schedule_text].join(" ").replace(/\s+/g, " ");
-  return /実施日数\s*[：:]?\s*(1|１)\s*日/.test(text)
+  const oneDay = /実施日数\s*[：:]?\s*(1|１)\s*日/.test(text)
     || /(1|１)\s*day/i.test(text)
     || /ワンデー|半日/.test(text)
     || /(1|１)\s*日(?:開催|仕事体験|体験)/.test(text);
+  const multiDay = /実施日数[^。]*((2|２|3|３|4|４|5|５|6|６|7|７|8|８|9|９|10|１０)\s*日|数日|複数日|連日|週間|週|カ月|ヶ月|ヵ月|か月|月未満)/.test(text)
+    || /(?:^|[^0-9０-９])(2|２|3|３|4|４|5|５|6|６|7|７|8|８|9|９|10|１０)\s*(?:日|days?)(?:\s|開催|間|程度|以上|以内|～|〜|-|・|、|,)/i.test(text)
+    || /(?:2|２)\s*週間|(?:1|１)\s*週間|(?:1|１)\s*(?:カ月|ヶ月|ヵ月|か月)|長期|連続/.test(text);
+  return { oneDay, multiDay, unknown: !oneDay && !multiDay };
+}
+
+function isOneDay(i) {
+  return durationFlags(i).oneDay;
+}
+
+function isMultiDay(i) {
+  return durationFlags(i).multiDay;
+}
+
+function durationTags(i) {
+  const flags = durationFlags(i);
+  const tags = [];
+  if (flags.oneDay) tags.push("1Dayあり");
+  if (flags.multiDay) tags.push("複数日あり");
+  if (!tags.length) tags.push("日数不明");
+  return tags;
 }
 
 function countByLocation() {
@@ -173,7 +212,8 @@ function renderActiveFilters() {
   if ($("regionFilter").value) filters.push(`地方: ${filterLabel("regionFilter")}`);
   if (state.selectedPrefectures.size) filters.push(`都道府県: ${summarizeSet(state.selectedPrefectures)}`);
   if ($("dateFrom").value || $("dateTo").value) filters.push(`日付: ${$("dateFrom").value || "指定なし"} - ${$("dateTo").value || "指定なし"}`);
-  if ($("oneDayOnly").checked) filters.push("1Dayのみ");
+  if ($("oneDayOnly").checked) filters.push("1Dayあり");
+  if ($("multiDayOnly").checked) filters.push("複数日あり");
   if ($("excludeUnknown").checked) filters.push("金額不明を除外");
   if ($("lodgingOnly").checked) filters.push("宿泊費あり");
   if ($("favoritesOnly").checked) filters.push("お気に入り");
@@ -222,6 +262,7 @@ function render() {
     if (state.selectedIndustries.size && !(i.industries || []).some((industry) => state.selectedIndustries.has(industry))) return false;
     if (!locationMatches(i, region, state.selectedPrefectures)) return false;
     if ($("oneDayOnly").checked && !isOneDay(i)) return false;
+    if ($("multiDayOnly").checked && !isMultiDay(i)) return false;
     if (!$("showClosed").checked && i.status && i.status !== "open") return false;
     if (min === 99999999 && i.transport_type !== "unlimited") return false;
     if (min > 0 && min !== 99999999 && score(i) < min) return false;
@@ -262,7 +303,7 @@ function render() {
     node.querySelector(".industries").textContent = (i.industries || []).join("・") || "記載なし";
     node.querySelector(".lodging").textContent = i.lodging_text || "記載なし";
     node.querySelector(".locations").textContent = (i.locations || []).join("・") || "記載なし";
-    node.querySelector(".dates").textContent = i.schedule_text || "開催日の明示なし";
+    node.querySelector(".dates").textContent = formatSchedule(i);
     node.querySelector(".checked").textContent = fmtDate(i.last_checked);
     node.querySelector(".original").textContent = i.transport_original || "交通費の原文を取得できませんでした。";
 
@@ -279,9 +320,9 @@ function render() {
     const tags = node.querySelector(".tags");
     const tagValues = [
       [yen(i.transport_amount, i.transport_type), true],
-      [isOneDay(i) ? "1Day" : "複数日あり", false],
+      ...durationTags(i).map((tag) => [tag, false]),
       [(i.industries || [])[0] || "業種不明", false],
-      [i.event_dates?.[0] || "日付未定", false],
+      [formatEventDates(i.event_dates, 3), false],
       [i.lodging_provided ? "宿泊費あり" : "宿泊費不明", false],
       ...(i.locations || []).slice(0, 2).map((x) => [x, false]),
     ];
@@ -301,7 +342,7 @@ function clearFilters() {
   $("minAmount").value = "0";
   state.selectedIndustries.clear();
   state.selectedPrefectures.clear();
-  for (const id of ["oneDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "includeUnknownDates", "showClosed"]) $(id).checked = false;
+  for (const id of ["oneDayOnly", "multiDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "includeUnknownDates", "showClosed"]) $(id).checked = false;
   $("pageSize").value = "50";
   state.page = 1;
   populateIndustryOptions();
@@ -324,7 +365,8 @@ async function load() {
     const scienceExcluded = stats.excluded_science_only_courses ?? 0;
     const kantoExcluded = stats.excluded_kanto_only_courses ?? 0;
     const oneDayCount = state.items.filter(isOneDay).length;
-    $("updatedAt").textContent = `更新 ${fmtDate(data.generated_at)} / 表示 ${displayed.toLocaleString()}件 / 交通費あり ${supported.toLocaleString()}件 / 1Day ${oneDayCount.toLocaleString()}件 / 関東のみ除外 ${kantoExcluded.toLocaleString()}件 / 理系除外 ${scienceExcluded.toLocaleString()}件 / 金額判定 ${known.toLocaleString()}件`;
+    const multiDayCount = state.items.filter(isMultiDay).length;
+    $("updatedAt").textContent = `更新 ${fmtDate(data.generated_at)} / 表示 ${displayed.toLocaleString()}件 / 交通費あり ${supported.toLocaleString()}件 / 1Day ${oneDayCount.toLocaleString()}件 / 複数日 ${multiDayCount.toLocaleString()}件 / 関東のみ除外 ${kantoExcluded.toLocaleString()}件 / 理系除外 ${scienceExcluded.toLocaleString()}件 / 金額判定 ${known.toLocaleString()}件`;
     render();
   } catch (e) {
     $("empty").hidden = false;
@@ -332,7 +374,7 @@ async function load() {
   }
 }
 
-for (const id of ["minAmount", "sortBy", "oneDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed", "pageSize"]) {
+for (const id of ["minAmount", "sortBy", "oneDayOnly", "multiDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed", "pageSize"]) {
   $(id).addEventListener("input", () => {
     state.page = 1;
     render();
