@@ -1,4 +1,10 @@
-const state = { items: [], favorites: new Set(JSON.parse(localStorage.getItem("favorites") || "[]")) };
+const state = {
+  items: [],
+  favorites: new Set(JSON.parse(localStorage.getItem("favorites") || "[]")),
+  selectedIndustries: new Set(),
+  selectedPrefectures: new Set(),
+  page: 1,
+};
 const $ = (id) => document.getElementById(id);
 const REGION_PREFECTURES = {
   北海道: ["北海道"],
@@ -36,69 +42,172 @@ function dateMatches(i, from, to, includeUnknown) {
   return dates.some((v) => (!from || v >= from) && (!to || v <= to));
 }
 
-function populateIndustryFilter() {
-  const select = $("industryFilter");
-  const selected = select.value;
-  const industries = [...new Set(state.items.flatMap((i) => i.industries || []))].sort((a, b) => a.localeCompare(b, "ja"));
-  select.innerHTML = '<option value="">すべて</option>';
-  for (const industry of industries) {
-    const option = document.createElement("option");
-    option.value = industry;
-    option.textContent = industry;
-    select.appendChild(option);
+function isOneDay(i) {
+  const text = [i.course, i.schedule_text].join(" ").replace(/\s+/g, " ");
+  return /実施日数\s*[：:]?\s*(1|１)\s*日/.test(text)
+    || /(1|１)\s*day/i.test(text)
+    || /ワンデー|半日/.test(text)
+    || /(1|１)\s*日(?:開催|仕事体験|体験)/.test(text);
+}
+
+function countByLocation() {
+  const counts = new Map();
+  for (const item of state.items) {
+    for (const location of item.locations || []) {
+      counts.set(location, (counts.get(location) || 0) + 1);
+    }
   }
-  select.value = industries.includes(selected) ? selected : "";
+  return counts;
+}
+
+function countByIndustry() {
+  const counts = new Map();
+  for (const item of state.items) {
+    for (const industry of item.industries || []) {
+      counts.set(industry, (counts.get(industry) || 0) + 1);
+    }
+  }
+  return counts;
+}
+
+function createFacetOption(value, count, checked, onChange) {
+  const label = document.createElement("label");
+  label.className = "facet-option";
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.value = value;
+  input.checked = checked;
+  input.addEventListener("input", onChange);
+  const name = document.createElement("span");
+  name.textContent = value;
+  const badge = document.createElement("small");
+  badge.textContent = count.toLocaleString();
+  label.append(input, name, badge);
+  return label;
+}
+
+function populateIndustryOptions() {
+  const root = $("industryOptions");
+  const counts = countByIndustry();
+  const industries = [...counts.keys()].sort((a, b) => a.localeCompare(b, "ja"));
+  state.selectedIndustries = new Set([...state.selectedIndustries].filter((industry) => counts.has(industry)));
+  root.innerHTML = "";
+  for (const industry of industries) {
+    root.appendChild(createFacetOption(industry, counts.get(industry), state.selectedIndustries.has(industry), (event) => {
+      event.target.checked ? state.selectedIndustries.add(industry) : state.selectedIndustries.delete(industry);
+      state.page = 1;
+      render();
+    }));
+  }
+}
+
+function appendOption(select, value, label) {
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = label;
+  select.appendChild(option);
 }
 
 function populateLocationFilters() {
   const regionSelect = $("regionFilter");
-  const prefectureSelect = $("prefectureFilter");
   const selectedRegion = regionSelect.value;
-  const selectedPrefecture = prefectureSelect.value;
-  const locations = new Set(state.items.flatMap((i) => i.locations || []).filter(Boolean));
-  const availablePrefectures = PREFECTURES.filter((prefecture) => locations.has(prefecture));
-  const otherLocations = [...locations].filter((location) => !PREFECTURES.includes(location)).sort((a, b) => a.localeCompare(b, "ja"));
+  const counts = countByLocation();
 
-  regionSelect.innerHTML = '<option value="">すべて</option>';
+  regionSelect.innerHTML = '<option value="">すべての地方</option>';
   for (const region of Object.keys(REGION_PREFECTURES)) {
-    if (!REGION_PREFECTURES[region].some((prefecture) => locations.has(prefecture))) continue;
-    const option = document.createElement("option");
-    option.value = region;
-    option.textContent = region;
-    regionSelect.appendChild(option);
+    const count = REGION_PREFECTURES[region].reduce((sum, prefecture) => sum + (counts.get(prefecture) || 0), 0);
+    if (!count) continue;
+    appendOption(regionSelect, region, `${region} (${count})`);
   }
   regionSelect.value = [...regionSelect.options].some((option) => option.value === selectedRegion) ? selectedRegion : "";
-
-  prefectureSelect.innerHTML = '<option value="">すべて</option>';
-  for (const location of [...availablePrefectures, ...otherLocations]) {
-    const option = document.createElement("option");
-    option.value = location;
-    option.textContent = location;
-    prefectureSelect.appendChild(option);
-  }
-  prefectureSelect.value = [...prefectureSelect.options].some((option) => option.value === selectedPrefecture) ? selectedPrefecture : "";
+  populatePrefectureOptions();
 }
 
-function locationMatches(i, region, prefecture) {
+function populatePrefectureOptions() {
+  const root = $("prefectureOptions");
+  const counts = countByLocation();
+  const region = $("regionFilter").value;
+  const basePrefectures = region ? REGION_PREFECTURES[region] : PREFECTURES;
+  const availablePrefectures = basePrefectures.filter((prefecture) => counts.has(prefecture));
+  const otherLocations = region ? [] : [...counts.keys()].filter((location) => !PREFECTURES.includes(location)).sort((a, b) => a.localeCompare(b, "ja"));
+  const available = new Set([...availablePrefectures, ...otherLocations]);
+  state.selectedPrefectures = new Set([...state.selectedPrefectures].filter((prefecture) => available.has(prefecture)));
+
+  root.innerHTML = "";
+  for (const location of [...availablePrefectures, ...otherLocations]) {
+    root.appendChild(createFacetOption(location, counts.get(location), state.selectedPrefectures.has(location), (event) => {
+      event.target.checked ? state.selectedPrefectures.add(location) : state.selectedPrefectures.delete(location);
+      state.page = 1;
+      render();
+    }));
+  }
+}
+
+function locationMatches(i, region, prefectures) {
   const locations = i.locations || [];
   if (region && !locations.some((location) => REGION_PREFECTURES[region]?.includes(location))) return false;
-  if (prefecture && !locations.includes(prefecture)) return false;
+  if (prefectures.size && !locations.some((location) => prefectures.has(location))) return false;
   return true;
+}
+
+function filterLabel(id) {
+  const el = $(id);
+  if (!el) return "";
+  if (el.tagName === "SELECT") return el.selectedOptions[0]?.textContent.replace(/\s\(\d+\)$/, "") || "";
+  return el.value;
+}
+
+function summarizeSet(values, limit = 3) {
+  const list = [...values];
+  if (list.length <= limit) return list.join("・");
+  return `${list.slice(0, limit).join("・")} +${list.length - limit}`;
+}
+
+function renderActiveFilters() {
+  const filters = [];
+  const min = $("minAmount").value;
+  const query = $("query").value.trim();
+  if (query) filters.push(`検索: ${query}`);
+  if (min !== "0") filters.push(`支給額: ${filterLabel("minAmount")}`);
+  if (state.selectedIndustries.size) filters.push(`業種: ${summarizeSet(state.selectedIndustries)}`);
+  if ($("regionFilter").value) filters.push(`地方: ${filterLabel("regionFilter")}`);
+  if (state.selectedPrefectures.size) filters.push(`都道府県: ${summarizeSet(state.selectedPrefectures)}`);
+  if ($("dateFrom").value || $("dateTo").value) filters.push(`日付: ${$("dateFrom").value || "指定なし"} - ${$("dateTo").value || "指定なし"}`);
+  if ($("oneDayOnly").checked) filters.push("1Dayのみ");
+  if ($("excludeUnknown").checked) filters.push("金額不明を除外");
+  if ($("lodgingOnly").checked) filters.push("宿泊費あり");
+  if ($("favoritesOnly").checked) filters.push("お気に入り");
+  if ($("includeUnknownDates").checked) filters.push("日付未定も含める");
+  if ($("showClosed").checked) filters.push("終了・満席も表示");
+
+  $("activeFilters").innerHTML = "";
+  if (!filters.length) {
+    const span = document.createElement("span");
+    span.className = "filter-chip muted";
+    span.textContent = "条件なし";
+    $("activeFilters").appendChild(span);
+    return;
+  }
+  for (const filter of filters) {
+    const span = document.createElement("span");
+    span.className = "filter-chip";
+    span.textContent = filter;
+    $("activeFilters").appendChild(span);
+  }
 }
 
 function render() {
   const q = $("query").value.trim().toLowerCase();
   const min = +$("minAmount").value;
-  const industry = $("industryFilter").value;
   const region = $("regionFilter").value;
-  const prefecture = $("prefectureFilter").value;
   const from = $("dateFrom").value;
   const to = $("dateTo").value;
   let items = state.items.filter((i) => {
     const text = [i.company, i.course, i.schedule_text, i.eligibility_text, ...(i.locations || []), ...(i.industries || [])].join(" ").toLowerCase();
     if (q && !text.includes(q)) return false;
-    if (industry && !(i.industries || []).includes(industry)) return false;
-    if (!locationMatches(i, region, prefecture)) return false;
+    if (state.selectedIndustries.size && !(i.industries || []).some((industry) => state.selectedIndustries.has(industry))) return false;
+    if (!locationMatches(i, region, state.selectedPrefectures)) return false;
+    if ($("oneDayOnly").checked && !isOneDay(i)) return false;
     if (!$("showClosed").checked && i.status && i.status !== "open") return false;
     if (min === 99999999 && i.transport_type !== "unlimited") return false;
     if (min > 0 && min !== 99999999 && score(i) < min) return false;
@@ -118,9 +227,21 @@ function render() {
   ));
 
   $("results").innerHTML = "";
-  $("count").textContent = `${items.length}件`;
-  $("empty").hidden = items.length !== 0;
-  for (const i of items) {
+  const total = items.length;
+  const pageSize = +$("pageSize").value;
+  const pageCount = Math.max(1, Math.ceil(total / pageSize));
+  state.page = Math.min(Math.max(1, state.page), pageCount);
+  const start = total ? (state.page - 1) * pageSize : 0;
+  const visibleItems = items.slice(start, start + pageSize);
+  const end = start + visibleItems.length;
+  $("count").textContent = `${total.toLocaleString()}件`;
+  $("range").textContent = total ? `${(start + 1).toLocaleString()}-${end.toLocaleString()}件を表示` : "表示なし";
+  $("pageStatus").textContent = `${state.page.toLocaleString()} / ${pageCount.toLocaleString()}`;
+  $("prevPage").disabled = state.page <= 1;
+  $("nextPage").disabled = state.page >= pageCount;
+  $("empty").hidden = total !== 0;
+  renderActiveFilters();
+  for (const i of visibleItems) {
     const node = $("cardTemplate").content.cloneNode(true);
     node.querySelector("h2").textContent = i.company;
     node.querySelector(".course").textContent = i.course || "コース名不明";
@@ -146,6 +267,7 @@ function render() {
     const tags = node.querySelector(".tags");
     const tagValues = [
       [yen(i.transport_amount, i.transport_type), true],
+      [isOneDay(i) ? "1Day" : "複数日あり", false],
       [(i.industries || [])[0] || "業種不明", false],
       [i.event_dates?.[0] || "日付未定", false],
       [i.lodging_provided ? "宿泊費あり" : "宿泊費不明", false],
@@ -161,13 +283,27 @@ function render() {
   }
 }
 
+function clearFilters() {
+  for (const id of ["query", "dateFrom", "dateTo"]) $(id).value = "";
+  for (const id of ["minAmount", "regionFilter"]) $(id).value = "";
+  $("minAmount").value = "0";
+  state.selectedIndustries.clear();
+  state.selectedPrefectures.clear();
+  for (const id of ["oneDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "includeUnknownDates", "showClosed"]) $(id).checked = false;
+  $("pageSize").value = "50";
+  state.page = 1;
+  populateIndustryOptions();
+  populateLocationFilters();
+  render();
+}
+
 async function load() {
   try {
     const r = await fetch(`data/jobs.json?t=${Date.now()}`);
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const data = await r.json();
     state.items = data.items || [];
-    populateIndustryFilter();
+    populateIndustryOptions();
     populateLocationFilters();
     const stats = data.stats || {};
     const supported = stats.transport_supported_courses ?? stats.displayed_courses ?? state.items.length;
@@ -175,7 +311,8 @@ async function load() {
     const known = (stats.amount_known_courses ?? 0) + (stats.amount_unlimited_courses ?? 0);
     const scienceExcluded = stats.excluded_science_only_courses ?? 0;
     const kantoExcluded = stats.excluded_kanto_only_courses ?? 0;
-    $("updatedAt").textContent = `更新 ${fmtDate(data.generated_at)}・表示 ${displayed}件・交通費あり ${supported}件・関東のみ除外 ${kantoExcluded}件・理系除外 ${scienceExcluded}件・金額判定 ${known}件`;
+    const oneDayCount = state.items.filter(isOneDay).length;
+    $("updatedAt").textContent = `更新 ${fmtDate(data.generated_at)} / 表示 ${displayed.toLocaleString()}件 / 交通費あり ${supported.toLocaleString()}件 / 1Day ${oneDayCount.toLocaleString()}件 / 関東のみ除外 ${kantoExcluded.toLocaleString()}件 / 理系除外 ${scienceExcluded.toLocaleString()}件 / 金額判定 ${known.toLocaleString()}件`;
     render();
   } catch (e) {
     $("empty").hidden = false;
@@ -183,14 +320,40 @@ async function load() {
   }
 }
 
-for (const id of ["minAmount", "industryFilter", "regionFilter", "prefectureFilter", "sortBy", "excludeUnknown", "lodgingOnly", "favoritesOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed"]) {
-  $(id).addEventListener("input", render);
+for (const id of ["minAmount", "sortBy", "oneDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed", "pageSize"]) {
+  $(id).addEventListener("input", () => {
+    state.page = 1;
+    render();
+  });
 }
-$("clearDates").onclick = () => {
-  $("dateFrom").value = "";
-  $("dateTo").value = "";
+$("regionFilter").addEventListener("input", () => {
+  state.page = 1;
+  populateLocationFilters();
+  render();
+});
+$("clearIndustries").onclick = () => {
+  state.selectedIndustries.clear();
+  state.page = 1;
+  populateIndustryOptions();
   render();
 };
+$("clearPrefectures").onclick = () => {
+  state.selectedPrefectures.clear();
+  state.page = 1;
+  populatePrefectureOptions();
+  render();
+};
+$("prevPage").onclick = () => {
+  state.page -= 1;
+  render();
+  document.querySelector(".summary").scrollIntoView({ behavior: "smooth", block: "start" });
+};
+$("nextPage").onclick = () => {
+  state.page += 1;
+  render();
+  document.querySelector(".summary").scrollIntoView({ behavior: "smooth", block: "start" });
+};
+$("clearFilters").onclick = clearFilters;
 $("refresh").onclick = load;
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
 load();

@@ -3,75 +3,115 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0b57d0">
+  <meta name="theme-color" content="#1d2a27">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="交通費サーチ">
+  <meta name="apple-mobile-web-app-title" content="インターンサーチ">
   <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-180.png">
   <link rel="stylesheet" href="style.css">
-  <title>マイナビ交通費サーチ</title>
+  <title>インターンサーチ</title>
 </head>
 <body>
-  <header>
-    <div>
-      <p class="eyebrow">MYNAVI 2028 WATCHER</p>
-      <h1>交通費サーチ</h1>
+  <header class="masthead">
+    <div class="brand-block">
+      <p class="eyebrow">MYNAVI 2028 / TRANSPORT LEDGER</p>
+      <h1>インターンサーチ</h1>
+      <p class="lead">関東以外の開催地を残して、支給額・業種・都道府県から探す。</p>
     </div>
-    <button id="refresh" class="icon-button" aria-label="更新">↻</button>
+    <button id="refresh" class="icon-button" aria-label="データを更新">↻</button>
   </header>
 
   <main>
-    <section class="panel filters">
-      <label>最低支給額
-        <select id="minAmount">
-          <option value="0">指定なし</option>
-          <option value="10000">1万円以上</option>
-          <option value="20000">2万円以上</option>
-          <option value="30000">3万円以上</option>
-          <option value="50000">5万円以上</option>
-          <option value="99999999">全額・実費のみ</option>
-        </select>
-      </label>
-      <label>業種
-        <select id="industryFilter">
-          <option value="">すべて</option>
-        </select>
-      </label>
-      <label>地方
-        <select id="regionFilter">
-          <option value="">すべて</option>
-        </select>
-      </label>
-      <label>都道府県
-        <select id="prefectureFilter">
-          <option value="">すべて</option>
-        </select>
-      </label>
-      <label>開催日（開始）
-        <input id="dateFrom" type="date">
-      </label>
-      <label>開催日（終了）
-        <input id="dateTo" type="date">
-      </label>
-      <button id="clearDates" type="button" class="secondary">日付を解除</button>
-      <label>並び順
-        <select id="sortBy">
-          <option value="amount">交通費が高い順</option>
-          <option value="date">開催日が近い順</option>
-          <option value="updated">更新が新しい順</option>
-          <option value="company">企業名順</option>
-        </select>
-      </label>
-      <label class="check"><input type="checkbox" id="excludeUnknown"> 金額不明を除外</label>
-      <label class="check"><input type="checkbox" id="lodgingOnly"> 宿泊費ありのみ</label>
-      <label class="check"><input type="checkbox" id="favoritesOnly"> お気に入りのみ</label>
-      <label class="check"><input type="checkbox" id="includeUnknownDates"> 日付未定も含める</label>
-      <label class="check"><input type="checkbox" id="showClosed"> 終了・満席も表示</label>
-      <input id="query" type="search" placeholder="企業名・コース・開催地で検索">
+    <section class="panel control-deck" aria-label="検索条件">
+      <div class="search-row">
+        <label class="field search-field">検索
+          <input id="query" type="search" placeholder="企業名・コース・開催地・業種">
+        </label>
+        <button id="clearFilters" type="button" class="secondary">条件を初期化</button>
+      </div>
+
+      <div class="filter-grid">
+        <label class="field">最低支給額
+          <select id="minAmount">
+            <option value="0">指定なし</option>
+            <option value="10000">1万円以上</option>
+            <option value="20000">2万円以上</option>
+            <option value="30000">3万円以上</option>
+            <option value="50000">5万円以上</option>
+            <option value="99999999">全額・実費のみ</option>
+          </select>
+        </label>
+        <label class="field">地方
+          <select id="regionFilter">
+            <option value="">すべて</option>
+          </select>
+        </label>
+        <label class="field">開催日（開始）
+          <input id="dateFrom" type="date">
+        </label>
+        <label class="field">開催日（終了）
+          <input id="dateTo" type="date">
+        </label>
+        <label class="field">並び順
+          <select id="sortBy">
+            <option value="amount">交通費が高い順</option>
+            <option value="date">開催日が近い順</option>
+            <option value="updated">更新が新しい順</option>
+            <option value="company">企業名順</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="facet-grid">
+        <section class="facet" aria-label="業種">
+          <div class="facet-head">
+            <h2>業種</h2>
+            <button id="clearIndustries" type="button">解除</button>
+          </div>
+          <div id="industryOptions" class="check-list"></div>
+        </section>
+        <section class="facet" aria-label="都道府県">
+          <div class="facet-head">
+            <h2>都道府県</h2>
+            <button id="clearPrefectures" type="button">解除</button>
+          </div>
+          <div id="prefectureOptions" class="check-list"></div>
+        </section>
+      </div>
+
+      <div class="switchboard" aria-label="追加条件">
+        <label class="switch"><input type="checkbox" id="oneDayOnly"><span>1Dayのみ</span></label>
+        <label class="switch"><input type="checkbox" id="excludeUnknown"><span>金額不明を除外</span></label>
+        <label class="switch"><input type="checkbox" id="lodgingOnly"><span>宿泊費あり</span></label>
+        <label class="switch"><input type="checkbox" id="favoritesOnly"><span>お気に入り</span></label>
+        <label class="switch"><input type="checkbox" id="includeUnknownDates"><span>日付未定も含める</span></label>
+        <label class="switch"><input type="checkbox" id="showClosed"><span>終了・満席も表示</span></label>
+      </div>
+
+      <div id="activeFilters" class="active-filters" aria-live="polite"></div>
     </section>
 
-    <div class="summary"><span id="count">0件</span><span id="updatedAt"></span></div>
+    <div class="summary">
+      <div class="count-block"><span id="count">0件</span><span id="range"></span></div>
+      <span id="updatedAt"></span>
+    </div>
+    <nav class="pager" aria-label="ページ操作">
+      <label class="field page-size">表示件数
+        <select id="pageSize">
+          <option value="25">25件</option>
+          <option value="50" selected>50件</option>
+          <option value="100">100件</option>
+          <option value="200">200件</option>
+        </select>
+      </label>
+      <div class="pager-buttons">
+        <button id="prevPage" type="button" class="secondary">前へ</button>
+        <span id="pageStatus">1 / 1</span>
+        <button id="nextPage" type="button" class="secondary">次へ</button>
+      </div>
+    </nav>
     <section id="results" class="cards" aria-live="polite"></section>
     <p id="empty" class="empty" hidden>条件に一致する募集はありません。</p>
   </main>
