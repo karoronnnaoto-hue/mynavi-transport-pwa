@@ -456,6 +456,15 @@ main {
   background: rgba(251, 252, 247, .86);
 }
 
+.pager-bottom {
+  grid-template-columns: 1fr;
+  margin: 14px 0 0;
+}
+
+.pager-bottom .pager-buttons {
+  justify-content: center;
+}
+
 .page-size select {
   min-height: 40px;
 }

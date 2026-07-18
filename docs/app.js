@@ -196,6 +196,20 @@ function renderActiveFilters() {
   }
 }
 
+function updatePager(pageCount) {
+  const status = `${state.page.toLocaleString()} / ${pageCount.toLocaleString()}`;
+  $("pageStatus").textContent = status;
+  $("pageStatusBottom").textContent = status;
+  for (const id of ["prevPage", "prevPageBottom"]) $(id).disabled = state.page <= 1;
+  for (const id of ["nextPage", "nextPageBottom"]) $(id).disabled = state.page >= pageCount;
+}
+
+function movePage(delta) {
+  state.page += delta;
+  render();
+  document.querySelector(".summary").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function render() {
   const q = $("query").value.trim().toLowerCase();
   const min = +$("minAmount").value;
@@ -236,9 +250,7 @@ function render() {
   const end = start + visibleItems.length;
   $("count").textContent = `${total.toLocaleString()}件`;
   $("range").textContent = total ? `${(start + 1).toLocaleString()}-${end.toLocaleString()}件を表示` : "表示なし";
-  $("pageStatus").textContent = `${state.page.toLocaleString()} / ${pageCount.toLocaleString()}`;
-  $("prevPage").disabled = state.page <= 1;
-  $("nextPage").disabled = state.page >= pageCount;
+  updatePager(pageCount);
   $("empty").hidden = total !== 0;
   renderActiveFilters();
   for (const i of visibleItems) {
@@ -344,15 +356,13 @@ $("clearPrefectures").onclick = () => {
   render();
 };
 $("prevPage").onclick = () => {
-  state.page -= 1;
-  render();
-  document.querySelector(".summary").scrollIntoView({ behavior: "smooth", block: "start" });
+  movePage(-1);
 };
 $("nextPage").onclick = () => {
-  state.page += 1;
-  render();
-  document.querySelector(".summary").scrollIntoView({ behavior: "smooth", block: "start" });
+  movePage(1);
 };
+$("prevPageBottom").onclick = () => movePage(-1);
+$("nextPageBottom").onclick = () => movePage(1);
 $("clearFilters").onclick = clearFilters;
 $("refresh").onclick = load;
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
