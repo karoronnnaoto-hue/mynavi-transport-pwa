@@ -37,8 +37,18 @@ HEADERS = {
     "Accept-Language": "ja,en;q=0.8",
 }
 
-YEN_RE = re.compile(r"(?:上限|最大|一律)?\s*([0-9０-９,，]+)\s*(?:円|万円)")
+YEN_RE = re.compile(r"([0-9０-９,，]+)\s*(円|万円)")
 PREFS = "北海道 青森県 岩手県 宮城県 秋田県 山形県 福島県 茨城県 栃木県 群馬県 埼玉県 千葉県 東京都 神奈川県 新潟県 富山県 石川県 福井県 山梨県 長野県 岐阜県 静岡県 愛知県 三重県 滋賀県 京都府 大阪府 兵庫県 奈良県 和歌山県 鳥取県 島根県 岡山県 広島県 山口県 徳島県 香川県 愛媛県 高知県 福岡県 佐賀県 長崎県 熊本県 大分県 宮崎県 鹿児島県 沖縄県".split()
+PREF_ALIASES = {
+    "北海道": "北海道", "青森": "青森県", "岩手": "岩手県", "宮城": "宮城県", "秋田": "秋田県", "山形": "山形県", "福島": "福島県",
+    "茨城": "茨城県", "栃木": "栃木県", "群馬": "群馬県", "埼玉": "埼玉県", "千葉": "千葉県", "東京": "東京都", "神奈川": "神奈川県",
+    "新潟": "新潟県", "富山": "富山県", "石川": "石川県", "福井": "福井県", "山梨": "山梨県", "長野": "長野県",
+    "岐阜": "岐阜県", "静岡": "静岡県", "愛知": "愛知県", "三重": "三重県", "滋賀": "滋賀県", "京都": "京都府",
+    "大阪": "大阪府", "兵庫": "兵庫県", "奈良": "奈良県", "和歌山": "和歌山県", "鳥取": "鳥取県", "島根": "島根県",
+    "岡山": "岡山県", "広島": "広島県", "山口": "山口県", "徳島": "徳島県", "香川": "香川県", "愛媛": "愛媛県",
+    "高知": "高知県", "福岡": "福岡県", "佐賀": "佐賀県", "長崎": "長崎県", "熊本": "熊本県", "大分": "大分県",
+    "宮崎": "宮崎県", "鹿児島": "鹿児島県", "沖縄": "沖縄県",
+}
 
 
 def load_json(path: Path, default):
@@ -85,12 +95,14 @@ def classify(text: str):
         return "none", 0
     if re.search(r"全額|実費.*支給|全額補助", t):
         return "unlimited", None
-    m = YEN_RE.search(t)
-    if m:
-        raw = m.group(0)
-        amount = int(m.group(1).replace(",", ""))
-        amount *= 10000 if "万円" in raw else 1
-        return ("limit" if ("上限" in raw or "最大" in raw) else "fixed"), amount
+    amounts = [
+        int(number.replace(",", "")) * (10000 if unit == "万円" else 1)
+        for number, unit in YEN_RE.findall(t)
+    ]
+    if amounts:
+        is_limit = bool(re.search(r"上限|最大|まで|以内|範囲|以上.*(?:以内|以下|未満)", t))
+        amount = max(amounts) if is_limit else amounts[0]
+        return ("limit" if is_limit else "fixed"), amount
     if re.search(r"規定|一部|遠方|条件|相談", t):
         return "conditional", None
     if "支給あり" in t or "交通費" in t:
@@ -125,6 +137,43 @@ def extract_labeled_text(soup: BeautifulSoup, labels: list[str], width: int = 5)
     return ""
 
 
+def normalize_text(value: str) -> str:
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def extract_table_fields(soup: BeautifulSoup) -> dict[str, str]:
+    """マイナビ詳細ページの dataTable02 を heading セル単位で読む。"""
+    fields: dict[str, str] = {}
+    for table in soup.select("table.dataTable02"):
+        for row in table.find_all("tr"):
+            heading = row.find("td", class_=lambda c: c and "heading" in c.split())
+            if not heading:
+                continue
+            label = normalize_text(heading.get_text(" ", strip=True))
+            values = []
+            for cell in row.find_all("td", recursive=False):
+                if cell is heading:
+                    continue
+                values.append(cell.get_text(" ", strip=True))
+            value = normalize_text(" ".join(values))
+            if label and value and label not in fields:
+                fields[label] = value
+    return fields
+
+
+def parse_locations(text: str) -> list[str]:
+    found: list[str] = []
+    for pref in PREFS:
+        if pref in text and pref not in found:
+            found.append(pref)
+    for short, pref in PREF_ALIASES.items():
+        if re.search(rf"(?<![一-龥ぁ-んァ-ン]){re.escape(short)}(?![一-龥ぁ-んァ-ン])", text) and pref not in found:
+            found.append(pref)
+    if "WEB" in text and "WEB" not in found:
+        found.append("WEB")
+    return found
+
+
 def parse_dates(text: str) -> list[str]:
     """明示された2026年の日付をISO形式へ。期間表記は両端を保存する。"""
     t = normalize_digits(text)
@@ -152,7 +201,7 @@ def parse_dates(text: str) -> list[str]:
     return sorted(found)
 
 
-def extract_detail_links(base_url: str, html: str) -> list[str]:
+def extract_detail_links(base_url: str, html: str) -> list[tuple[str, str]]:
     soup = BeautifulSoup(html, "html.parser")
     output = []
     for a in soup.find_all("a", href=True):
@@ -164,35 +213,88 @@ def extract_detail_links(base_url: str, html: str) -> list[str]:
             continue
         q = {k.lower(): v for k, v in parse_qsl(p.query)}
         if q.get("corpid") and (q.get("optno") or q.get("courseid")):
-            output.append(canonical_url(href))
+            output.append((canonical_url(href), normalize_text(a.get_text(" ", strip=True))))
     return list(dict.fromkeys(output))
 
 
-def find_next_page(base_url: str, html: str) -> str | None:
+def form_data(form) -> list[tuple[str, str]]:
+    data: list[tuple[str, str]] = []
+    for control in form.find_all(["input", "select", "textarea"]):
+        name = control.get("name")
+        if not name or control.has_attr("disabled"):
+            continue
+        tag = control.name
+        typ = (control.get("type") or "").lower()
+        if tag == "input":
+            if typ in {"submit", "button", "image", "file", "reset"}:
+                continue
+            if typ in {"checkbox", "radio"} and not control.has_attr("checked"):
+                continue
+            data.append((name, control.get("value", "")))
+        elif tag == "select":
+            options = control.find_all("option")
+            selected = [opt for opt in options if opt.has_attr("selected")]
+            for opt in selected or options[:1]:
+                data.append((name, opt.get("value", opt.get_text(" ", strip=True))))
+        elif tag == "textarea":
+            data.append((name, control.get_text()))
+    return data
+
+
+def with_form_value(data: list[tuple[str, str]], name: str, value: str) -> list[tuple[str, str]]:
+    changed = False
+    output = []
+    for key, old_value in data:
+        if key == name:
+            output.append((key, value))
+            changed = True
+        else:
+            output.append((key, old_value))
+    if not changed:
+        output.append((name, value))
+    return output
+
+
+def find_next_page_request(base_url: str, html: str) -> tuple[str, list[tuple[str, str]]] | None:
     soup = BeautifulSoup(html, "html.parser")
     for a in soup.find_all("a", href=True):
         text = a.get_text(" ", strip=True)
         aria = a.get("aria-label", "")
         if "次の30社" in text or text in {"次へ", "次のページ"} or "次" in aria:
-            candidate = urljoin(base_url, a["href"])
-            if urlparse(candidate).hostname == "job.mynavi.jp":
-                return candidate
+            onclick = a.get("onclick") or a.get("onClick") or ""
+            m = re.search(r"toNextPage\('([^']+)'\s*,\s*'([^']+)'\)", onclick)
+            if not m:
+                continue
+            form = soup.find("form", id="searchCorpListByIsForm")
+            if not form:
+                continue
+            action = urljoin(base_url, m.group(1))
+            data = with_form_value(form_data(form), "pageNo", m.group(2))
+            return action, data
     return None
 
 
 def parse_detail(url: str, html: str, old_item: dict | None) -> dict:
     soup = BeautifulSoup(html, "html.parser")
     title = soup.title.get_text(" ", strip=True) if soup.title else ""
-    company = re.sub(r"のインターンシップ.*$", "", title).strip() or "企業名不明"
-    h1 = soup.find("h1")
-    course = h1.get_text(" ", strip=True) if h1 else title
-    transport = extract_labeled_text(soup, ["交通費", "交通費支給"])
-    lodging = extract_labeled_text(soup, ["宿泊費", "宿泊費支給"])
-    schedule = extract_labeled_text(soup, ["開催時期", "開催日", "日程"], width=8)
-    deadline = extract_labeled_text(soup, ["応募締切", "締切"], width=4)
+    company_h1 = soup.find("h1")
+    company = normalize_text(company_h1.get_text(" ", strip=True)) if company_h1 else ""
+    if not company:
+        company = re.sub(r"のインターンシップ.*$", "", title).strip() or "企業名不明"
+    course_node = soup.find(id="courseName")
+    if not course_node:
+        head = soup.select_one("div.dtHead2 h2.txt")
+        course_node = head or soup.find("h2")
+    course = normalize_text(course_node.get_text(" ", strip=True)) if course_node else title
+    fields = extract_table_fields(soup)
+    transport = fields.get("交通費") or extract_labeled_text(soup, ["交通費", "交通費支給"])
+    lodging = fields.get("宿泊費") or extract_labeled_text(soup, ["宿泊費", "宿泊費支給"])
+    schedule = fields.get("開催時期と実施日数") or fields.get("開催時期") or extract_labeled_text(soup, ["開催時期", "開催日", "日程"], width=8)
+    deadline = fields.get("応募締切日") or fields.get("応募締切") or extract_labeled_text(soup, ["応募締切", "締切"], width=4)
+    region = fields.get("開催地域", "")
     alltext = soup.get_text(" ", strip=True)
     status = detect_status(alltext)
-    locations = [p for p in PREFS if p in alltext]
+    locations = parse_locations(region or alltext)
     transport_type, amount = classify(transport)
     key = course_key(url)
     now = datetime.now(JST).isoformat(timespec="seconds")
@@ -276,6 +378,13 @@ def fetch(session: requests.Session, url: str) -> str:
     return response.text
 
 
+def submit_form(session: requests.Session, url: str, data: list[tuple[str, str]]) -> str:
+    headers = dict(HEADERS)
+    headers["Referer"] = "https://job.mynavi.jp/28/pc/search/is_it1.html"
+    response = session.post(url, headers=headers, data=data, timeout=30)
+    response.raise_for_status()
+    return response.text
+
 
 def discover_courses(
     session: requests.Session,
@@ -286,22 +395,34 @@ def discover_courses(
     request_interval: float,
 ) -> tuple[int, int]:
     discovered: list[str] = []
+    hints: dict[str, str] = {}
     pages_left = list_limit
     for seed in SEARCH_SEEDS:
-        page_url = crawl_state.get("next_pages", {}).get(seed) or seed
+        page_url = seed
+        html: str | None = None
         while page_url and (pages_left is None or pages_left > 0):
             try:
-                html = fetch(session, page_url)
-                discovered.extend(extract_detail_links(page_url, html))
-                next_page = find_next_page(page_url, html)
-                crawl_state.setdefault("next_pages", {})[seed] = next_page or seed
-                page_url = next_page
+                if html is None:
+                    html = fetch(session, page_url)
+                for url, hint in extract_detail_links(page_url, html):
+                    discovered.append(url)
+                    if hint:
+                        hints[url] = hint
+                next_request = find_next_page_request(page_url, html)
+                crawl_state.setdefault("next_pages", {})[seed] = bool(next_request)
+                if next_request:
+                    next_url, data = next_request
+                    html = submit_form(session, next_url, data)
+                    page_url = next_url
+                else:
+                    html = None
+                    page_url = None
                 if pages_left is not None:
                     pages_left -= 1
                 time.sleep(request_interval)
             except Exception as exc:
                 print("list failed", page_url, exc)
-                crawl_state.setdefault("next_pages", {})[seed] = seed
+                crawl_state.setdefault("next_pages", {})[seed] = True
                 break
         if pages_left is not None and pages_left <= 0:
             break
@@ -313,6 +434,8 @@ def discover_courses(
             new_count += 1
         record = catalog["urls"].get(key, {})
         record.update({"url": canonical_url(url), "last_discovered": now.isoformat(timespec="seconds")})
+        if hints.get(url):
+            record["course_title_hint"] = hints[url]
         catalog["urls"][key] = record
     return len(set(discovered)), new_count
 
@@ -365,6 +488,9 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
         elif mode == "all":
             include = old is None or last_dt is None or last_dt < now - timedelta(days=DETAIL_REFRESH_DAYS)
             priority = 0 if old is None else 1
+        elif mode == "rebuild":
+            include = True
+            priority = 0
         if include:
             candidates.append((priority, last, key, url))
     candidates.sort()
@@ -373,7 +499,7 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["discover", "refresh", "urgent", "cleanup", "all"], default="all")
+    parser.add_argument("--mode", choices=["discover", "refresh", "urgent", "cleanup", "all", "rebuild"], default="all")
     parser.add_argument("--limit", type=int, default=MAX_DETAIL_PAGES_PER_RUN, help="詳細取得件数。0以下で無制限。")
     parser.add_argument("--list-pages", type=int, default=MAX_LIST_PAGES_PER_RUN, help="一覧巡回ページ数。0以下で次ページが尽きるまで。")
     parser.add_argument("--request-interval", type=float, default=REQUEST_INTERVAL_SECONDS)
