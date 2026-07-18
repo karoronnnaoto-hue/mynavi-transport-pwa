@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/data/jobs.json"
+DB = ROOT / "data/items.json"
 CATALOG = ROOT / "data/catalog.json"
 STATE = ROOT / "data/crawl_state.json"
 TARGETS = ROOT / "targets.txt"
@@ -144,6 +145,13 @@ def is_kanto_only(item: dict) -> bool:
     """開催地が関東だけの募集を、収集後の分析母集団から外す。"""
     physical_locations = [location for location in item.get("locations", []) if location in PREFS]
     return bool(physical_locations) and all(location in KANTO_PREFS for location in physical_locations)
+
+
+def without_kanto_locations(item: dict) -> dict:
+    """表示・分析ビューでは関東以外の開催地だけを残す。"""
+    output = dict(item)
+    output["locations"] = [location for location in item.get("locations", []) if location not in KANTO_PREFS]
+    return output
 
 
 def extract_labeled_text(soup: BeautifulSoup, labels: list[str], width: int = 5) -> str:
@@ -541,7 +549,7 @@ def main() -> None:
     parser.add_argument("--request-interval", type=float, default=REQUEST_INTERVAL_SECONDS)
     args = parser.parse_args()
 
-    old_payload = load_json(OUT, {"items": []})
+    old_payload = load_json(DB, load_json(OUT, {"items": []}))
     old_by_id = {x.get("id"): x for x in old_payload.get("items", []) if x.get("id")}
     catalog = load_json(CATALOG, {"urls": {}})
     crawl_state = load_json(STATE, {"next_pages": {seed: seed for seed in SEARCH_SEEDS}})
@@ -568,12 +576,12 @@ def main() -> None:
             html = fetch(session, url)
             item = parse_detail(url, html, old_by_id.get(key))
             item["amount_analysis_status"] = amount_analysis_status(item)
-            items_by_id[key] = item
             catalog["urls"][key]["last_checked"] = item["last_checked"]
             catalog["urls"][key]["status"] = item["status"]
             catalog["urls"][key]["transport_available"] = has_transport_support(item)
             catalog["urls"][key]["science_only"] = is_science_only(item)
             catalog["urls"][key]["kanto_only"] = is_kanto_only(item)
+            items_by_id[key] = item
             checked += 1
             time.sleep(args.request_interval)
         except Exception as exc:
@@ -582,7 +590,7 @@ def main() -> None:
     # 終了整理では終了済みを削除せず履歴として保持し、画面側で非表示にできる状態にする。
     collected_items = dedupe_items(list(items_by_id.values()))
     transport_items = [item for item in collected_items if has_transport_support(item)]
-    non_kanto_transport_items = [item for item in transport_items if not is_kanto_only(item)]
+    non_kanto_transport_items = [without_kanto_locations(item) for item in transport_items if not is_kanto_only(item)]
     items = [item for item in non_kanto_transport_items if not is_science_only(item)]
     for item in items:
         item["amount_analysis_status"] = amount_analysis_status(item)
@@ -594,24 +602,32 @@ def main() -> None:
         x.get("company", ""),
     ))
     generated = now.isoformat(timespec="seconds")
+    stats = {
+        "catalog_courses": len(catalog.get("urls", {})),
+        "collected_courses": len(collected_items),
+        "displayed_courses": len(items),
+        "transport_supported_courses": len(transport_items),
+        "excluded_kanto_only_courses": len(transport_items) - len(non_kanto_transport_items),
+        "excluded_science_only_courses": len(non_kanto_transport_items) - len(items),
+        "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
+        "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
+        "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),
+        "excluded_no_transport_courses": len(collected_items) - len(transport_items),
+        "discovered_links_this_run": discovered_count,
+        "new_courses_this_run": new_count,
+        "details_checked_this_run": checked,
+        "database_courses": len(collected_items),
+    }
+    save_json(DB, {
+        "generated_at": generated,
+        "last_mode": args.mode,
+        "stats": stats,
+        "items": collected_items,
+    })
     save_json(OUT, {
         "generated_at": generated,
         "last_mode": args.mode,
-        "stats": {
-            "catalog_courses": len(catalog.get("urls", {})),
-            "collected_courses": len(collected_items),
-            "displayed_courses": len(items),
-            "transport_supported_courses": len(transport_items),
-            "excluded_kanto_only_courses": len(transport_items) - len(non_kanto_transport_items),
-            "excluded_science_only_courses": len(non_kanto_transport_items) - len(items),
-            "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
-            "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
-            "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),
-            "excluded_no_transport_courses": len(collected_items) - len(transport_items),
-            "discovered_links_this_run": discovered_count,
-            "new_courses_this_run": new_count,
-            "details_checked_this_run": checked,
-        },
+        "stats": stats,
         "items": items,
     })
     save_json(CATALOG, catalog)

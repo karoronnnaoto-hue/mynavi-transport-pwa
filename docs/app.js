@@ -11,7 +11,6 @@ const REGION_PREFECTURES = {
   九州: ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"],
 };
 const PREFECTURES = Object.values(REGION_PREFECTURES).flat();
-const KANTO_PREFECTURES = REGION_PREFECTURES.関東;
 
 function yen(n, type) {
   if (type === "unlimited") return "全額・実費";
@@ -82,9 +81,6 @@ function populateLocationFilters() {
 
 function locationMatches(i, region, prefecture) {
   const locations = i.locations || [];
-  const physicalLocations = locations.filter((location) => PREFECTURES.includes(location));
-  const kantoOnly = physicalLocations.length > 0 && physicalLocations.every((location) => KANTO_PREFECTURES.includes(location));
-  if ($("excludeKanto").checked && !region && !prefecture && kantoOnly) return false;
   if (region && !locations.some((location) => REGION_PREFECTURES[region]?.includes(location))) return false;
   if (prefecture && !locations.includes(prefecture)) return false;
   return true;
@@ -187,7 +183,7 @@ async function load() {
   }
 }
 
-for (const id of ["minAmount", "industryFilter", "regionFilter", "prefectureFilter", "sortBy", "excludeUnknown", "excludeKanto", "lodgingOnly", "favoritesOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed"]) {
+for (const id of ["minAmount", "industryFilter", "regionFilter", "prefectureFilter", "sortBy", "excludeUnknown", "lodgingOnly", "favoritesOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed"]) {
   $(id).addEventListener("input", render);
 }
 $("clearDates").onclick = () => {
