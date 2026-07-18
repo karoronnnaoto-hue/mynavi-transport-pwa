@@ -36,13 +36,25 @@ jobs:
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
+      - name: Build full catalog
+        if: ${{ github.event.inputs.full_scan == 'true' }}
+        run: node scripts/discover_browser.js --max-pages 0 --delay-ms 1500
+      - name: Commit full catalog
+        if: ${{ github.event.inputs.full_scan == 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/catalog.json data/crawl_state.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update full internship catalog"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
       - name: Collect course data
         run: |
           if [ "${{ github.event.inputs.full_scan }}" = "true" ]; then
-            node scripts/discover_browser.js --max-pages 0 --delay-ms 1500
-            python scripts/scrape.py --mode rebuild --limit 0
+            python scripts/scrape.py --mode rebuild --limit 600
           else
-            python scripts/scrape.py --mode discover --limit 90
+            python scripts/scrape.py --mode discover --limit 180
           fi
       - name: Commit changed data
         run: |
