@@ -38,6 +38,16 @@
           <option value="">すべて</option>
         </select>
       </label>
+      <label>地方
+        <select id="regionFilter">
+          <option value="">すべて</option>
+        </select>
+      </label>
+      <label>都道府県
+        <select id="prefectureFilter">
+          <option value="">すべて</option>
+        </select>
+      </label>
       <label>開催日（開始）
         <input id="dateFrom" type="date">
       </label>
@@ -54,6 +64,7 @@
         </select>
       </label>
       <label class="check"><input type="checkbox" id="excludeUnknown"> 金額不明を除外</label>
+      <label class="check"><input type="checkbox" id="excludeKanto" checked> 関東を除外</label>
       <label class="check"><input type="checkbox" id="lodgingOnly"> 宿泊費ありのみ</label>
       <label class="check"><input type="checkbox" id="favoritesOnly"> お気に入りのみ</label>
       <label class="check"><input type="checkbox" id="includeUnknownDates"> 日付未定も含める</label>

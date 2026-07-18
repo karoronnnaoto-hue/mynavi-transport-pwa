@@ -26,11 +26,21 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+      - uses: actions/setup-node@v4
+        if: ${{ github.event.inputs.full_scan == 'true' }}
+        with:
+          node-version: '22'
       - run: pip install -r requirements.txt
+      - name: Install browser crawler
+        if: ${{ github.event.inputs.full_scan == 'true' }}
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
       - name: Collect course data
         run: |
           if [ "${{ github.event.inputs.full_scan }}" = "true" ]; then
-            python scripts/scrape.py --mode discover --limit 0 --list-pages 0
+            node scripts/discover_browser.js --max-pages 0 --delay-ms 1500
+            python scripts/scrape.py --mode rebuild --limit 0
           else
             python scripts/scrape.py --mode discover --limit 90
           fi

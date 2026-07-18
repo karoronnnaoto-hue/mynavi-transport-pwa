@@ -39,6 +39,7 @@ HEADERS = {
 
 YEN_RE = re.compile(r"([0-9０-９,，]+)\s*(円|万円)")
 PREFS = "北海道 青森県 岩手県 宮城県 秋田県 山形県 福島県 茨城県 栃木県 群馬県 埼玉県 千葉県 東京都 神奈川県 新潟県 富山県 石川県 福井県 山梨県 長野県 岐阜県 静岡県 愛知県 三重県 滋賀県 京都府 大阪府 兵庫県 奈良県 和歌山県 鳥取県 島根県 岡山県 広島県 山口県 徳島県 香川県 愛媛県 高知県 福岡県 佐賀県 長崎県 熊本県 大分県 宮崎県 鹿児島県 沖縄県".split()
+KANTO_PREFS = {"茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県"}
 PREF_ALIASES = {
     "北海道": "北海道", "青森": "青森県", "岩手": "岩手県", "宮城": "宮城県", "秋田": "秋田県", "山形": "山形県", "福島": "福島県",
     "茨城": "茨城県", "栃木": "栃木県", "群馬": "群馬県", "埼玉": "埼玉県", "千葉": "千葉県", "東京": "東京都", "神奈川": "神奈川県",
@@ -137,6 +138,12 @@ def is_science_only(item: dict) -> bool:
     if re.search(r"文理不問|文理問わず|文理問いません|全学部|全学科|学部学科不問|学部不問|文系", text):
         return False
     return bool(re.search(r"理系|理工|工学部|工学系|理学部|土木|建築|機械|電気|電子|情報|化学|物理|数学|農学|薬学|技術系", text))
+
+
+def is_kanto_only(item: dict) -> bool:
+    """開催地が関東だけの募集を、収集後の分析母集団から外す。"""
+    physical_locations = [location for location in item.get("locations", []) if location in PREFS]
+    return bool(physical_locations) and all(location in KANTO_PREFS for location in physical_locations)
 
 
 def extract_labeled_text(soup: BeautifulSoup, labels: list[str], width: int = 5) -> str:
@@ -566,6 +573,7 @@ def main() -> None:
             catalog["urls"][key]["status"] = item["status"]
             catalog["urls"][key]["transport_available"] = has_transport_support(item)
             catalog["urls"][key]["science_only"] = is_science_only(item)
+            catalog["urls"][key]["kanto_only"] = is_kanto_only(item)
             checked += 1
             time.sleep(args.request_interval)
         except Exception as exc:
@@ -574,10 +582,12 @@ def main() -> None:
     # 終了整理では終了済みを削除せず履歴として保持し、画面側で非表示にできる状態にする。
     collected_items = dedupe_items(list(items_by_id.values()))
     transport_items = [item for item in collected_items if has_transport_support(item)]
-    items = [item for item in transport_items if not is_science_only(item)]
+    non_kanto_transport_items = [item for item in transport_items if not is_kanto_only(item)]
+    items = [item for item in non_kanto_transport_items if not is_science_only(item)]
     for item in items:
         item["amount_analysis_status"] = amount_analysis_status(item)
         item["science_only"] = False
+        item["kanto_only"] = False
     items.sort(key=lambda x: (
         x.get("status", "open") != "open",
         x.get("event_dates", ["9999-12-31"])[0] if x.get("event_dates") else "9999-12-31",
@@ -592,7 +602,8 @@ def main() -> None:
             "collected_courses": len(collected_items),
             "displayed_courses": len(items),
             "transport_supported_courses": len(transport_items),
-            "excluded_science_only_courses": len(transport_items) - len(items),
+            "excluded_kanto_only_courses": len(transport_items) - len(non_kanto_transport_items),
+            "excluded_science_only_courses": len(non_kanto_transport_items) - len(items),
             "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
             "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
             "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),

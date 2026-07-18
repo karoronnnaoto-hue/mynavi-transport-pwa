@@ -1,4 +1,4 @@
-from scripts.scrape import amount_analysis_status, canonical_url, classify, course_key, dedupe_items, extract_detail_links, has_transport_support, is_science_only, parse_dates, parse_detail
+from scripts.scrape import amount_analysis_status, canonical_url, classify, course_key, dedupe_items, extract_detail_links, has_transport_support, is_kanto_only, is_science_only, parse_dates, parse_detail
 
 def test_money():
     assert classify('交通費 上限30,000円まで支給') == ('limit', 30000)
@@ -65,6 +65,11 @@ def test_science_only_detection():
     assert is_science_only({"eligibility_text": "対象者：工学部の方（機械、化学、電気、電子）", "course": "5days"})
     assert not is_science_only({"eligibility_text": "文理不問", "course": "設計体験"})
     assert not is_science_only({"eligibility_text": "全学部全学科", "course": "技術系"})
+
+def test_kanto_only_detection():
+    assert is_kanto_only({"locations": ["東京都", "神奈川県"]})
+    assert not is_kanto_only({"locations": ["東京都", "大阪府"]})
+    assert not is_kanto_only({"locations": ["WEB"]})
 
 def test_extract_detail_links_keeps_course_hint():
     html = '<a href="/28/pc/corpinfo/displayInternship/index?corpId=123&optNo=ABC">交通費ありコース</a>'
