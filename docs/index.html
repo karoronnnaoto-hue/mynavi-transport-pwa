@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b57d0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="交通費サーチ">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="style.css">
+  <title>マイナビ交通費サーチ</title>
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">MYNAVI 2028 WATCHER</p>
+      <h1>交通費サーチ</h1>
+    </div>
+    <button id="refresh" class="icon-button" aria-label="更新">↻</button>
+  </header>
+
+  <main>
+    <section class="panel filters">
+      <label>最低支給額
+        <select id="minAmount">
+          <option value="0">指定なし</option>
+          <option value="10000">1万円以上</option>
+          <option value="20000">2万円以上</option>
+          <option value="30000">3万円以上</option>
+          <option value="50000">5万円以上</option>
+          <option value="99999999">全額・実費のみ</option>
+        </select>
+      </label>
+      <label>開催日（開始）
+        <input id="dateFrom" type="date">
+      </label>
+      <label>開催日（終了）
+        <input id="dateTo" type="date">
+      </label>
+      <button id="clearDates" type="button" class="secondary">日付を解除</button>
+      <label>並び順
+        <select id="sortBy">
+          <option value="amount">交通費が高い順</option>
+          <option value="date">開催日が近い順</option>
+          <option value="updated">更新が新しい順</option>
+          <option value="company">企業名順</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="excludeUnknown"> 金額不明を除外</label>
+      <label class="check"><input type="checkbox" id="lodgingOnly"> 宿泊費ありのみ</label>
+      <label class="check"><input type="checkbox" id="favoritesOnly"> お気に入りのみ</label>
+      <label class="check"><input type="checkbox" id="includeUnknownDates"> 日付未定も含める</label>
+      <label class="check"><input type="checkbox" id="showClosed"> 終了・満席も表示</label>
+      <input id="query" type="search" placeholder="企業名・コース・開催地で検索">
+    </section>
+
+    <div class="summary"><span id="count">0件</span><span id="updatedAt"></span></div>
+    <section id="results" class="cards" aria-live="polite"></section>
+    <p id="empty" class="empty" hidden>条件に一致する募集はありません。</p>
+  </main>
+
+  <template id="cardTemplate">
+    <article class="card">
+      <div class="card-top">
+        <div><p class="status"></p><h2></h2><p class="course"></p></div>
+        <button class="favorite" aria-label="お気に入り">☆</button>
+      </div>
+      <div class="tags"></div>
+      <dl>
+        <div><dt>交通費</dt><dd class="transport"></dd></div>
+        <div><dt>宿泊費</dt><dd class="lodging"></dd></div>
+        <div><dt>開催地</dt><dd class="locations"></dd></div>
+        <div><dt>開催日</dt><dd class="dates"></dd></div>
+        <div><dt>確認日時</dt><dd class="checked"></dd></div>
+      </dl>
+      <p class="original"></p>
+      <a class="open" target="_blank" rel="noopener noreferrer">マイナビで詳細を見る</a>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
