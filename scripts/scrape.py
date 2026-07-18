@@ -591,6 +591,62 @@ def balance_candidates_by_implementation(
     return selected
 
 
+def write_outputs(
+    catalog: dict,
+    crawl_state: dict,
+    items_by_id: dict,
+    mode: str,
+    now: datetime,
+    discovered_count: int = 0,
+    new_count: int = 0,
+    checked: int = 0,
+) -> None:
+    collected_items = dedupe_items(list(items_by_id.values()))
+    transport_items = [item for item in collected_items if has_transport_support(item)]
+    non_kanto_transport_items = [without_kanto_locations(item) for item in transport_items if not is_kanto_only(item)]
+    items = [item for item in non_kanto_transport_items if not is_science_only(item)]
+    for item in items:
+        item["amount_analysis_status"] = amount_analysis_status(item)
+        item["science_only"] = False
+        item["kanto_only"] = False
+    items.sort(key=lambda x: (
+        x.get("status", "open") != "open",
+        x.get("event_dates", ["9999-12-31"])[0] if x.get("event_dates") else "9999-12-31",
+        x.get("company", ""),
+    ))
+    generated = now.isoformat(timespec="seconds")
+    stats = {
+        "catalog_courses": len(catalog.get("urls", {})),
+        "collected_courses": len(collected_items),
+        "displayed_courses": len(items),
+        "transport_supported_courses": len(transport_items),
+        "excluded_kanto_only_courses": len(transport_items) - len(non_kanto_transport_items),
+        "excluded_science_only_courses": len(non_kanto_transport_items) - len(items),
+        "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
+        "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
+        "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),
+        "excluded_no_transport_courses": len(collected_items) - len(transport_items),
+        "discovered_links_this_run": discovered_count,
+        "new_courses_this_run": new_count,
+        "details_checked_this_run": checked,
+        "database_courses": len(collected_items),
+    }
+    save_json(DB, {
+        "generated_at": generated,
+        "last_mode": mode,
+        "stats": stats,
+        "items": collected_items,
+    })
+    save_json(OUT, {
+        "generated_at": generated,
+        "last_mode": mode,
+        "stats": stats,
+        "items": items,
+    })
+    save_json(CATALOG, catalog)
+    save_json(STATE, crawl_state)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["discover", "refresh", "urgent", "cleanup", "all", "rebuild"], default="all")
@@ -638,51 +694,7 @@ def main() -> None:
         except Exception as exc:
             print("detail failed", url, exc)
 
-    # 終了整理では終了済みを削除せず履歴として保持し、画面側で非表示にできる状態にする。
-    collected_items = dedupe_items(list(items_by_id.values()))
-    transport_items = [item for item in collected_items if has_transport_support(item)]
-    non_kanto_transport_items = [without_kanto_locations(item) for item in transport_items if not is_kanto_only(item)]
-    items = [item for item in non_kanto_transport_items if not is_science_only(item)]
-    for item in items:
-        item["amount_analysis_status"] = amount_analysis_status(item)
-        item["science_only"] = False
-        item["kanto_only"] = False
-    items.sort(key=lambda x: (
-        x.get("status", "open") != "open",
-        x.get("event_dates", ["9999-12-31"])[0] if x.get("event_dates") else "9999-12-31",
-        x.get("company", ""),
-    ))
-    generated = now.isoformat(timespec="seconds")
-    stats = {
-        "catalog_courses": len(catalog.get("urls", {})),
-        "collected_courses": len(collected_items),
-        "displayed_courses": len(items),
-        "transport_supported_courses": len(transport_items),
-        "excluded_kanto_only_courses": len(transport_items) - len(non_kanto_transport_items),
-        "excluded_science_only_courses": len(non_kanto_transport_items) - len(items),
-        "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
-        "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
-        "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),
-        "excluded_no_transport_courses": len(collected_items) - len(transport_items),
-        "discovered_links_this_run": discovered_count,
-        "new_courses_this_run": new_count,
-        "details_checked_this_run": checked,
-        "database_courses": len(collected_items),
-    }
-    save_json(DB, {
-        "generated_at": generated,
-        "last_mode": args.mode,
-        "stats": stats,
-        "items": collected_items,
-    })
-    save_json(OUT, {
-        "generated_at": generated,
-        "last_mode": args.mode,
-        "stats": stats,
-        "items": items,
-    })
-    save_json(CATALOG, catalog)
-    save_json(STATE, crawl_state)
+    write_outputs(catalog, crawl_state, items_by_id, args.mode, now, discovered_count, new_count, checked)
 
 
 if __name__ == "__main__":

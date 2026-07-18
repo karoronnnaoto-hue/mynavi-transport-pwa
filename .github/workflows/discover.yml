@@ -22,6 +22,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   run:
+    if: ${{ github.event.inputs.detail_batch != 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
     steps:
@@ -56,13 +57,11 @@ jobs:
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin HEAD:"${GITHUB_REF_NAME}"
       - name: Collect course data
+        if: ${{ github.event.inputs.full_scan != 'true' }}
         run: |
-          if [ "${{ github.event.inputs.full_scan }}" = "true" ] || [ "${{ github.event.inputs.detail_batch }}" = "true" ]; then
-            python scripts/scrape.py --mode rebuild --limit 500
-          else
-            python scripts/scrape.py --mode discover --limit 180
-          fi
+          python scripts/scrape.py --mode discover --limit 180
       - name: Commit changed data
+        if: ${{ github.event.inputs.full_scan != 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -72,7 +71,73 @@ jobs:
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin HEAD:"${GITHUB_REF_NAME}"
       - name: Continue initial detail crawl
-        if: ${{ github.event.inputs.full_scan == 'true' || github.event.inputs.detail_batch == 'true' }}
+        if: ${{ github.event.inputs.full_scan == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          REMAINING="$(python scripts/remaining_details.py)"
+          echo "remaining detail pages: ${REMAINING}"
+          if [ "${REMAINING}" -gt 0 ]; then
+            curl -sS -X POST \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/discover.yml/dispatches" \
+              -d "{\"ref\":\"${GITHUB_REF_NAME}\",\"inputs\":{\"detail_batch\":\"true\"}}"
+          fi
+  detail:
+    if: ${{ github.event.inputs.detail_batch == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Collect detail shard
+        run: python scripts/detail_shard.py --shard-index "${{ matrix.shard }}" --shard-total 4 --limit 140 --request-interval 4.0 --output "fragment-${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: detail-fragment-${{ matrix.shard }}
+          path: fragment-${{ matrix.shard }}.json
+          retention-days: 1
+  merge-detail:
+    if: ${{ github.event.inputs.detail_batch == 'true' }}
+    needs: detail
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: detail-fragment-*
+          path: work/fragments
+          merge-multiple: true
+      - name: Merge detail fragments
+        run: python scripts/merge_fragments.py --fragments work/fragments
+      - name: Commit merged data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/jobs.json data/items.json data/catalog.json data/crawl_state.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Merge internship detail shards"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
+      - name: Continue initial detail crawl
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
