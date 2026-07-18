@@ -10,6 +10,11 @@ const SEARCH_SEEDS = [
   "https://job.mynavi.jp/28/pc/search/is_it2.html",
   "https://job.mynavi.jp/28/pc/search/is_it3.html",
 ];
+const IMPLEMENTATION_TYPES = {
+  "is_it1": "インターンシップ",
+  "is_it2": "仕事体験",
+  "is_it3": "オープン・カンパニー等",
+};
 
 function parseArgs(argv) {
   const args = {
@@ -98,6 +103,13 @@ function courseKey(rawUrl) {
   const course = query.optno || query.courseid;
   if (corp && course) return `corp:${corp}:course:${course}`;
   return `url:${Buffer.from(rawUrl).toString("base64url").slice(0, 24)}`;
+}
+
+function implementationTypeForSeed(seed) {
+  for (const [token, label] of Object.entries(IMPLEMENTATION_TYPES)) {
+    if (seed.includes(token)) return label;
+  }
+  return "実施形式不明";
 }
 
 async function bodyText(page) {
@@ -305,7 +317,13 @@ async function main() {
     for (const seed of args.seeds) {
       try {
         const result = await crawlSeed(browser, seed, args);
-        for (const [url, hint] of result.discovered.entries()) allDiscovered.set(url, hint);
+        const implementationType = implementationTypeForSeed(seed);
+        for (const [url, hint] of result.discovered.entries()) {
+          const record = allDiscovered.get(url) || { hint, implementationTypes: new Set() };
+          if (hint && !record.hint) record.hint = hint;
+          record.implementationTypes.add(implementationType);
+          allDiscovered.set(url, record);
+        }
         seedReports.push({ seed, pages: result.pages.length, links: result.discovered.size, page_details: result.pages });
       } catch (error) {
         failedSeeds.push({ seed, error: error.message });
@@ -319,16 +337,19 @@ async function main() {
   const now = jstNow();
   const catalog = loadJson(args.output, { urls: {} });
   let newCount = 0;
-  for (const [url, hint] of allDiscovered.entries()) {
+  for (const [url, discoveredRecord] of allDiscovered.entries()) {
     const key = courseKey(url);
     if (!catalog.urls[key]) newCount += 1;
+    const existingTypes = catalog.urls[key]?.implementation_types || [];
+    const implementationTypes = [...new Set([...existingTypes, ...discoveredRecord.implementationTypes])];
     catalog.urls[key] = {
       ...(catalog.urls[key] || {}),
       url,
       last_discovered: now,
       discovery_method: args.trafficOnly ? "browser_click_traffic_filter" : "browser_click",
+      implementation_types: implementationTypes,
     };
-    if (hint) catalog.urls[key].course_title_hint = hint;
+    if (discoveredRecord.hint) catalog.urls[key].course_title_hint = discoveredRecord.hint;
   }
 
   const crawlState = loadJson(args.state, {});

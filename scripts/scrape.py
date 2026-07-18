@@ -26,6 +26,11 @@ SEARCH_SEEDS = [
     "https://job.mynavi.jp/28/pc/search/is_it2.html",  # 仕事体験
     "https://job.mynavi.jp/28/pc/search/is_it3.html",  # オープン・カンパニー等
 ]
+IMPLEMENTATION_TYPES = {
+    "is_it1": "インターンシップ",
+    "is_it2": "仕事体験",
+    "is_it3": "オープン・カンパニー等",
+}
 MAX_LIST_PAGES_PER_RUN = 9
 MAX_DETAIL_PAGES_PER_RUN = 90
 REQUEST_INTERVAL_SECONDS = 2.5
@@ -145,6 +150,13 @@ def is_kanto_only(item: dict) -> bool:
     """開催地が関東だけの募集を、収集後の分析母集団から外す。"""
     physical_locations = [location for location in item.get("locations", []) if location in PREFS]
     return bool(physical_locations) and all(location in KANTO_PREFS for location in physical_locations)
+
+
+def implementation_type_for_seed(seed: str) -> str:
+    for token, label in IMPLEMENTATION_TYPES.items():
+        if token in seed:
+            return label
+    return "実施形式不明"
 
 
 def without_kanto_locations(item: dict) -> dict:
@@ -440,8 +452,10 @@ def discover_courses(
 ) -> tuple[int, int]:
     discovered: list[str] = []
     hints: dict[str, str] = {}
-    pages_left = list_limit
+    types_by_url: dict[str, set[str]] = {}
     for seed in SEARCH_SEEDS:
+        implementation_type = implementation_type_for_seed(seed)
+        pages_left = list_limit
         page_url = seed
         html: str | None = None
         while page_url and (pages_left is None or pages_left > 0):
@@ -450,6 +464,7 @@ def discover_courses(
                     html = fetch(session, page_url)
                 for url, hint in extract_detail_links(page_url, html):
                     discovered.append(url)
+                    types_by_url.setdefault(url, set()).add(implementation_type)
                     if hint:
                         hints[url] = hint
                 next_request = find_next_page_request(page_url, html)
@@ -468,8 +483,6 @@ def discover_courses(
                 print("list failed", page_url, exc)
                 crawl_state.setdefault("next_pages", {})[seed] = True
                 break
-        if pages_left is not None and pages_left <= 0:
-            break
 
     new_count = 0
     for url in dict.fromkeys(discovered):
@@ -478,6 +491,9 @@ def discover_courses(
             new_count += 1
         record = catalog["urls"].get(key, {})
         record.update({"url": canonical_url(url), "last_discovered": now.isoformat(timespec="seconds")})
+        implementation_types = sorted(set(record.get("implementation_types", [])) | types_by_url.get(url, set()))
+        if implementation_types:
+            record["implementation_types"] = implementation_types
         if hints.get(url):
             record["course_title_hint"] = hints[url]
         catalog["urls"][key] = record
@@ -541,6 +557,40 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
     return candidates
 
 
+def balance_candidates_by_implementation(
+    candidates: list[tuple[int, str, str, str]],
+    catalog: dict,
+    limit: int,
+) -> list[tuple[int, str, str, str]]:
+    """初回の分割取得で仕事体験などが後回しになりすぎないように混ぜる。"""
+    if limit <= 0 or len(candidates) <= limit:
+        return candidates
+    buckets: dict[str, list[tuple[int, str, str, str]]] = {}
+    for candidate in candidates:
+        _, _, key, _ = candidate
+        types = catalog.get("urls", {}).get(key, {}).get("implementation_types") or ["実施形式不明"]
+        bucket_key = " / ".join(types)
+        buckets.setdefault(bucket_key, []).append(candidate)
+
+    selected: list[tuple[int, str, str, str]] = []
+    seen: set[str] = set()
+    while len(selected) < limit and buckets:
+        for bucket_key in list(buckets):
+            bucket = buckets[bucket_key]
+            if not bucket:
+                buckets.pop(bucket_key)
+                continue
+            candidate = bucket.pop(0)
+            _, _, key, _ = candidate
+            if key in seen:
+                continue
+            selected.append(candidate)
+            seen.add(key)
+            if len(selected) >= limit:
+                break
+    return selected
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["discover", "refresh", "urgent", "cleanup", "all", "rebuild"], default="all")
@@ -570,12 +620,13 @@ def main() -> None:
     items_by_id = dict(old_by_id)
     candidates = select_candidates(args.mode, catalog, items_by_id, now)
     checked = 0
-    detail_candidates = candidates if args.limit <= 0 else candidates[:args.limit]
+    detail_candidates = candidates if args.limit <= 0 else balance_candidates_by_implementation(candidates, catalog, args.limit)
     for _, _, key, url in detail_candidates:
         try:
             html = fetch(session, url)
             item = parse_detail(url, html, old_by_id.get(key))
             item["amount_analysis_status"] = amount_analysis_status(item)
+            item["implementation_types"] = catalog["urls"].get(key, {}).get("implementation_types", [])
             catalog["urls"][key]["last_checked"] = item["last_checked"]
             catalog["urls"][key]["status"] = item["status"]
             catalog["urls"][key]["transport_available"] = has_transport_support(item)

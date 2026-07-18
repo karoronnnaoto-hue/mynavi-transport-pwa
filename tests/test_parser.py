@@ -1,4 +1,4 @@
-from scripts.scrape import amount_analysis_status, canonical_url, classify, course_key, dedupe_items, extract_detail_links, has_transport_support, is_kanto_only, is_science_only, parse_dates, parse_detail, without_kanto_locations
+from scripts.scrape import amount_analysis_status, balance_candidates_by_implementation, canonical_url, classify, course_key, dedupe_items, extract_detail_links, has_transport_support, implementation_type_for_seed, is_kanto_only, is_science_only, parse_dates, parse_detail, without_kanto_locations
 
 def test_money():
     assert classify('交通費 上限30,000円まで支給') == ('limit', 30000)
@@ -77,3 +77,17 @@ def test_extract_detail_links_keeps_course_hint():
     assert extract_detail_links("https://job.mynavi.jp/28/pc/search/is_it1.html", html) == [
         ("https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=123&optNo=ABC", "交通費ありコース")
     ]
+
+def test_detail_candidates_are_balanced_by_implementation_type():
+    catalog = {"urls": {
+        "a1": {"implementation_types": ["インターンシップ"]},
+        "a2": {"implementation_types": ["インターンシップ"]},
+        "b1": {"implementation_types": ["仕事体験"]},
+        "c1": {"implementation_types": ["オープン・カンパニー等"]},
+    }}
+    candidates = [(0, "", "a1", "u1"), (0, "", "a2", "u2"), (0, "", "b1", "u3"), (0, "", "c1", "u4")]
+    selected = balance_candidates_by_implementation(candidates, catalog, 3)
+    assert [key for _, _, key, _ in selected] == ["a1", "b1", "c1"]
+
+def test_implementation_type_for_seed():
+    assert implementation_type_for_seed("https://job.mynavi.jp/28/pc/search/is_it2.html") == "仕事体験"
