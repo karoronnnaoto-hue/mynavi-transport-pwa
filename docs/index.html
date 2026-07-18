@@ -7,10 +7,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="インターンサーチ">
-  <link rel="manifest" href="manifest.webmanifest?v=3">
+  <link rel="manifest" href="manifest.webmanifest?v=4">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-180.png">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <title>インターンサーチ</title>
 </head>
 <body>
@@ -63,6 +63,18 @@
           </select>
         </label>
       </div>
+
+      <section class="map-console" aria-label="日本地図で都道府県を選択">
+        <div class="map-topline">
+          <div>
+            <h2>地図から選択</h2>
+            <p id="mapHint">地方を押すと拡大、都道府県を押すと複数選択できます。</p>
+          </div>
+          <button id="mapReset" type="button" class="secondary">全国へ戻る</button>
+        </div>
+        <div class="region-rail" id="regionRail" aria-label="地方ショートカット"></div>
+        <div class="map-stage" id="mapStage"></div>
+      </section>
 
       <div class="facet-grid">
         <section class="facet" aria-label="業種">
@@ -144,6 +156,6 @@
     </article>
   </template>
 
-  <script src="app.js?v=3" defer></script>
+  <script src="app.js?v=4" defer></script>
 </body>
 </html>

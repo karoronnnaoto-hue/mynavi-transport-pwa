@@ -3,6 +3,7 @@ const state = {
   favorites: new Set(JSON.parse(localStorage.getItem("favorites") || "[]")),
   selectedIndustries: new Set(),
   selectedPrefectures: new Set(),
+  mapRegion: "",
   page: 1,
 };
 const $ = (id) => document.getElementById(id);
@@ -17,6 +18,27 @@ const REGION_PREFECTURES = {
   九州: ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"],
 };
 const PREFECTURES = Object.values(REGION_PREFECTURES).flat();
+const PREFECTURE_REGION = Object.fromEntries(Object.entries(REGION_PREFECTURES).flatMap(([region, prefectures]) => prefectures.map((prefecture) => [prefecture, region])));
+const MAP_POINTS = {
+  北海道: [82, 9],
+  青森県: [72, 21], 岩手県: [75, 28], 宮城県: [74, 36], 秋田県: [68, 29], 山形県: [69, 38], 福島県: [70, 46],
+  茨城県: [72, 55], 栃木県: [68, 52], 群馬県: [63, 52], 埼玉県: [66, 58], 千葉県: [74, 62], 東京都: [68, 63], 神奈川県: [65, 68],
+  新潟県: [58, 43], 富山県: [47, 47], 石川県: [42, 47], 福井県: [39, 54], 山梨県: [58, 61], 長野県: [55, 54], 岐阜県: [48, 60], 静岡県: [57, 69], 愛知県: [49, 68],
+  三重県: [45, 73], 滋賀県: [39, 65], 京都府: [35, 65], 大阪府: [34, 70], 兵庫県: [29, 68], 奈良県: [38, 72], 和歌山県: [35, 78],
+  鳥取県: [22, 61], 島根県: [16, 62], 岡山県: [24, 68], 広島県: [18, 70], 山口県: [10, 73],
+  徳島県: [28, 80], 香川県: [27, 74], 愛媛県: [19, 81], 高知県: [23, 86],
+  福岡県: [6, 81], 佐賀県: [2, 84], 長崎県: [0, 90], 熊本県: [7, 90], 大分県: [13, 86], 宮崎県: [12, 96], 鹿児島県: [6, 99], 沖縄県: [10, 116],
+};
+const REGION_VIEWBOX = {
+  北海道: [70, 0, 30, 24],
+  東北: [64, 16, 16, 35],
+  関東: [60, 48, 18, 24],
+  中部: [36, 39, 28, 36],
+  近畿: [26, 60, 24, 23],
+  中国: [6, 57, 23, 19],
+  四国: [16, 72, 16, 18],
+  九州: [-2, 78, 20, 25],
+};
 
 function yen(n, type) {
   if (type === "unlimited") return "全額・実費";
@@ -99,6 +121,89 @@ function countByLocation() {
   return counts;
 }
 
+function regionCount(region, counts) {
+  return REGION_PREFECTURES[region].reduce((sum, prefecture) => sum + (counts.get(prefecture) || 0), 0);
+}
+
+function setRegion(region) {
+  state.mapRegion = region;
+  $("regionFilter").value = region;
+  state.page = 1;
+  populateLocationFilters();
+  render();
+}
+
+function togglePrefecture(prefecture) {
+  state.selectedPrefectures.has(prefecture) ? state.selectedPrefectures.delete(prefecture) : state.selectedPrefectures.add(prefecture);
+  state.page = 1;
+  populatePrefectureOptions();
+  renderMap();
+  render();
+}
+
+function renderRegionRail(counts) {
+  const rail = $("regionRail");
+  rail.innerHTML = "";
+  for (const region of Object.keys(REGION_PREFECTURES)) {
+    const count = regionCount(region, counts);
+    if (!count) continue;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `region-pill${state.mapRegion === region ? " active" : ""}`;
+    button.innerHTML = `<span>${region}</span><strong>${count.toLocaleString()}</strong>`;
+    button.onclick = () => setRegion(region);
+    rail.appendChild(button);
+  }
+}
+
+function renderMap() {
+  const stage = $("mapStage");
+  const counts = countByLocation();
+  const region = state.mapRegion || $("regionFilter").value;
+  const focus = region ? REGION_VIEWBOX[region] : null;
+  const [x, y, width, height] = focus || [-3, 0, 106, 122];
+  const visiblePrefectures = region ? REGION_PREFECTURES[region] : PREFECTURES;
+  const max = Math.max(1, ...visiblePrefectures.map((prefecture) => counts.get(prefecture) || 0));
+  renderRegionRail(counts);
+  $("mapHint").textContent = region ? `${region}を拡大中。件数バッジ付きの都道府県を複数選択できます。` : "地方を押すと拡大、都道府県を押すと複数選択できます。";
+  stage.style.setProperty("--map-x", `${x}`);
+  stage.style.setProperty("--map-y", `${y}`);
+  stage.style.setProperty("--map-w", `${width}`);
+  stage.style.setProperty("--map-h", `${height}`);
+  const scale = Math.min(5.2, 100 / width);
+  stage.style.setProperty("--map-scale", `${scale}`);
+  stage.style.setProperty("--node-scale", `${1 / scale}`);
+  stage.style.setProperty("--map-cx", `${x + width / 2}`);
+  stage.style.setProperty("--map-cy", `${y + height / 2}`);
+  stage.innerHTML = "";
+
+  const plane = document.createElement("div");
+  plane.className = "map-plane";
+  stage.appendChild(plane);
+
+  for (const prefecture of PREFECTURES) {
+    const count = counts.get(prefecture) || 0;
+    const [px, py] = MAP_POINTS[prefecture];
+    const node = document.createElement("button");
+    const selected = state.selectedPrefectures.has(prefecture);
+    const currentRegion = PREFECTURE_REGION[prefecture];
+    const dimmed = region && currentRegion !== region;
+    const size = 28 + Math.round((count / max) * 18);
+    node.type = "button";
+    node.className = `map-node${selected ? " selected" : ""}${dimmed ? " dimmed" : ""}`;
+    node.style.left = `${px}%`;
+    node.style.top = `${py}%`;
+    node.style.width = `${size}px`;
+    node.style.height = `${size}px`;
+    node.style.setProperty("--pulse", String(Math.max(0.12, count / max)));
+    node.disabled = !count;
+    node.title = `${prefecture} ${count.toLocaleString()}件`;
+    node.innerHTML = `<span>${prefecture.replace(/[都道府県]/g, "")}</span><strong>${count.toLocaleString()}</strong>`;
+    node.onclick = () => togglePrefecture(prefecture);
+    plane.appendChild(node);
+  }
+}
+
 function countByIndustry() {
   const counts = new Map();
   for (const item of state.items) {
@@ -159,7 +264,9 @@ function populateLocationFilters() {
     appendOption(regionSelect, region, `${region} (${count})`);
   }
   regionSelect.value = [...regionSelect.options].some((option) => option.value === selectedRegion) ? selectedRegion : "";
+  state.mapRegion = regionSelect.value;
   populatePrefectureOptions();
+  renderMap();
 }
 
 function populatePrefectureOptions() {
@@ -177,6 +284,7 @@ function populatePrefectureOptions() {
     root.appendChild(createFacetOption(location, counts.get(location), state.selectedPrefectures.has(location), (event) => {
       event.target.checked ? state.selectedPrefectures.add(location) : state.selectedPrefectures.delete(location);
       state.page = 1;
+      renderMap();
       render();
     }));
   }
@@ -342,6 +450,7 @@ function clearFilters() {
   $("minAmount").value = "0";
   state.selectedIndustries.clear();
   state.selectedPrefectures.clear();
+  state.mapRegion = "";
   for (const id of ["oneDayOnly", "multiDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "includeUnknownDates", "showClosed"]) $(id).checked = false;
   $("pageSize").value = "50";
   state.page = 1;
@@ -382,6 +491,7 @@ for (const id of ["minAmount", "sortBy", "oneDayOnly", "multiDayOnly", "excludeU
 }
 $("regionFilter").addEventListener("input", () => {
   state.page = 1;
+  state.mapRegion = $("regionFilter").value;
   populateLocationFilters();
   render();
 });
@@ -395,6 +505,14 @@ $("clearPrefectures").onclick = () => {
   state.selectedPrefectures.clear();
   state.page = 1;
   populatePrefectureOptions();
+  renderMap();
+  render();
+};
+$("mapReset").onclick = () => {
+  state.mapRegion = "";
+  $("regionFilter").value = "";
+  state.page = 1;
+  populateLocationFilters();
   render();
 };
 $("prevPage").onclick = () => {
