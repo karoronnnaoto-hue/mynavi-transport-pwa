@@ -1,6 +1,12 @@
 name: Discover new internships
 on:
   workflow_dispatch:
+    inputs:
+      full_scan:
+        description: '初回用: 一覧を最後まで巡回し、交通費ありの募集を全件収集する'
+        required: false
+        default: false
+        type: boolean
   schedule:
     - cron: '7,37 * * * *'
 permissions:
@@ -21,7 +27,13 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python scripts/scrape.py --mode discover --limit 90
+      - name: Collect course data
+        run: |
+          if [ "${{ github.event.inputs.full_scan }}" = "true" ]; then
+            python scripts/scrape.py --mode discover --limit 0 --list-pages 0
+          else
+            python scripts/scrape.py --mode discover --limit 90
+          fi
       - name: Commit changed data
         run: |
           git config user.name "github-actions[bot]"

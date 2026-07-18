@@ -30,6 +30,7 @@ MAX_DETAIL_PAGES_PER_RUN = 90
 REQUEST_INTERVAL_SECONDS = 2.5
 DETAIL_REFRESH_DAYS = 1
 URGENT_DEADLINE_DAYS = 3
+NO_TRANSPORT_TEXT = "交通費欄を特定できませんでした。"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; PersonalInternshipWatcher/2.0; low-frequency public-page checker)",
@@ -95,6 +96,25 @@ def classify(text: str):
     if "支給あり" in t or "交通費" in t:
         return "unknown", None
     return "unknown", None
+
+
+def has_transport_support(item: dict) -> bool:
+    """交通費ありの母集団だけを画面と金額分析の対象にする。"""
+    if item.get("transport_available") is False:
+        return False
+    if item.get("transport_type") == "none":
+        return False
+    return bool(item.get("transport_original") and item.get("transport_original") != NO_TRANSPORT_TEXT)
+
+
+def amount_analysis_status(item: dict) -> str:
+    if not has_transport_support(item):
+        return "no_transport"
+    if item.get("transport_type") == "unlimited":
+        return "unlimited"
+    if isinstance(item.get("transport_amount"), int) and item["transport_amount"] > 0:
+        return "amount_known"
+    return "amount_unknown"
 
 
 def extract_labeled_text(soup: BeautifulSoup, labels: list[str], width: int = 5) -> str:
@@ -187,7 +207,9 @@ def parse_detail(url: str, html: str, old_item: dict | None) -> dict:
         "deadline": parse_deadline(deadline),
         "transport_type": transport_type,
         "transport_amount": amount,
-        "transport_original": transport or "交通費欄を特定できませんでした。",
+        "transport_available": bool(transport and transport_type != "none"),
+        "transport_original": transport or NO_TRANSPORT_TEXT,
+        "amount_analysis_status": "pending",
         "lodging_provided": bool(lodging and not re.search(r"なし|自己負担|各自負担", lodging)),
         "lodging_text": lodging or "記載なし",
         "first_seen": (old_item or {}).get("first_seen", now),
@@ -255,25 +277,33 @@ def fetch(session: requests.Session, url: str) -> str:
 
 
 
-def discover_courses(session: requests.Session, catalog: dict, crawl_state: dict, now: datetime) -> tuple[int, int]:
+def discover_courses(
+    session: requests.Session,
+    catalog: dict,
+    crawl_state: dict,
+    now: datetime,
+    list_limit: int | None,
+    request_interval: float,
+) -> tuple[int, int]:
     discovered: list[str] = []
-    pages_left = MAX_LIST_PAGES_PER_RUN
+    pages_left = list_limit
     for seed in SEARCH_SEEDS:
         page_url = crawl_state.get("next_pages", {}).get(seed) or seed
-        while page_url and pages_left > 0:
+        while page_url and (pages_left is None or pages_left > 0):
             try:
                 html = fetch(session, page_url)
                 discovered.extend(extract_detail_links(page_url, html))
                 next_page = find_next_page(page_url, html)
                 crawl_state.setdefault("next_pages", {})[seed] = next_page or seed
                 page_url = next_page
-                pages_left -= 1
-                time.sleep(REQUEST_INTERVAL_SECONDS)
+                if pages_left is not None:
+                    pages_left -= 1
+                time.sleep(request_interval)
             except Exception as exc:
                 print("list failed", page_url, exc)
                 crawl_state.setdefault("next_pages", {})[seed] = seed
                 break
-        if pages_left <= 0:
+        if pages_left is not None and pages_left <= 0:
             break
 
     new_count = 0
@@ -344,7 +374,9 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["discover", "refresh", "urgent", "cleanup", "all"], default="all")
-    parser.add_argument("--limit", type=int, default=MAX_DETAIL_PAGES_PER_RUN)
+    parser.add_argument("--limit", type=int, default=MAX_DETAIL_PAGES_PER_RUN, help="詳細取得件数。0以下で無制限。")
+    parser.add_argument("--list-pages", type=int, default=MAX_LIST_PAGES_PER_RUN, help="一覧巡回ページ数。0以下で次ページが尽きるまで。")
+    parser.add_argument("--request-interval", type=float, default=REQUEST_INTERVAL_SECONDS)
     args = parser.parse_args()
 
     old_payload = load_json(OUT, {"items": []})
@@ -361,26 +393,33 @@ def main() -> None:
 
     discovered_count = 0
     new_count = 0
+    list_limit = None if args.list_pages <= 0 else args.list_pages
     if args.mode in {"discover", "all"}:
-        discovered_count, new_count = discover_courses(session, catalog, crawl_state, now)
+        discovered_count, new_count = discover_courses(session, catalog, crawl_state, now, list_limit, args.request_interval)
 
     items_by_id = dict(old_by_id)
     candidates = select_candidates(args.mode, catalog, items_by_id, now)
     checked = 0
-    for _, _, key, url in candidates[: max(0, args.limit)]:
+    detail_candidates = candidates if args.limit <= 0 else candidates[:args.limit]
+    for _, _, key, url in detail_candidates:
         try:
             html = fetch(session, url)
             item = parse_detail(url, html, old_by_id.get(key))
+            item["amount_analysis_status"] = amount_analysis_status(item)
             items_by_id[key] = item
             catalog["urls"][key]["last_checked"] = item["last_checked"]
             catalog["urls"][key]["status"] = item["status"]
+            catalog["urls"][key]["transport_available"] = has_transport_support(item)
             checked += 1
-            time.sleep(REQUEST_INTERVAL_SECONDS)
+            time.sleep(args.request_interval)
         except Exception as exc:
             print("detail failed", url, exc)
 
     # 終了整理では終了済みを削除せず履歴として保持し、画面側で非表示にできる状態にする。
-    items = dedupe_items(list(items_by_id.values()))
+    collected_items = dedupe_items(list(items_by_id.values()))
+    items = [item for item in collected_items if has_transport_support(item)]
+    for item in items:
+        item["amount_analysis_status"] = amount_analysis_status(item)
     items.sort(key=lambda x: (
         x.get("status", "open") != "open",
         x.get("event_dates", ["9999-12-31"])[0] if x.get("event_dates") else "9999-12-31",
@@ -392,7 +431,13 @@ def main() -> None:
         "last_mode": args.mode,
         "stats": {
             "catalog_courses": len(catalog.get("urls", {})),
+            "collected_courses": len(collected_items),
             "displayed_courses": len(items),
+            "transport_supported_courses": len(items),
+            "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
+            "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
+            "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),
+            "excluded_no_transport_courses": len(collected_items) - len(items),
             "discovered_links_this_run": discovered_count,
             "new_courses_this_run": new_count,
             "details_checked_this_run": checked,

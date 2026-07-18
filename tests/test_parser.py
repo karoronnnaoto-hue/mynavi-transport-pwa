@@ -1,4 +1,4 @@
-from scripts.scrape import canonical_url, classify, course_key, dedupe_items, parse_dates
+from scripts.scrape import amount_analysis_status, canonical_url, classify, course_key, dedupe_items, has_transport_support, parse_dates
 
 def test_money():
     assert classify('交通費 上限30,000円まで支給') == ('limit', 30000)
@@ -23,3 +23,11 @@ def test_deadline_and_status():
     assert parse_deadline('応募締切 2026年8月4日') == '2026-08-04'
     assert detect_status('このコースは満席となりました') == 'closed'
     assert detect_status('現在応募受付中です') == 'open'
+
+def test_transport_population_and_amount_analysis():
+    supported = {"transport_available": True, "transport_type": "limit", "transport_amount": 30000, "transport_original": "交通費 上限30,000円まで支給"}
+    missing = {"transport_available": False, "transport_type": "unknown", "transport_amount": None, "transport_original": "交通費欄を特定できませんでした。"}
+    assert has_transport_support(supported)
+    assert amount_analysis_status(supported) == "amount_known"
+    assert not has_transport_support(missing)
+    assert amount_analysis_status(missing) == "no_transport"
