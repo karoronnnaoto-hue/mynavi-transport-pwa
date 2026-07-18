@@ -129,6 +129,16 @@ def amount_analysis_status(item: dict) -> str:
     return "amount_unknown"
 
 
+def is_science_only(item: dict) -> bool:
+    """参加条件が理系限定の募集だけを除外する。文理不問は残す。"""
+    text = normalize_text(item.get("eligibility_text", ""))
+    if not text or text == "記載なし":
+        return False
+    if re.search(r"文理不問|文理問わず|文理問いません|全学部|全学科|学部学科不問|学部不問|文系", text):
+        return False
+    return bool(re.search(r"理系|理工|工学部|工学系|理学部|土木|建築|機械|電気|電子|情報|化学|物理|数学|農学|薬学|技術系", text))
+
+
 def extract_labeled_text(soup: BeautifulSoup, labels: list[str], width: int = 5) -> str:
     lines = [x.strip() for x in soup.get_text("\n", strip=True).splitlines() if x.strip()]
     for idx, line in enumerate(lines):
@@ -172,6 +182,21 @@ def parse_locations(text: str) -> list[str]:
     if "WEB" in text and "WEB" not in found:
         found.append("WEB")
     return found
+
+
+def extract_industries(soup: BeautifulSoup) -> list[str]:
+    industries: list[str] = []
+    for category in soup.select("div.category"):
+        heading = category.find(["h2", "h3"])
+        if not heading or normalize_text(heading.get_text(" ", strip=True)) != "業種":
+            continue
+        for node in category.select("li span, li a"):
+            value = normalize_text(node.get_text(" ", strip=True))
+            if value and value not in industries:
+                industries.append(value)
+        if industries:
+            return industries
+    return industries
 
 
 def parse_dates(text: str) -> list[str]:
@@ -291,10 +316,12 @@ def parse_detail(url: str, html: str, old_item: dict | None) -> dict:
     lodging = fields.get("宿泊費") or extract_labeled_text(soup, ["宿泊費", "宿泊費支給"])
     schedule = fields.get("開催時期と実施日数") or fields.get("開催時期") or extract_labeled_text(soup, ["開催時期", "開催日", "日程"], width=8)
     deadline = fields.get("応募締切日") or fields.get("応募締切") or extract_labeled_text(soup, ["応募締切", "締切"], width=4)
+    eligibility = fields.get("参加条件") or fields.get("応募資格") or fields.get("募集対象") or ""
     region = fields.get("開催地域", "")
     alltext = soup.get_text(" ", strip=True)
     status = detect_status(alltext)
     locations = parse_locations(region or alltext)
+    industries = extract_industries(soup)
     transport_type, amount = classify(transport)
     key = course_key(url)
     now = datetime.now(JST).isoformat(timespec="seconds")
@@ -302,6 +329,7 @@ def parse_detail(url: str, html: str, old_item: dict | None) -> dict:
         "id": key,
         "company": company,
         "course": course[:220],
+        "industries": industries,
         "locations": locations[:12],
         "event_dates": parse_dates(schedule),
         "schedule_text": schedule or "開催日の明示なし",
@@ -314,6 +342,7 @@ def parse_detail(url: str, html: str, old_item: dict | None) -> dict:
         "amount_analysis_status": "pending",
         "lodging_provided": bool(lodging and not re.search(r"なし|自己負担|各自負担", lodging)),
         "lodging_text": lodging or "記載なし",
+        "eligibility_text": eligibility or "記載なし",
         "first_seen": (old_item or {}).get("first_seen", now),
         "last_checked": now,
         "is_new": old_item is None,
@@ -536,6 +565,7 @@ def main() -> None:
             catalog["urls"][key]["last_checked"] = item["last_checked"]
             catalog["urls"][key]["status"] = item["status"]
             catalog["urls"][key]["transport_available"] = has_transport_support(item)
+            catalog["urls"][key]["science_only"] = is_science_only(item)
             checked += 1
             time.sleep(args.request_interval)
         except Exception as exc:
@@ -543,9 +573,11 @@ def main() -> None:
 
     # 終了整理では終了済みを削除せず履歴として保持し、画面側で非表示にできる状態にする。
     collected_items = dedupe_items(list(items_by_id.values()))
-    items = [item for item in collected_items if has_transport_support(item)]
+    transport_items = [item for item in collected_items if has_transport_support(item)]
+    items = [item for item in transport_items if not is_science_only(item)]
     for item in items:
         item["amount_analysis_status"] = amount_analysis_status(item)
+        item["science_only"] = False
     items.sort(key=lambda x: (
         x.get("status", "open") != "open",
         x.get("event_dates", ["9999-12-31"])[0] if x.get("event_dates") else "9999-12-31",
@@ -559,11 +591,12 @@ def main() -> None:
             "catalog_courses": len(catalog.get("urls", {})),
             "collected_courses": len(collected_items),
             "displayed_courses": len(items),
-            "transport_supported_courses": len(items),
+            "transport_supported_courses": len(transport_items),
+            "excluded_science_only_courses": len(transport_items) - len(items),
             "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
             "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
             "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),
-            "excluded_no_transport_courses": len(collected_items) - len(items),
+            "excluded_no_transport_courses": len(collected_items) - len(transport_items),
             "discovered_links_this_run": discovered_count,
             "new_courses_this_run": new_count,
             "details_checked_this_run": checked,

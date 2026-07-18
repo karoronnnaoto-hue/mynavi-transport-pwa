@@ -1,4 +1,4 @@
-from scripts.scrape import amount_analysis_status, canonical_url, classify, course_key, dedupe_items, extract_detail_links, has_transport_support, parse_dates, parse_detail
+from scripts.scrape import amount_analysis_status, canonical_url, classify, course_key, dedupe_items, extract_detail_links, has_transport_support, is_science_only, parse_dates, parse_detail
 
 def test_money():
     assert classify('交通費 上限30,000円まで支給') == ('limit', 30000)
@@ -37,11 +37,13 @@ def test_detail_page_uses_mynavi_table_rows():
     html = """
     <html><head><title>テスト企業のインターンシップ</title></head><body>
       <h1>テスト企業(株)</h1>
+      <div class="category"><h2>業種</h2><ul><li><span class="noLink">鉄道</span></li></ul></div>
       <div class="dtHead2"><h2 class="txt"><span id="courseName">鉄道技術体験コース</span></h2></div>
       <table class="dataTable02">
         <tr><td class="heading">開催地域</td><td class="sameSize">東京 、 大阪 、 WEB</td></tr>
         <tr><td class="heading">開催時期と実施日数</td><td class="sameSize">2026年8月4日</td></tr>
         <tr><td class="heading">応募締切日</td><td class="sameSize">2026年7月31日</td></tr>
+        <tr><td class="heading">参加条件</td><td class="sameSize">文理不問</td></tr>
         <tr><td class="heading">交通費</td><td class="sameSize">支給あり 地域別に定額支給（1,000円以上5,000円以内）</td></tr>
         <tr><td class="heading">宿泊費</td><td class="sameSize">支給なし</td></tr>
       </table>
@@ -52,7 +54,17 @@ def test_detail_page_uses_mynavi_table_rows():
     assert item["course"] == "鉄道技術体験コース"
     assert item["transport_original"] == "支給あり 地域別に定額支給（1,000円以上5,000円以内）"
     assert "宿泊費" not in item["transport_original"]
+    assert item["industries"] == ["鉄道"]
+    assert item["eligibility_text"] == "文理不問"
     assert item["locations"] == ["東京都", "大阪府", "WEB"]
+    assert not is_science_only(item)
+
+def test_science_only_detection():
+    assert is_science_only({"eligibility_text": "理系", "course": "設計体験"})
+    assert is_science_only({"eligibility_text": "土木建設系学生（土木に関する専門知識を要するプログラムのため）", "course": "1Day"})
+    assert is_science_only({"eligibility_text": "対象者：工学部の方（機械、化学、電気、電子）", "course": "5days"})
+    assert not is_science_only({"eligibility_text": "文理不問", "course": "設計体験"})
+    assert not is_science_only({"eligibility_text": "全学部全学科", "course": "技術系"})
 
 def test_extract_detail_links_keeps_course_hint():
     html = '<a href="/28/pc/corpinfo/displayInternship/index?corpId=123&optNo=ABC">交通費ありコース</a>'
