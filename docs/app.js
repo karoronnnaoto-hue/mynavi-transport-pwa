@@ -1,7 +1,7 @@
 const state = {
   items: [],
-  users: [],
-  activeUserId: "",
+  favorites: new Set(JSON.parse(localStorage.getItem("favorites") || "[]")),
+  decisions: new Map(Object.entries(JSON.parse(localStorage.getItem("internshipStages") || "{}"))),
   selectedIndustries: new Set(),
   selectedPrefectures: new Set(),
   mapRegion: "",
@@ -13,12 +13,6 @@ const STAGES = {
   checking: "確認中",
   planned: "参加予定",
   confirmed: "確定",
-};
-const STORAGE = {
-  users: "internshipUsers",
-  activeUser: "activeInternshipUser",
-  legacyFavorites: "favorites",
-  legacyStages: "internshipStages",
 };
 const REGION_PREFECTURES = {
   北海道: ["北海道"],
@@ -111,85 +105,6 @@ function mapBlocks(prefecture, rowSpan, colSpan) {
   if (colSpan > rowSpan) return [[12, 6, 36, 86], [36, 0, 38, 100], [68, 18, 28, 64]];
   if (rowSpan > colSpan) return [[0, 18, 34, 64], [24, 6, 58, 88], [74, 20, 26, 58]];
   return [[8, 18, 34, 68], [28, 0, 48, 96], [66, 16, 30, 70]];
-}
-
-function parseJson(key, fallback) {
-  try {
-    return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
-  } catch {
-    return fallback;
-  }
-}
-
-function userId(name) {
-  return `u_${Date.now().toString(36)}_${name.replace(/\s+/g, "").slice(0, 10) || "user"}`;
-}
-
-function normalizeUser(user) {
-  return {
-    id: user.id || userId(user.name || "自分"),
-    name: user.name || "自分",
-    favorites: Array.isArray(user.favorites) ? user.favorites : [],
-    stages: user.stages && typeof user.stages === "object" ? user.stages : {},
-  };
-}
-
-function loadUsers() {
-  let users = parseJson(STORAGE.users, []).map(normalizeUser);
-  if (!users.length) {
-    users = [{
-      id: "local_me",
-      name: "自分",
-      favorites: parseJson(STORAGE.legacyFavorites, []),
-      stages: parseJson(STORAGE.legacyStages, {}),
-    }];
-  }
-  state.users = users;
-  state.activeUserId = localStorage.getItem(STORAGE.activeUser) || users[0].id;
-  if (!state.users.some((user) => user.id === state.activeUserId)) state.activeUserId = users[0].id;
-  saveUsers();
-}
-
-function saveUsers() {
-  localStorage.setItem(STORAGE.users, JSON.stringify(state.users));
-  localStorage.setItem(STORAGE.activeUser, state.activeUserId);
-}
-
-function activeUser() {
-  return state.users.find((user) => user.id === state.activeUserId) || state.users[0];
-}
-
-function activeFavorites() {
-  return new Set(activeUser()?.favorites || []);
-}
-
-function activeStages() {
-  return activeUser()?.stages || {};
-}
-
-function setActiveUser(userIdValue) {
-  if (!state.users.some((user) => user.id === userIdValue)) return;
-  state.activeUserId = userIdValue;
-  state.page = 1;
-  saveUsers();
-  renderUserConsole();
-  render();
-}
-
-function createUser(name) {
-  const clean = name.trim();
-  if (!clean) return;
-  const existing = state.users.find((user) => user.name === clean);
-  if (existing) {
-    setActiveUser(existing.id);
-    return;
-  }
-  const user = normalizeUser({ id: userId(clean), name: clean });
-  state.users.push(user);
-  state.activeUserId = user.id;
-  saveUsers();
-  renderUserConsole();
-  render();
 }
 
 function yen(n, type) {
@@ -466,6 +381,14 @@ function summarizeSet(values, limit = 3) {
   return `${list.slice(0, limit).join("・")} +${list.length - limit}`;
 }
 
+function saveFavorites() {
+  localStorage.setItem("favorites", JSON.stringify([...state.favorites]));
+}
+
+function saveDecisions() {
+  localStorage.setItem("internshipStages", JSON.stringify(Object.fromEntries(state.decisions)));
+}
+
 function setView(view) {
   state.view = view;
   state.page = 1;
@@ -474,48 +397,30 @@ function setView(view) {
 }
 
 function setDecision(id, stage) {
-  const user = activeUser();
-  if (!user) return;
   if (stage) {
-    user.stages[id] = stage;
-    if (!user.favorites.includes(id)) user.favorites.push(id);
+    state.decisions.set(id, stage);
+    state.favorites.add(id);
   } else {
-    delete user.stages[id];
+    state.decisions.delete(id);
   }
-  saveUsers();
+  saveFavorites();
+  saveDecisions();
   render();
 }
 
 function itemDecision(item) {
-  return activeStages()[item.id] || "";
+  return state.decisions.get(item.id) || "";
 }
 
 function viewMatches(item) {
   if (state.view === "all") return true;
-  if (state.view === "favorite") return activeFavorites().has(item.id);
+  if (state.view === "favorite") return state.favorites.has(item.id);
   return itemDecision(item) === state.view;
-}
-
-function itemPeople(item) {
-  return state.users.flatMap((user) => {
-    const stage = user.stages[item.id];
-    if (stage) return [{ name: user.name, stage, label: STAGES[stage] }];
-    if (user.favorites.includes(item.id)) return [{ name: user.name, stage: "favorite", label: "お気に入り" }];
-    return [];
-  });
-}
-
-function interestSummary(item) {
-  const people = itemPeople(item);
-  const counts = { favorite: 0, checking: 0, planned: 0, confirmed: 0 };
-  for (const person of people) counts[person.stage] += 1;
-  return { people, counts, total: people.length };
 }
 
 function renderManagementCounts() {
   const ids = new Set(state.items.map((item) => item.id));
-  const favorites = activeFavorites();
-  const favoriteCount = [...favorites].filter((id) => ids.has(id)).length;
+  const favoriteCount = [...state.favorites].filter((id) => ids.has(id)).length;
   const stageCounts = { checking: 0, planned: 0, confirmed: 0 };
   for (const item of state.items) {
     const stage = itemDecision(item);
@@ -537,16 +442,6 @@ function renderManagementCounts() {
   document.querySelectorAll("[data-view]").forEach((button) => {
     button.classList.toggle("active", button.dataset.view === state.view);
   });
-}
-
-function renderUserConsole() {
-  const select = $("userSelect");
-  if (!select) return;
-  select.innerHTML = "";
-  for (const user of state.users) appendOption(select, user.id, user.name);
-  select.value = state.activeUserId;
-  $("activeUserName").textContent = activeUser()?.name || "未設定";
-  $("userCount").textContent = `${state.users.length.toLocaleString()}人`;
 }
 
 function renderActiveFilters() {
@@ -661,13 +556,10 @@ function render() {
     const a = node.querySelector(".open");
     a.href = i.url;
     const fav = node.querySelector(".favorite");
-    const favorites = activeFavorites();
-    fav.textContent = favorites.has(i.id) ? "★" : "☆";
+    fav.textContent = state.favorites.has(i.id) ? "★" : "☆";
     fav.onclick = () => {
-      const user = activeUser();
-      if (!user) return;
-      user.favorites = favorites.has(i.id) ? user.favorites.filter((id) => id !== i.id) : [...user.favorites, i.id];
-      saveUsers();
+      state.favorites.has(i.id) ? state.favorites.delete(i.id) : state.favorites.add(i.id);
+      saveFavorites();
       render();
     };
 
@@ -693,22 +585,6 @@ function render() {
       s.className = `tag${strong ? " strong" : ""}`;
       s.textContent = txt;
       tags.appendChild(s);
-    }
-    const people = node.querySelector(".people");
-    const summary = interestSummary(i);
-    people.hidden = !summary.total;
-    people.innerHTML = "";
-    const summaryChip = document.createElement("span");
-    summaryChip.className = "person-chip summary";
-    summaryChip.textContent = `行きそう ${summary.total.toLocaleString()}人`;
-    people.appendChild(summaryChip);
-    for (const [stageKey, label] of [["checking", "確認中"], ["planned", "参加予定"], ["confirmed", "確定"], ["favorite", "お気に入り"]]) {
-      const count = summary.counts[stageKey];
-      if (!count) continue;
-      const chip = document.createElement("span");
-      chip.className = `person-chip ${stageKey}`;
-      chip.textContent = `${label} ${count.toLocaleString()}人`;
-      people.appendChild(chip);
     }
     $("results").appendChild(node);
   }
@@ -736,7 +612,6 @@ async function load() {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const data = await r.json();
     state.items = data.items || [];
-    renderUserConsole();
     populateIndustryOptions();
     populateLocationFilters();
     const stats = data.stats || {};
@@ -798,15 +673,7 @@ $("nextPageBottom").onclick = () => movePage(1);
 document.querySelectorAll("[data-view]").forEach((button) => {
   button.addEventListener("click", () => setView(button.dataset.view));
 });
-$("userSelect").addEventListener("input", () => setActiveUser($("userSelect").value));
-$("userForm").addEventListener("submit", (event) => {
-  event.preventDefault();
-  createUser($("userNameInput").value);
-  $("userNameInput").value = "";
-});
 $("clearFilters").onclick = clearFilters;
 $("refresh").onclick = load;
-loadUsers();
-renderUserConsole();
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=11");
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=13");
 load();

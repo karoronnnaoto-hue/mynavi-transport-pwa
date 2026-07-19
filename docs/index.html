@@ -10,7 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest?v=5">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-180.png">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=13">
   <title>インターンサーチ</title>
 </head>
 <body>
@@ -24,24 +24,6 @@
   </header>
 
   <main>
-    <section class="login-dock" aria-label="利用者">
-      <div class="login-copy">
-        <span>現在の利用者</span>
-        <strong id="activeUserName">自分</strong>
-        <small>公開ページには名前を出さず、カード上は匿名人数だけ表示します。この端末のブラウザ保存で切り替えます。</small>
-      </div>
-      <label class="field compact-field">切替
-        <select id="userSelect"></select>
-      </label>
-      <form id="userForm" class="user-form">
-        <label class="field compact-field">新規/ログイン
-          <input id="userNameInput" type="text" autocomplete="name" placeholder="名前を入力">
-        </label>
-        <button type="submit" class="secondary">入る</button>
-      </form>
-      <span id="userCount" class="user-count">1人</span>
-    </section>
-
     <section class="status-dock" aria-label="応募管理">
       <nav class="view-tabs" aria-label="表示切替">
         <button class="view-tab active" type="button" data-view="all">検索</button>
@@ -188,7 +170,6 @@
         <button class="favorite" type="button" aria-label="お気に入り">☆</button>
       </div>
       <div class="tags"></div>
-      <div class="people" aria-label="だれが行きそうか" hidden></div>
       <div class="decision-bar" aria-label="応募状態">
         <button type="button" data-stage="checking">確認中</button>
         <button type="button" data-stage="planned">参加予定</button>
@@ -208,6 +189,6 @@
     </article>
   </template>
 
-  <script src="app.js?v=11" defer></script>
+  <script src="app.js?v=13" defer></script>
 </body>
 </html>
