@@ -1,12 +1,19 @@
 const state = {
   items: [],
   favorites: new Set(JSON.parse(localStorage.getItem("favorites") || "[]")),
+  decisions: new Map(Object.entries(JSON.parse(localStorage.getItem("internshipStages") || "{}"))),
   selectedIndustries: new Set(),
   selectedPrefectures: new Set(),
   mapRegion: "",
+  view: "all",
   page: 1,
 };
 const $ = (id) => document.getElementById(id);
+const STAGES = {
+  checking: "確認中",
+  planned: "参加予定",
+  confirmed: "確定",
+};
 const REGION_PREFECTURES = {
   北海道: ["北海道"],
   東北: ["青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県"],
@@ -20,17 +27,53 @@ const REGION_PREFECTURES = {
 const PREFECTURES = Object.values(REGION_PREFECTURES).flat();
 const PREFECTURE_REGION = Object.fromEntries(Object.entries(REGION_PREFECTURES).flatMap(([region, prefectures]) => prefectures.map((prefecture) => [prefecture, region])));
 const MAP_TILES = {
-  沖縄県: [8, 1],
-  鹿児島県: [6, 1], 熊本県: [5, 1], 長崎県: [4, 1], 佐賀県: [4, 2], 福岡県: [3, 2], 宮崎県: [5, 2], 大分県: [3, 3],
-  山口県: [4, 4], 島根県: [4, 5], 広島県: [5, 5], 鳥取県: [4, 6], 岡山県: [5, 6],
-  愛媛県: [6, 5], 香川県: [6, 6], 高知県: [7, 6], 徳島県: [7, 7],
-  兵庫県: [4, 7], 京都府: [3, 8], 大阪府: [5, 8], 和歌山県: [6, 8], 滋賀県: [3, 9], 奈良県: [5, 9],
-  石川県: [2, 10], 福井県: [3, 10], 岐阜県: [4, 10], 三重県: [5, 10],
-  富山県: [2, 11], 愛知県: [5, 11], 新潟県: [2, 12], 長野県: [4, 12], 山梨県: [5, 12], 静岡県: [6, 12],
-  秋田県: [4, 15], 山形県: [5, 15], 福島県: [6, 15], 群馬県: [7, 15], 東京都: [8, 15], 神奈川県: [9, 15],
-  青森県: [3, 16], 岩手県: [4, 16], 宮城県: [5, 16], 栃木県: [7, 16], 埼玉県: [8, 16],
-  茨城県: [7, 17], 千葉県: [8, 17],
-  北海道: [1, 17],
+  沖縄県: [25, 2, 3, 3],
+  鹿児島県: [20, 4, 3, 3],
+  熊本県: [17, 3, 3, 3],
+  宮崎県: [17, 6, 4, 3],
+  長崎県: [13, 2, 3, 3],
+  佐賀県: [13, 5, 3, 3],
+  福岡県: [10, 5, 3, 3],
+  大分県: [10, 8, 3, 3],
+  山口県: [12, 12, 3, 4],
+  島根県: [9, 15, 3, 5],
+  広島県: [13, 16, 3, 4],
+  鳥取県: [9, 20, 2, 4],
+  岡山県: [13, 20, 3, 3],
+  愛媛県: [18, 16, 3, 4],
+  香川県: [17, 20, 3, 4],
+  高知県: [21, 18, 3, 5],
+  徳島県: [20, 23, 3, 3],
+  兵庫県: [12, 24, 4, 3],
+  京都府: [9, 26, 4, 3],
+  大阪府: [15, 27, 2, 3],
+  和歌山県: [18, 27, 3, 3],
+  滋賀県: [10, 29, 3, 3],
+  奈良県: [15, 30, 3, 3],
+  三重県: [16, 32, 5, 3],
+  石川県: [4, 31, 4, 3],
+  福井県: [8, 31, 3, 3],
+  富山県: [4, 34, 3, 3],
+  新潟県: [3, 37, 3, 5],
+  岐阜県: [11, 32, 4, 3],
+  愛知県: [15, 34, 3, 3],
+  長野県: [10, 36, 5, 3],
+  山梨県: [15, 39, 3, 3],
+  静岡県: [18, 38, 3, 5],
+  秋田県: [8, 45, 3, 3],
+  山形県: [11, 45, 3, 3],
+  福島県: [15, 46, 3, 4],
+  青森県: [5, 48, 3, 4],
+  岩手県: [8, 49, 4, 3],
+  宮城県: [12, 49, 3, 3],
+  群馬県: [18, 45, 2, 3],
+  栃木県: [18, 49, 2, 3],
+  埼玉県: [20, 48, 2, 3],
+  東京都: [22, 48, 1, 3],
+  神奈川県: [23, 48, 2, 3],
+  茨城県: [20, 52, 3, 3],
+  千葉県: [22, 52, 4, 2],
+  北海道: [1, 51, 5, 7],
 };
 
 function yen(n, type) {
@@ -166,13 +209,12 @@ function renderMap() {
   const positions = visiblePrefectures.map((prefecture) => MAP_TILES[prefecture]);
   const minRow = Math.min(...positions.map(([row]) => row));
   const minCol = Math.min(...positions.map(([, col]) => col));
-  const maxRow = Math.max(...positions.map(([row]) => row));
-  const maxCol = Math.max(...positions.map(([, col]) => col));
+  const maxRow = Math.max(...positions.map(([row, , rowSpan = 1]) => row + rowSpan - 1));
+  const maxCol = Math.max(...positions.map(([, col, , colSpan = 1]) => col + colSpan - 1));
   const rowOffset = region ? minRow - 1 : 0;
   const colOffset = region ? minCol - 1 : 0;
-  const includesHokkaido = visiblePrefectures.includes("北海道");
-  const rows = region ? maxRow - minRow + 1 + (includesHokkaido ? 1 : 0) : 9;
-  const cols = region ? maxCol - minCol + 1 + (includesHokkaido ? 1 : 0) : 18;
+  const rows = region ? maxRow - minRow + 2 : 28;
+  const cols = region ? maxCol - minCol + 2 : 60;
   const grid = document.createElement("div");
   grid.className = `tile-map${region ? " zoomed" : ""}`;
   grid.style.setProperty("--tile-rows", rows);
@@ -181,7 +223,7 @@ function renderMap() {
 
   for (const prefecture of PREFECTURES) {
     const count = counts.get(prefecture) || 0;
-    const [row, col] = MAP_TILES[prefecture];
+    const [row, col, rowSpan = 1, colSpan = 1] = MAP_TILES[prefecture];
     const tile = document.createElement("button");
     const selected = state.selectedPrefectures.has(prefecture);
     const currentRegion = PREFECTURE_REGION[prefecture];
@@ -189,9 +231,8 @@ function renderMap() {
     if (dimmed) continue;
     tile.type = "button";
     tile.className = `map-tile region-${currentRegion} shape-${prefecture}${selected ? " selected" : ""}${count ? "" : " empty"}`;
-    const hokkaidoSpan = prefecture === "北海道" ? 2 : 1;
-    tile.style.gridRow = `${row - rowOffset} / span ${hokkaidoSpan}`;
-    tile.style.gridColumn = `${col - colOffset} / span ${hokkaidoSpan}`;
+    tile.style.gridRow = `${row - rowOffset} / span ${rowSpan}`;
+    tile.style.gridColumn = `${col - colOffset} / span ${colSpan}`;
     tile.disabled = !count;
     tile.title = `${prefecture} ${count.toLocaleString()}件`;
     tile.innerHTML = `<span>${prefectureMapLabel(prefecture)}</span><strong>${count.toLocaleString()}</strong>`;
@@ -306,10 +347,74 @@ function summarizeSet(values, limit = 3) {
   return `${list.slice(0, limit).join("・")} +${list.length - limit}`;
 }
 
+function saveFavorites() {
+  localStorage.setItem("favorites", JSON.stringify([...state.favorites]));
+}
+
+function saveDecisions() {
+  localStorage.setItem("internshipStages", JSON.stringify(Object.fromEntries(state.decisions)));
+}
+
+function setView(view) {
+  state.view = view;
+  state.page = 1;
+  render();
+  document.querySelector(".summary")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setDecision(id, stage) {
+  if (stage) {
+    state.decisions.set(id, stage);
+    state.favorites.add(id);
+  } else {
+    state.decisions.delete(id);
+  }
+  saveFavorites();
+  saveDecisions();
+  render();
+}
+
+function itemDecision(item) {
+  return state.decisions.get(item.id) || "";
+}
+
+function viewMatches(item) {
+  if (state.view === "all") return true;
+  if (state.view === "favorite") return state.favorites.has(item.id);
+  return itemDecision(item) === state.view;
+}
+
+function renderManagementCounts() {
+  const ids = new Set(state.items.map((item) => item.id));
+  const favoriteCount = [...state.favorites].filter((id) => ids.has(id)).length;
+  const stageCounts = { checking: 0, planned: 0, confirmed: 0 };
+  for (const item of state.items) {
+    const stage = itemDecision(item);
+    if (stageCounts[stage] !== undefined) stageCounts[stage] += 1;
+  }
+  const pairs = [
+    ["favorite", favoriteCount],
+    ["checking", stageCounts.checking],
+    ["planned", stageCounts.planned],
+    ["confirmed", stageCounts.confirmed],
+  ];
+  for (const [key, count] of pairs) {
+    const id = key[0].toUpperCase() + key.slice(1);
+    const main = $(`${key}Count`);
+    const tab = $(`tab${id}Count`);
+    if (main) main.textContent = count.toLocaleString();
+    if (tab) tab.textContent = count.toLocaleString();
+  }
+  document.querySelectorAll("[data-view]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.view === state.view);
+  });
+}
+
 function renderActiveFilters() {
   const filters = [];
   const min = $("minAmount").value;
   const query = $("query").value.trim();
+  if (state.view !== "all") filters.push(`タブ: ${state.view === "favorite" ? "お気に入り" : STAGES[state.view]}`);
   if (query) filters.push(`検索: ${query}`);
   if (min !== "0") filters.push(`支給額: ${filterLabel("minAmount")}`);
   if (state.selectedIndustries.size) filters.push(`業種: ${summarizeSet(state.selectedIndustries)}`);
@@ -320,7 +425,6 @@ function renderActiveFilters() {
   if ($("multiDayOnly").checked) filters.push("複数日あり");
   if ($("excludeUnknown").checked) filters.push("金額不明を除外");
   if ($("lodgingOnly").checked) filters.push("宿泊費あり");
-  if ($("favoritesOnly").checked) filters.push("お気に入り");
   if ($("includeUnknownDates").checked) filters.push("日付未定も含める");
   if ($("showClosed").checked) filters.push("終了・満席も表示");
 
@@ -362,6 +466,7 @@ function render() {
   const to = $("dateTo").value;
   let items = state.items.filter((i) => {
     const text = [i.company, i.course, i.schedule_text, i.eligibility_text, ...(i.locations || []), ...(i.industries || [])].join(" ").toLowerCase();
+    if (!viewMatches(i)) return false;
     if (q && !text.includes(q)) return false;
     if (state.selectedIndustries.size && !(i.industries || []).some((industry) => state.selectedIndustries.has(industry))) return false;
     if (!locationMatches(i, region, state.selectedPrefectures)) return false;
@@ -372,7 +477,6 @@ function render() {
     if (min > 0 && min !== 99999999 && score(i) < min) return false;
     if ($("excludeUnknown").checked && ["unknown", "conditional"].includes(i.transport_type)) return false;
     if ($("lodgingOnly").checked && !i.lodging_provided) return false;
-    if ($("favoritesOnly").checked && !state.favorites.has(i.id)) return false;
     if (!dateMatches(i, from, to, $("includeUnknownDates").checked)) return false;
     return true;
   });
@@ -398,8 +502,12 @@ function render() {
   updatePager(pageCount);
   $("empty").hidden = total !== 0;
   renderActiveFilters();
+  renderManagementCounts();
   for (const i of visibleItems) {
     const node = $("cardTemplate").content.cloneNode(true);
+    const stage = itemDecision(i);
+    const article = node.querySelector(".card");
+    if (stage) article.dataset.stage = stage;
     node.querySelector("h2").textContent = i.company;
     node.querySelector(".course").textContent = i.course || "コース名不明";
     node.querySelector(".status").textContent = i.status === "closed" ? "終了・満席" : i.status === "cancelled" ? "中止" : i.is_new ? "新着" : "掲載中";
@@ -417,12 +525,20 @@ function render() {
     fav.textContent = state.favorites.has(i.id) ? "★" : "☆";
     fav.onclick = () => {
       state.favorites.has(i.id) ? state.favorites.delete(i.id) : state.favorites.add(i.id);
-      localStorage.setItem("favorites", JSON.stringify([...state.favorites]));
+      saveFavorites();
       render();
     };
 
+    const decision = node.querySelector(".decision-bar");
+    decision.querySelectorAll("button").forEach((button) => {
+      const buttonStage = button.dataset.stage;
+      button.classList.toggle("active", buttonStage && buttonStage === stage);
+      button.onclick = () => setDecision(i.id, buttonStage);
+    });
+
     const tags = node.querySelector(".tags");
     const tagValues = [
+      ...(stage ? [[STAGES[stage], true]] : []),
       [yen(i.transport_amount, i.transport_type), true],
       ...durationTags(i).map((tag) => [tag, false]),
       [(i.industries || [])[0] || "業種不明", false],
@@ -447,7 +563,8 @@ function clearFilters() {
   state.selectedIndustries.clear();
   state.selectedPrefectures.clear();
   state.mapRegion = "";
-  for (const id of ["oneDayOnly", "multiDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "includeUnknownDates", "showClosed"]) $(id).checked = false;
+  for (const id of ["oneDayOnly", "multiDayOnly", "excludeUnknown", "lodgingOnly", "includeUnknownDates", "showClosed"]) $(id).checked = false;
+  state.view = "all";
   $("pageSize").value = "50";
   state.page = 1;
   populateIndustryOptions();
@@ -479,7 +596,7 @@ async function load() {
   }
 }
 
-for (const id of ["minAmount", "sortBy", "oneDayOnly", "multiDayOnly", "excludeUnknown", "lodgingOnly", "favoritesOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed", "pageSize"]) {
+for (const id of ["minAmount", "sortBy", "oneDayOnly", "multiDayOnly", "excludeUnknown", "lodgingOnly", "query", "dateFrom", "dateTo", "includeUnknownDates", "showClosed", "pageSize"]) {
   $(id).addEventListener("input", () => {
     state.page = 1;
     render();
@@ -519,7 +636,10 @@ $("nextPage").onclick = () => {
 };
 $("prevPageBottom").onclick = () => movePage(-1);
 $("nextPageBottom").onclick = () => movePage(1);
+document.querySelectorAll("[data-view]").forEach((button) => {
+  button.addEventListener("click", () => setView(button.dataset.view));
+});
 $("clearFilters").onclick = clearFilters;
 $("refresh").onclick = load;
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=8");
 load();

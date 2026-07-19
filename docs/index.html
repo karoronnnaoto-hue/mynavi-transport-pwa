@@ -3,27 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#1d2a27">
+  <meta name="theme-color" content="#f5f5f7">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="インターンサーチ">
   <link rel="manifest" href="manifest.webmanifest?v=5">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-180.png">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
   <title>インターンサーチ</title>
 </head>
 <body>
   <header class="masthead">
     <div class="brand-block">
-      <p class="eyebrow">MYNAVI 2028 / TRANSPORT LEDGER</p>
+      <p class="eyebrow">MYNAVI 2028 / PERSONAL INTERNSHIP BOARD</p>
       <h1>インターンサーチ</h1>
-      <p class="lead">関東以外の開催地を残して、支給額・業種・都道府県から探す。</p>
+      <p class="lead">探す、残す、確認する。交通費あり募集の個人ボード。</p>
     </div>
-    <button id="refresh" class="icon-button" aria-label="データを更新">↻</button>
+    <button id="refresh" class="icon-button" aria-label="データを更新">更新</button>
   </header>
 
   <main>
+    <section class="status-dock" aria-label="応募管理">
+      <nav class="view-tabs" aria-label="表示切替">
+        <button class="view-tab active" type="button" data-view="all">検索</button>
+        <button class="view-tab" type="button" data-view="favorite">お気に入り <span id="tabFavoriteCount">0</span></button>
+        <button class="view-tab" type="button" data-view="checking">確認中 <span id="tabCheckingCount">0</span></button>
+        <button class="view-tab" type="button" data-view="planned">参加予定 <span id="tabPlannedCount">0</span></button>
+        <button class="view-tab" type="button" data-view="confirmed">確定 <span id="tabConfirmedCount">0</span></button>
+      </nav>
+      <div class="stage-cards">
+        <button class="stage-card" type="button" data-view="favorite">
+          <span>お気に入り</span>
+          <strong id="favoriteCount">0</strong>
+        </button>
+        <button class="stage-card" type="button" data-view="checking">
+          <span>確認中</span>
+          <strong id="checkingCount">0</strong>
+        </button>
+        <button class="stage-card" type="button" data-view="planned">
+          <span>参加予定</span>
+          <strong id="plannedCount">0</strong>
+        </button>
+        <button class="stage-card stage-card-final" type="button" data-view="confirmed">
+          <span>確定</span>
+          <strong id="confirmedCount">0</strong>
+        </button>
+      </div>
+    </section>
+
     <section class="panel control-deck" aria-label="検索条件">
       <div class="search-row">
         <label class="field search-field">検索
@@ -98,7 +126,6 @@
         <label class="switch"><input type="checkbox" id="multiDayOnly"><span>複数日あり</span></label>
         <label class="switch"><input type="checkbox" id="excludeUnknown"><span>金額不明を除外</span></label>
         <label class="switch"><input type="checkbox" id="lodgingOnly"><span>宿泊費あり</span></label>
-        <label class="switch"><input type="checkbox" id="favoritesOnly"><span>お気に入り</span></label>
         <label class="switch"><input type="checkbox" id="includeUnknownDates"><span>日付未定も含める</span></label>
         <label class="switch"><input type="checkbox" id="showClosed"><span>終了・満席も表示</span></label>
       </div>
@@ -140,9 +167,15 @@
     <article class="card">
       <div class="card-top">
         <div><p class="status"></p><h2></h2><p class="course"></p></div>
-        <button class="favorite" aria-label="お気に入り">☆</button>
+        <button class="favorite" type="button" aria-label="お気に入り">☆</button>
       </div>
       <div class="tags"></div>
+      <div class="decision-bar" aria-label="応募状態">
+        <button type="button" data-stage="checking">確認中</button>
+        <button type="button" data-stage="planned">参加予定</button>
+        <button type="button" data-stage="confirmed">確定</button>
+        <button type="button" data-stage="">解除</button>
+      </div>
       <dl>
         <div><dt>交通費</dt><dd class="transport"></dd></div>
         <div><dt>業種</dt><dd class="industries"></dd></div>
@@ -156,6 +189,6 @@
     </article>
   </template>
 
-  <script src="app.js?v=6" defer></script>
+  <script src="app.js?v=8" defer></script>
 </body>
 </html>
