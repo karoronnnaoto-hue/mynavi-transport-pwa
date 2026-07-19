@@ -100,8 +100,6 @@ def classify(text: str):
     t = normalize_digits(text)
     if re.search(r"支給なし|自己負担|各自負担|支給いたしません", t):
         return "none", 0
-    if re.search(r"全額|実費.*支給|全額補助", t):
-        return "unlimited", None
     amounts = [
         int(number.replace(",", "")) * (10000 if unit == "万円" else 1)
         for number, unit in YEN_RE.findall(t)
@@ -110,6 +108,8 @@ def classify(text: str):
         is_limit = bool(re.search(r"上限|最大|まで|以内|範囲|以上.*(?:以内|以下|未満)", t))
         amount = max(amounts) if is_limit else amounts[0]
         return ("limit" if is_limit else "fixed"), amount
+    if re.search(r"全額|実費.*支給|全額補助", t):
+        return "unlimited", None
     if re.search(r"規定|一部|遠方|条件|相談", t):
         return "conditional", None
     if "支給あり" in t or "交通費" in t:

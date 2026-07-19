@@ -3,6 +3,8 @@ from scripts.scrape import amount_analysis_status, balance_candidates_by_impleme
 def test_money():
     assert classify('交通費 上限30,000円まで支給') == ('limit', 30000)
     assert classify('交通費 地域別に定額支給（1,000円以上5,000円以内）') == ('limit', 5000)
+    assert classify('公共交通機関のみ実費支給（上限１万円まで）。印鑑要。') == ('limit', 10000)
+    assert classify('実費支給（上限3,000円）') == ('limit', 3000)
     assert classify('実費を全額支給') == ('unlimited', None)
 
 def test_dates():

@@ -35,6 +35,7 @@ const MAP_TILES = {
 
 function yen(n, type) {
   if (type === "unlimited") return "全額・実費";
+  if (type === "limit" && Number.isFinite(n) && n > 0) return `上限${n.toLocaleString()}円`;
   if (Number.isFinite(n) && n > 0) return `${n.toLocaleString()}円`;
   if (n === 0) return "支給なし";
   return "金額不明";
