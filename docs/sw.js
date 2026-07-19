@@ -1,4 +1,4 @@
-const CACHE = "transport-search-v8";
+const CACHE = "transport-search-v9";
 const ASSETS = ["./", "index.html", "style.css", "app.js", "manifest.webmanifest", "data/jobs.json"];
 
 self.addEventListener("install", (event) => {
