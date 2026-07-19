@@ -70,6 +70,21 @@ jobs:
           git commit -m "Discover new internships"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin HEAD:"${GITHUB_REF_NAME}"
+      - name: Continue pending detail crawl
+        if: ${{ github.event.inputs.full_scan != 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          REMAINING="$(python scripts/remaining_details.py)"
+          echo "remaining detail pages: ${REMAINING}"
+          if [ "${REMAINING}" -gt 0 ]; then
+            curl -sS -X POST \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/discover.yml/dispatches" \
+              -d "{\"ref\":\"${GITHUB_REF_NAME}\",\"inputs\":{\"detail_batch\":\"true\"}}"
+          fi
       - name: Continue initial detail crawl
         if: ${{ github.event.inputs.full_scan == 'true' }}
         env:
@@ -126,6 +141,8 @@ jobs:
           pattern: detail-fragment-*
           path: work/fragments
           merge-multiple: true
+      - name: Sync latest data before merge
+        run: git pull --rebase origin "${GITHUB_REF_NAME}"
       - name: Merge detail fragments
         run: python scripts/merge_fragments.py --fragments work/fragments
       - name: Commit merged data
