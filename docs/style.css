@@ -304,6 +304,11 @@ main {
 .map-tile {
   --tile-bg: #eef4ec;
   --tile-ink: #ffffff;
+  --tile-shape: polygon(6% 8%, 94% 4%, 98% 90%, 88% 98%, 8% 95%, 2% 16%);
+  --tile-shift-x: 0px;
+  --tile-shift-y: 0px;
+  --tile-tilt: 0deg;
+  --tile-pop: 1;
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -319,7 +324,9 @@ main {
     var(--tile-bg);
   color: var(--tile-ink);
   box-shadow: inset 0 -3px 0 rgba(29, 42, 39, .16), 0 9px 20px rgba(29, 42, 39, .08);
+  clip-path: var(--tile-shape);
   cursor: pointer;
+  transform: translate(var(--tile-shift-x), var(--tile-shift-y)) rotate(var(--tile-tilt)) scale(var(--tile-pop));
   transition: transform .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease;
 }
 
@@ -344,7 +351,8 @@ main {
 }
 
 .map-tile:hover {
-  transform: translateY(-2px) scale(1.03);
+  --tile-pop: 1.04;
+  --tile-shift-y: -2px;
   z-index: 4;
 }
 
@@ -360,8 +368,14 @@ main {
 }
 
 .map-tile.empty {
-  opacity: .34;
+  opacity: .14;
+  filter: grayscale(.75);
   cursor: not-allowed;
+}
+
+.map-tile.empty span,
+.map-tile.empty strong {
+  display: none;
 }
 
 .region-北海道 { --tile-bg: #0c75c9; --tile-ink: #fff; }
@@ -372,6 +386,58 @@ main {
 .region-中国 { --tile-bg: #f29a22; --tile-ink: #fff; }
 .region-四国 { --tile-bg: #ef7eab; --tile-ink: #fff; }
 .region-九州 { --tile-bg: #ef5a58; --tile-ink: #fff; }
+
+.shape-北海道 { --tile-shape: polygon(8% 18%, 34% 3%, 73% 0, 100% 23%, 94% 62%, 70% 91%, 38% 100%, 10% 84%, 0 52%); --tile-tilt: -3deg; }
+.shape-青森県 { --tile-shape: polygon(6% 24%, 32% 5%, 67% 0, 98% 22%, 100% 50%, 78% 92%, 35% 100%, 0 76%); }
+.shape-岩手県 { --tile-shape: polygon(28% 0, 82% 4%, 100% 24%, 92% 96%, 26% 100%, 5% 70%, 10% 24%); }
+.shape-宮城県 { --tile-shape: polygon(18% 0, 82% 6%, 100% 33%, 84% 100%, 18% 88%, 0 52%); --tile-tilt: 2deg; }
+.shape-秋田県 { --tile-shape: polygon(15% 10%, 68% 0, 100% 22%, 86% 75%, 45% 100%, 8% 88%, 0 38%); }
+.shape-山形県 { --tile-shape: polygon(20% 0, 78% 9%, 100% 36%, 78% 96%, 34% 100%, 0 72%, 8% 22%); }
+.shape-福島県 { --tile-shape: polygon(8% 18%, 42% 0, 88% 8%, 100% 48%, 78% 88%, 28% 100%, 0 70%); }
+
+.shape-茨城県 { --tile-shape: polygon(23% 0, 75% 8%, 100% 38%, 91% 78%, 61% 100%, 22% 84%, 4% 48%); --tile-tilt: 3deg; }
+.shape-栃木県 { --tile-shape: polygon(14% 16%, 46% 0, 88% 10%, 100% 54%, 76% 94%, 30% 100%, 0 72%); }
+.shape-群馬県 { --tile-shape: polygon(18% 12%, 52% 0, 94% 18%, 92% 64%, 56% 100%, 10% 86%, 0 38%); }
+.shape-埼玉県 { --tile-shape: polygon(5% 28%, 42% 8%, 96% 12%, 100% 58%, 70% 90%, 20% 100%, 0 70%); }
+.shape-千葉県 { --tile-shape: polygon(28% 0, 76% 12%, 100% 48%, 86% 100%, 52% 88%, 32% 58%, 0 36%); --tile-tilt: 5deg; }
+.shape-東京都 { --tile-shape: polygon(0 38%, 40% 12%, 98% 22%, 92% 70%, 46% 100%, 6% 82%); --tile-tilt: -2deg; }
+.shape-神奈川県 { --tile-shape: polygon(7% 18%, 58% 0, 100% 36%, 82% 88%, 34% 100%, 0 64%); --tile-tilt: -4deg; }
+
+.shape-新潟県 { --tile-shape: polygon(0 34%, 20% 10%, 54% 0, 100% 14%, 86% 42%, 100% 72%, 56% 100%, 12% 84%); --tile-tilt: -7deg; }
+.shape-富山県 { --tile-shape: polygon(16% 5%, 70% 0, 100% 32%, 78% 86%, 30% 100%, 0 62%); }
+.shape-石川県 { --tile-shape: polygon(34% 0, 72% 12%, 100% 40%, 74% 70%, 62% 100%, 18% 92%, 0 48%); --tile-tilt: -8deg; }
+.shape-福井県 { --tile-shape: polygon(12% 8%, 66% 0, 100% 34%, 84% 78%, 42% 100%, 0 68%); --tile-tilt: -2deg; }
+.shape-山梨県 { --tile-shape: polygon(26% 4%, 74% 0, 100% 34%, 82% 82%, 44% 100%, 8% 78%, 0 38%); }
+.shape-長野県 { --tile-shape: polygon(20% 0, 80% 4%, 100% 26%, 88% 82%, 58% 100%, 14% 92%, 0 52%, 8% 18%); }
+.shape-岐阜県 { --tile-shape: polygon(16% 6%, 58% 0, 96% 20%, 100% 66%, 68% 100%, 18% 90%, 0 50%); }
+.shape-静岡県 { --tile-shape: polygon(0 42%, 36% 14%, 88% 18%, 100% 50%, 72% 90%, 18% 100%, 4% 72%); --tile-tilt: -6deg; }
+.shape-愛知県 { --tile-shape: polygon(8% 22%, 50% 0, 94% 20%, 100% 60%, 64% 100%, 18% 86%, 0 54%); }
+
+.shape-三重県 { --tile-shape: polygon(36% 0, 76% 10%, 100% 48%, 78% 100%, 34% 86%, 12% 54%, 0 20%); --tile-tilt: 5deg; }
+.shape-滋賀県 { --tile-shape: polygon(24% 0, 72% 8%, 100% 44%, 74% 96%, 28% 100%, 0 58%); }
+.shape-京都府 { --tile-shape: polygon(22% 0, 78% 18%, 100% 50%, 72% 100%, 26% 88%, 0 46%); --tile-tilt: -3deg; }
+.shape-大阪府 { --tile-shape: polygon(18% 4%, 76% 0, 100% 36%, 84% 82%, 42% 100%, 0 68%); --tile-tilt: 3deg; }
+.shape-兵庫県 { --tile-shape: polygon(6% 24%, 48% 0, 96% 10%, 100% 58%, 66% 100%, 12% 86%, 0 48%); }
+.shape-奈良県 { --tile-shape: polygon(25% 0, 78% 10%, 94% 52%, 70% 100%, 20% 92%, 0 46%); }
+.shape-和歌山県 { --tile-shape: polygon(22% 8%, 68% 0, 100% 38%, 80% 84%, 44% 100%, 4% 72%, 0 28%); --tile-tilt: 4deg; }
+
+.shape-鳥取県 { --tile-shape: polygon(4% 34%, 40% 6%, 100% 12%, 92% 58%, 54% 90%, 10% 82%); }
+.shape-島根県 { --tile-shape: polygon(0 42%, 34% 6%, 100% 10%, 86% 58%, 44% 92%, 8% 82%); --tile-tilt: -5deg; }
+.shape-岡山県 { --tile-shape: polygon(10% 22%, 50% 0, 94% 16%, 100% 58%, 68% 96%, 18% 86%, 0 48%); }
+.shape-広島県 { --tile-shape: polygon(2% 28%, 44% 4%, 100% 14%, 90% 66%, 54% 100%, 8% 84%); --tile-tilt: -3deg; }
+.shape-山口県 { --tile-shape: polygon(6% 18%, 60% 0, 100% 26%, 80% 78%, 36% 100%, 0 68%); --tile-tilt: -7deg; }
+.shape-徳島県 { --tile-shape: polygon(14% 22%, 60% 0, 100% 30%, 82% 76%, 34% 100%, 0 64%); }
+.shape-香川県 { --tile-shape: polygon(6% 38%, 46% 8%, 96% 22%, 84% 72%, 34% 88%, 0 64%); --tile-tilt: -2deg; }
+.shape-愛媛県 { --tile-shape: polygon(0 38%, 46% 0, 100% 22%, 86% 72%, 38% 100%, 8% 78%); --tile-tilt: -5deg; }
+.shape-高知県 { --tile-shape: polygon(8% 34%, 50% 2%, 100% 24%, 84% 74%, 42% 100%, 0 74%); --tile-tilt: 4deg; }
+.shape-福岡県 { --tile-shape: polygon(16% 8%, 78% 0, 100% 34%, 78% 82%, 30% 100%, 0 60%); }
+.shape-佐賀県 { --tile-shape: polygon(20% 2%, 80% 16%, 100% 56%, 66% 100%, 14% 78%, 0 34%); }
+.shape-長崎県 { --tile-shape: polygon(36% 0, 72% 10%, 100% 42%, 74% 72%, 58% 100%, 16% 84%, 0 48%); --tile-tilt: -8deg; }
+.shape-熊本県 { --tile-shape: polygon(14% 8%, 68% 0, 100% 30%, 90% 72%, 50% 100%, 8% 84%, 0 40%); }
+.shape-大分県 { --tile-shape: polygon(12% 20%, 56% 0, 100% 24%, 92% 72%, 52% 100%, 6% 82%, 0 46%); }
+.shape-宮崎県 { --tile-shape: polygon(24% 0, 80% 14%, 100% 52%, 76% 100%, 30% 88%, 0 54%, 8% 18%); --tile-tilt: 4deg; }
+.shape-鹿児島県 { --tile-shape: polygon(18% 0, 76% 8%, 100% 42%, 72% 100%, 34% 92%, 8% 58%, 0 20%); --tile-tilt: 6deg; }
+.shape-沖縄県 { --tile-shape: polygon(18% 28%, 54% 4%, 100% 22%, 80% 70%, 42% 100%, 0 76%, 4% 42%); --tile-tilt: -9deg; }
 
 @keyframes mapZoomIn {
   from {
