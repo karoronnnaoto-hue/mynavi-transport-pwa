@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T18:48:36+09:00",
+  "generated_at": "2026-08-20T19:05:03+09:00",
   "last_mode": "detail_batch",
   "stats": {
     "catalog_courses": 12589,
@@ -14,7 +14,7 @@
     "excluded_no_transport_courses": 908,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_checked_this_run": 61,
+    "details_checked_this_run": 60,
     "database_courses": 12560
   },
   "items": [
@@ -6323,7 +6323,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T19:04:07+09:00",
-      "last_checked": "2026-08-20T14:27:15+09:00",
+      "last_checked": "2026-08-20T18:56:43+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -10586,7 +10586,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "文理不問",
       "first_seen": "2026-07-18T18:31:42+09:00",
-      "last_checked": "2026-08-20T14:19:19+09:00",
+      "last_checked": "2026-08-20T18:56:10+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -38223,6 +38223,50 @@
       "kanto_only": false
     },
     {
+      "id": "corp:106063:course:yrG-1",
+      "company": "四国通建(株)【ミライト・ワン グループ】",
+      "course": "【対面/1day】通信インフラ・土木建築・電気消防・ICT",
+      "industries": [
+        "建設",
+        "設備工事・設備設計",
+        "情報処理",
+        "通信・インフラ",
+        "電力"
+      ],
+      "locations": [
+        "徳島県",
+        "香川県",
+        "愛媛県",
+        "高知県"
+      ],
+      "event_dates": [
+        "2026-08-01",
+        "2026-09-30"
+      ],
+      "schedule_text": "・開催時期 8月1日～9月30日 ・実施日数 1日",
+      "deadline_text": "2026年9月18日",
+      "deadline": "2026-09-18",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 会社規定による",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし 事前に要相談",
+      "eligibility_text": "特になし",
+      "first_seen": "2026-07-18T18:33:22+09:00",
+      "last_checked": "2026-08-20T18:56:19+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=106063&optNo=yrG-1",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:106063:course:bFs4m",
       "company": "四国通建(株)【ミライト・ワン グループ】",
       "course": "【対面/2days】通信インフラ・土木建築・電気消防設備・ICT",
@@ -38260,50 +38304,6 @@
       "status": "open",
       "closed_at": null,
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=106063&optNo=bFs4m",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:106063:course:yrG-1",
-      "company": "四国通建(株)【ミライト・ワン グループ】",
-      "course": "【対面/1day】通信インフラ・土木建築・電気消防・ICT",
-      "industries": [
-        "建設",
-        "設備工事・設備設計",
-        "情報処理",
-        "通信・インフラ",
-        "電力"
-      ],
-      "locations": [
-        "徳島県",
-        "香川県",
-        "愛媛県",
-        "高知県"
-      ],
-      "event_dates": [
-        "2026-08-01",
-        "2026-09-30"
-      ],
-      "schedule_text": "・開催時期 8月1日～9月30日 ・実施日数 1日",
-      "deadline_text": "2026年9月18日",
-      "deadline": "2026-09-18",
-      "transport_type": "conditional",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 会社規定による",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし 事前に要相談",
-      "eligibility_text": "特になし",
-      "first_seen": "2026-07-18T18:33:22+09:00",
-      "last_checked": "2026-08-20T14:19:28+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=106063&optNo=yrG-1",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -55928,7 +55928,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "4年制大学の方",
       "first_seen": "2026-07-18T19:58:45+09:00",
-      "last_checked": "2026-08-20T07:51:46+09:00",
+      "last_checked": "2026-08-20T18:56:25+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -111918,7 +111918,7 @@
       "lodging_text": "支給あり 遠方からご参加いただく方には、必要に応じ宿泊先を手配いたします。",
       "eligibility_text": "総合職技術系職種を対象としているため、理系学生をターゲットとしたイベントとなっております。 文系専攻の方で、ご参加を希望される場合、遠慮なくご相談ください！",
       "first_seen": "2026-07-18T18:43:43+09:00",
-      "last_checked": "2026-08-20T14:26:27+09:00",
+      "last_checked": "2026-08-20T18:57:05+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -118780,7 +118780,7 @@
       "lodging_text": "支給あり",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T18:36:55+09:00",
-      "last_checked": "2026-08-20T14:19:47+09:00",
+      "last_checked": "2026-08-20T18:56:38+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -144505,7 +144505,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T18:33:44+09:00",
-      "last_checked": "2026-08-20T14:19:33+09:00",
+      "last_checked": "2026-08-20T18:56:24+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -150883,6 +150883,44 @@
       "kanto_only": false
     },
     {
+      "id": "corp:99631:course:w2YS-",
+      "company": "(株)ジョイフル",
+      "course": "【対面開催】ジョイフルのインターンシップ",
+      "industries": [
+        "外食・レストラン",
+        "食品",
+        "商社（食品・農林・水産）",
+        "専門店（食品・日用品）",
+        "給食・デリカ・フードビジネス"
+      ],
+      "locations": [
+        "大分県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 8月、9月、12月、2月に月1回程度開催予定 ・実施日数 5日～2週間未満",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり ※会社規定による",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学部全学科",
+      "first_seen": "2026-07-18T23:24:00+09:00",
+      "last_checked": "2026-08-20T18:57:36+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=99631&optNo=w2YS-",
+      "implementation_types": [
+        "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:99631:course:ecmZ7",
       "company": "(株)ジョイフル",
       "course": "【WEB・対面】ジョイフルプレミアム座談会※参加限定ノベルティあり※",
@@ -150917,44 +150955,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=99631&optNo=ecmZ7",
       "implementation_types": [
         "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:99631:course:w2YS-",
-      "company": "(株)ジョイフル",
-      "course": "【対面開催】ジョイフルのインターンシップ",
-      "industries": [
-        "外食・レストラン",
-        "食品",
-        "商社（食品・農林・水産）",
-        "専門店（食品・日用品）",
-        "給食・デリカ・フードビジネス"
-      ],
-      "locations": [
-        "大分県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 8月、9月、12月、2月に月1回程度開催予定 ・実施日数 5日～2週間未満",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "conditional",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり ※会社規定による",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "全学部全学科",
-      "first_seen": "2026-07-18T23:24:00+09:00",
-      "last_checked": "2026-08-19T20:25:58+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=99631&optNo=w2YS-",
-      "implementation_types": [
-        "インターンシップ"
       ],
       "science_only": false,
       "kanto_only": false
@@ -162822,7 +162822,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "建設業に興味がある方 または 奈良県内企業や地元密着企業について知りたい方 必要なものは意欲か興味です！",
       "first_seen": "2026-07-18T18:39:31+09:00",
-      "last_checked": "2026-08-20T14:20:26+09:00",
+      "last_checked": "2026-08-20T18:56:56+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -168460,7 +168460,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "全学部全学科対象です。",
       "first_seen": "2026-07-18T18:37:11+09:00",
-      "last_checked": "2026-08-20T14:19:52+09:00",
+      "last_checked": "2026-08-20T18:56:42+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -168702,8 +168702,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 2026年6月～2027年2月 各月1回以上開催 ・実施日数 2～4日",
-      "deadline_text": "2026年8月18日",
-      "deadline": "2026-08-18",
+      "deadline_text": "2026年8月25日",
+      "deadline": "2026-08-25",
       "transport_type": "limit",
       "transport_amount": 50000,
       "transport_available": true,
@@ -168713,7 +168713,7 @@
       "lodging_text": "支給あり 社員寮に宿泊していただきます。",
       "eligibility_text": "どなたでもご参加いただけます",
       "first_seen": "2026-07-19T00:45:50+09:00",
-      "last_checked": "2026-08-16T21:11:43+09:00",
+      "last_checked": "2026-08-20T18:57:27+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -212658,7 +212658,7 @@
       "lodging_text": "支給あり 移動に１時間以上かかる方は、前泊の可能性があります。",
       "eligibility_text": "文理不問",
       "first_seen": "2026-07-19T00:45:32+09:00",
-      "last_checked": "2026-08-16T21:11:30+09:00",
+      "last_checked": "2026-08-20T18:57:14+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -220164,7 +220164,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "専門学校・短大・高専・大学・大学院生",
       "first_seen": "2026-07-18T18:40:21+09:00",
-      "last_checked": "2026-08-20T14:26:23+09:00",
+      "last_checked": "2026-08-20T18:57:01+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -221128,7 +221128,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "特になし",
       "first_seen": "2026-07-18T18:38:00+09:00",
-      "last_checked": "2026-08-20T14:20:01+09:00",
+      "last_checked": "2026-08-20T18:56:47+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
