@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-24T19:25:51+09:00",
-  "last_mode": "discover",
+  "generated_at": "2026-08-24T19:34:51+09:00",
+  "last_mode": "detail_batch",
   "stats": {
     "catalog_courses": 12623,
     "collected_courses": 12595,
@@ -12,9 +12,9 @@
     "amount_unlimited_courses": 711,
     "amount_unknown_courses": 2856,
     "excluded_no_transport_courses": 941,
-    "discovered_links_this_run": 146,
-    "new_courses_this_run": 10,
-    "details_checked_this_run": 32,
+    "discovered_links_this_run": 0,
+    "new_courses_this_run": 0,
+    "details_checked_this_run": 35,
     "database_courses": 12595
   },
   "items": [
@@ -21971,7 +21971,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T22:23:54+09:00",
-      "last_checked": "2026-08-24T12:50:34+09:00",
+      "last_checked": "2026-08-24T19:28:32+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -26190,7 +26190,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T21:27:33+09:00",
-      "last_checked": "2026-08-24T11:35:11+09:00",
+      "last_checked": "2026-08-24T19:28:29+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -57593,7 +57593,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "設計開発職やものづくりに興味がある方はぜひご参加ください！ 理系全学部学科OK！ 電気電子工学、情報学、システム工学、制御工学、数学、物理学だけでなく、機械工学、材料工学、化学、生物学など、理系学生はすべて大歓迎です！",
       "first_seen": "2026-07-18T21:27:50+09:00",
-      "last_checked": "2026-08-24T11:41:52+09:00",
+      "last_checked": "2026-08-24T19:28:38+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -120738,7 +120738,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "大学院、4年制大学、専門学校、高専、短大の学生の皆様のご参加を歓迎します！",
       "first_seen": "2026-07-18T22:26:49+09:00",
-      "last_checked": "2026-08-24T12:58:30+09:00",
+      "last_checked": "2026-08-24T19:29:19+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -141133,7 +141133,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "特になし",
       "first_seen": "2026-07-18T20:13:46+09:00",
-      "last_checked": "2026-08-24T06:00:20+09:00",
+      "last_checked": "2026-08-24T19:28:41+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -151546,7 +151546,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "全学部・全学科対象です。",
       "first_seen": "2026-07-18T22:24:47+09:00",
-      "last_checked": "2026-08-24T12:50:43+09:00",
+      "last_checked": "2026-08-24T19:28:41+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -153099,6 +153099,44 @@
       "kanto_only": false
     },
     {
+      "id": "corp:234410:course:aIN0o",
+      "company": "(株)ダイワ技術サービス",
+      "course": "[対面・WEB開催]測量とこれからの土木業界について学べる見学会",
+      "industries": [
+        "建設コンサルタント",
+        "建設",
+        "建築設計",
+        "専門コンサルティング"
+      ],
+      "locations": [
+        "宮城県",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月下旬～7月下旬、8月中下旬～9月下旬、10月下旬 ・実施日数 1日",
+      "deadline_text": "2026年10月27日",
+      "deadline": "2026-10-27",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T20:16:07+09:00",
+      "last_checked": "2026-08-24T19:29:08+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=234410&optNo=aIN0o",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:234410:course:Ssxws",
       "company": "(株)ダイワ技術サービス",
       "course": "[平日開催]会社や業界のことが分かる！オープン・カンパニー開催",
@@ -153167,44 +153205,6 @@
       "status": "open",
       "closed_at": null,
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=234410&optNo=1nwu4",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:234410:course:aIN0o",
-      "company": "(株)ダイワ技術サービス",
-      "course": "[対面・WEB開催]測量とこれからの土木業界について学べる見学会",
-      "industries": [
-        "建設コンサルタント",
-        "建設",
-        "建築設計",
-        "専門コンサルティング"
-      ],
-      "locations": [
-        "宮城県",
-        "WEB"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月下旬～7月下旬、8月中下旬～9月下旬、10月下旬 ・実施日数 1日",
-      "deadline_text": "2026年10月27日",
-      "deadline": "2026-10-27",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T20:16:07+09:00",
-      "last_checked": "2026-08-24T06:07:38+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=234410&optNo=aIN0o",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -178914,7 +178914,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "特になし",
       "first_seen": "2026-07-18T20:15:09+09:00",
-      "last_checked": "2026-08-24T06:07:34+09:00",
+      "last_checked": "2026-08-24T19:29:00+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -185316,7 +185316,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T21:28:24+09:00",
-      "last_checked": "2026-08-24T11:42:01+09:00",
+      "last_checked": "2026-08-24T19:28:48+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -195458,7 +195458,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T22:26:14+09:00",
-      "last_checked": "2026-08-24T12:51:02+09:00",
+      "last_checked": "2026-08-24T19:29:00+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -198630,6 +198630,42 @@
       "kanto_only": false
     },
     {
+      "id": "corp:92333:course:GOWFQ",
+      "company": "ヤンマー建機(株)",
+      "course": "【1day営業・管理系プログラム】工場見学＆座談会",
+      "industries": [
+        "機械",
+        "機械設計",
+        "商社（機械・プラント・環境）"
+      ],
+      "locations": [
+        "福岡県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 各種セミナーの日程については、エントリー後にご案内するマイページよりご確認ください。 ・実施日数 1日",
+      "deadline_text": "2027年2月20日",
+      "deadline": "2027-02-20",
+      "transport_type": "unlimited",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費全額支給",
+      "amount_analysis_status": "unlimited",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T22:25:39+09:00",
+      "last_checked": "2026-08-24T19:28:55+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=92333&optNo=GOWFQ",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:92333:course:b4Lja",
       "company": "ヤンマー建機(株)",
       "course": "【1day技術職プログラム】工場見学＆座談会",
@@ -198659,42 +198695,6 @@
       "status": "open",
       "closed_at": null,
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=92333&optNo=b4Lja",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:92333:course:GOWFQ",
-      "company": "ヤンマー建機(株)",
-      "course": "【1day営業・管理系プログラム】工場見学＆座談会",
-      "industries": [
-        "機械",
-        "機械設計",
-        "商社（機械・プラント・環境）"
-      ],
-      "locations": [
-        "福岡県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 各種セミナーの日程については、エントリー後にご案内するマイページよりご確認ください。 ・実施日数 1日",
-      "deadline_text": "2027年2月20日",
-      "deadline": "2027-02-20",
-      "transport_type": "unlimited",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 交通費全額支給",
-      "amount_analysis_status": "unlimited",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T22:25:39+09:00",
-      "last_checked": "2026-08-24T12:50:58+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=92333&optNo=GOWFQ",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -221984,7 +221984,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T22:25:21+09:00",
-      "last_checked": "2026-08-24T12:50:53+09:00",
+      "last_checked": "2026-08-24T19:28:50+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
