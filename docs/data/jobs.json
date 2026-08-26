@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T10:20:16+09:00",
+  "generated_at": "2026-08-26T10:27:30+09:00",
   "last_mode": "detail_batch",
   "stats": {
     "catalog_courses": 12630,
@@ -14,7 +14,7 @@
     "excluded_no_transport_courses": 948,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_checked_this_run": 24,
+    "details_checked_this_run": 23,
     "database_courses": 12602
   },
   "items": [
@@ -12213,7 +12213,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T20:23:23+09:00",
-      "last_checked": "2026-08-25T21:18:03+09:00",
+      "last_checked": "2026-08-26T10:21:31+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -185604,7 +185604,7 @@
       "lodging_text": "支給なし 北海道内で遠方からの参加の方は要相談 ※北海道外からの参加についてはWEBを推奨",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T22:05:31+09:00",
-      "last_checked": "2026-08-25T22:01:16+09:00",
+      "last_checked": "2026-08-26T10:21:16+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -192840,7 +192840,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T19:37:07+09:00",
-      "last_checked": "2026-08-21T17:11:32+09:00",
+      "last_checked": "2026-08-26T10:21:03+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -196950,7 +196950,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "４年制大学の方",
       "first_seen": "2026-07-18T22:05:44+09:00",
-      "last_checked": "2026-08-25T22:01:21+09:00",
+      "last_checked": "2026-08-26T10:21:21+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -204384,7 +204384,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "文理不問",
       "first_seen": "2026-07-18T22:06:35+09:00",
-      "last_checked": "2026-08-25T22:01:43+09:00",
+      "last_checked": "2026-08-26T10:21:40+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -204421,7 +204421,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "文理不問",
       "first_seen": "2026-07-18T22:06:22+09:00",
-      "last_checked": "2026-08-25T22:01:39+09:00",
+      "last_checked": "2026-08-26T10:21:36+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -225848,6 +225848,44 @@
       "kanto_only": false
     },
     {
+      "id": "corp:239001:course:DJym-",
+      "company": "東邦ガスエナジーエンジニアリング(株) 【東邦ガスグループ】",
+      "course": "設計のお仕事体験（1DAY）×グループ施設見学ツアー",
+      "industries": [
+        "プラント・エンジニアリング",
+        "設備工事・設備設計",
+        "検査・整備・メンテナンス",
+        "ガス・エネルギー",
+        "電力"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 8月、9月随時開催 ・実施日数 1日 ・詳細 水素ステーション建設を題材として、簡単な実習を行います。 CADが苦手な人も！CADを触るのが初めてな人も！ 優しい先輩社員が１から教えますので、ご安心ください。",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "limit",
+      "transport_amount": 20000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費は最も経済的なルートで支給します。（最大2万円） ※航空機・新幹線等をご利用される場合は、領収書のご提出が必要となります。 ご参加いただく際に必ずご持参をお願いいたします。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "大学生または大学院生の方 ※文理不問です。建設業や設計・施工管理に興味のある方、大歓迎です！",
+      "first_seen": "2026-07-18T20:21:53+09:00",
+      "last_checked": "2026-08-26T10:21:21+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=239001&optNo=DJym-",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:239001:course:Fx8mv",
       "company": "東邦ガスエナジーエンジニアリング(株) 【東邦ガスグループ】",
       "course": "施工管理ってどんな仕事？ 仲間と協力して完工させよう！",
@@ -225917,44 +225955,6 @@
       "status": "open",
       "closed_at": null,
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=239001&optNo=0JxD2",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:239001:course:DJym-",
-      "company": "東邦ガスエナジーエンジニアリング(株) 【東邦ガスグループ】",
-      "course": "設計のお仕事体験（1DAY）×グループ施設見学ツアー",
-      "industries": [
-        "プラント・エンジニアリング",
-        "設備工事・設備設計",
-        "検査・整備・メンテナンス",
-        "ガス・エネルギー",
-        "電力"
-      ],
-      "locations": [
-        "愛知県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 8月、9月随時開催 ・実施日数 1日 ・詳細 水素ステーション建設を題材として、簡単な実習を行います。 CADが苦手な人も！CADを触るのが初めてな人も！ 優しい先輩社員が１から教えますので、ご安心ください。",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "limit",
-      "transport_amount": 20000,
-      "transport_available": true,
-      "transport_original": "支給あり 交通費は最も経済的なルートで支給します。（最大2万円） ※航空機・新幹線等をご利用される場合は、領収書のご提出が必要となります。 ご参加いただく際に必ずご持参をお願いいたします。",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "大学生または大学院生の方 ※文理不問です。建設業や設計・施工管理に興味のある方、大歓迎です！",
-      "first_seen": "2026-07-18T20:21:53+09:00",
-      "last_checked": "2026-08-25T21:17:54+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=239001&optNo=DJym-",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
