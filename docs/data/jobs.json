@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-27T23:42:32+09:00",
-  "last_mode": "discover",
+  "generated_at": "2026-08-27T23:50:44+09:00",
+  "last_mode": "detail_batch",
   "stats": {
     "catalog_courses": 12634,
     "collected_courses": 12606,
@@ -12,9 +12,9 @@
     "amount_unlimited_courses": 711,
     "amount_unknown_courses": 2854,
     "excluded_no_transport_courses": 951,
-    "discovered_links_this_run": 130,
-    "new_courses_this_run": 2,
-    "details_checked_this_run": 23,
+    "discovered_links_this_run": 0,
+    "new_courses_this_run": 0,
+    "details_checked_this_run": 13,
     "database_courses": 12606
   },
   "items": [
@@ -222694,7 +222694,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "大学、大学院生の方",
       "first_seen": "2026-07-18T21:56:15+09:00",
-      "last_checked": "2026-08-26T21:09:28+09:00",
+      "last_checked": "2026-08-27T23:44:44+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -236239,6 +236239,44 @@
       "kanto_only": false
     },
     {
+      "id": "corp:66262:course:ZlCam",
+      "company": "紅屋商事(株)＜カブセンター・ベニーマート・メガドラッグ・メガ調剤薬局＞",
+      "course": "【紅屋プログラム】SNSプロモーション体験コース～商品の魅力を発信しよう！～",
+      "industries": [
+        "スーパーマーケット",
+        "ドラッグストア",
+        "調剤薬局"
+      ],
+      "locations": [
+        "青森県",
+        "岩手県",
+        "秋田県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年8月の開催 ・実施日数 1日",
+      "deadline_text": "2026年12月31日",
+      "deadline": "2026-12-31",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 会社既定の額で支給",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "おいしいものが大好き！カブセンターやメガの商品を知りたい！ スーパーで売れ筋の商品の特徴を知りたい！ などなど、このコースに少しでも興味を持っていただける方はどなたでも参加可能！",
+      "first_seen": "2026-07-19T02:08:00+09:00",
+      "last_checked": "2026-08-27T23:45:00+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=66262&optNo=ZlCam",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:66262:course:6RKGl",
       "company": "紅屋商事(株)＜カブセンター・ベニーマート・メガドラッグ・メガ調剤薬局＞",
       "course": "【皆さんの今後の活動をサポート】自己分析＆業界研究コース",
@@ -236270,44 +236308,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=66262&optNo=6RKGl",
       "implementation_types": [
         "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:66262:course:ZlCam",
-      "company": "紅屋商事(株)＜カブセンター・ベニーマート・メガドラッグ・メガ調剤薬局＞",
-      "course": "【紅屋プログラム】SNSプロモーション体験コース～商品の魅力を発信しよう！～",
-      "industries": [
-        "スーパーマーケット",
-        "ドラッグストア",
-        "調剤薬局"
-      ],
-      "locations": [
-        "青森県",
-        "岩手県",
-        "秋田県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 2026年8月の開催 ・実施日数 1日",
-      "deadline_text": "2026年12月31日",
-      "deadline": "2026-12-31",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 会社既定の額で支給",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "おいしいものが大好き！カブセンターやメガの商品を知りたい！ スーパーで売れ筋の商品の特徴を知りたい！ などなど、このコースに少しでも興味を持っていただける方はどなたでも参加可能！",
-      "first_seen": "2026-07-19T02:08:00+09:00",
-      "last_checked": "2026-08-17T09:55:31+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=66262&optNo=ZlCam",
-      "implementation_types": [
-        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
