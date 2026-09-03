@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-04T08:21:20+09:00",
-  "last_mode": "discover",
+  "generated_at": "2026-09-04T08:32:08+09:00",
+  "last_mode": "detail_batch",
   "stats": {
     "catalog_courses": 12685,
     "collected_courses": 12657,
-    "displayed_courses": 6275,
+    "displayed_courses": 6276,
     "transport_supported_courses": 11660,
     "excluded_kanto_only_courses": 2887,
-    "excluded_science_only_courses": 2498,
+    "excluded_science_only_courses": 2497,
     "amount_known_courses": 2708,
     "amount_unlimited_courses": 712,
-    "amount_unknown_courses": 2855,
+    "amount_unknown_courses": 2856,
     "excluded_no_transport_courses": 997,
-    "discovered_links_this_run": 147,
-    "new_courses_this_run": 18,
-    "details_checked_this_run": 38,
+    "discovered_links_this_run": 0,
+    "new_courses_this_run": 0,
+    "details_checked_this_run": 9,
     "database_courses": 12657
   },
   "items": [
@@ -182862,6 +182862,46 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=207446&optNo=XEeP2",
       "implementation_types": [
         "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:1403:course:1yVC6",
+      "company": "DOWAホールディングス(株) [グループ募集]",
+      "course": "理系限定）素材・環境事業での働き方がわかるDOWAの工場見学会＿生産技術職（設備職）コース",
+      "industries": [
+        "非鉄金属",
+        "環境・リサイクル",
+        "金属製品",
+        "半導体・電子・電気機器",
+        "プラント・エンジニアリング"
+      ],
+      "locations": [
+        "秋田県",
+        "静岡県",
+        "岡山県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 8月後半から9月を予定 ・実施日数 1日 ・詳細 いずれの日程もお住まいの場所によっては前泊・当日泊が必要となります。",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 基本は実費精算 ※ただし当社規定による",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 基本は実費精算 ※ただし当社規定による",
+      "eligibility_text": "当社選考に応募し、通過した方。",
+      "first_seen": "2026-07-18T18:57:50+09:00",
+      "last_checked": "2026-09-04T08:24:23+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=1403&optNo=1yVC6",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
