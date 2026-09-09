@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T10:50:30+09:00",
+  "generated_at": "2026-09-09T10:59:36+09:00",
   "last_mode": "detail_batch",
   "stats": {
     "catalog_courses": 12703,
@@ -14,12 +14,12 @@
     "excluded_no_transport_courses": 1011,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_checked_this_run": 7,
+    "details_checked_this_run": 8,
     "database_courses": 12675
   },
   "items": [
     {
-      "id": "corp:230806:course:P22Df",
+      "id": "corp:230806:course:goQEI",
       "company": "神戸衡機(株)",
       "course": "～神戸衡機の仕事が分かる～1dayオープン・カンパニー",
       "industries": [
@@ -31,10 +31,18 @@
       "locations": [
         "兵庫県"
       ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 7月中旬～8月下旬 ・実施日数 1日",
-      "deadline_text": "2026年8月31日",
-      "deadline": "2026-08-31",
+      "event_dates": [
+        "2026-07-24",
+        "2026-07-31",
+        "2026-08-07",
+        "2026-08-21",
+        "2026-08-28",
+        "2026-09-04",
+        "2026-09-11"
+      ],
+      "schedule_text": "・開催時期 7月24日、7月31日、8月7日、8月21日、8月28日、9月4日、9月11日 ・実施日数 1日",
+      "deadline_text": "2026年9月11日",
+      "deadline": "2026-09-11",
       "transport_type": "limit",
       "transport_amount": 3000,
       "transport_available": true,
@@ -43,12 +51,50 @@
       "lodging_provided": false,
       "lodging_text": "記載なし",
       "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T20:09:51+09:00",
-      "last_checked": "2026-09-09T10:42:02+09:00",
+      "first_seen": "2026-07-18T20:10:02+09:00",
+      "last_checked": "2026-09-09T10:51:23+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=230806&optNo=P22Df",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=230806&optNo=goQEI",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ]
+    },
+    {
+      "id": "corp:289970:course:aJR56",
+      "company": "(株)タダノインフラソリューションズ",
+      "course": "【対面開催】不安・疑問解消！先輩社員座談会",
+      "industries": [
+        "機械",
+        "機械設計",
+        "プラント・エンジニアリング",
+        "重電・産業用電気機器",
+        "輸送用機器（船舶・航空・宇宙関連など）"
+      ],
+      "locations": [
+        "東京都"
+      ],
+      "event_dates": [
+        "2026-08-06"
+      ],
+      "schedule_text": "・開催時期 8月6日 ・実施日数 1日",
+      "deadline_text": "2026年11月10日",
+      "deadline": "2026-11-10",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 当社の規定に基づき支給いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T21:16:03+09:00",
+      "last_checked": "2026-09-09T10:51:17+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=289970&optNo=aJR56",
       "implementation_types": [
         "オープン・カンパニー等"
       ]
@@ -87,7 +133,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "どなたでも参加できるプログラムです。 福祉業界気になるけど、どうなんだろう？と思っている人は是非参加してみてください たくさんの人が「チャームのプログラムを通じて興味を持てた！」と感想をいただけています！",
       "first_seen": "2026-07-18T18:34:48+09:00",
-      "last_checked": "2026-09-09T10:41:36+09:00",
+      "last_checked": "2026-09-09T10:51:02+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -120,47 +166,11 @@
       "lodging_text": "支給なし",
       "eligibility_text": "文理不問",
       "first_seen": "2026-07-18T18:22:28+09:00",
-      "last_checked": "2026-09-09T10:41:32+09:00",
+      "last_checked": "2026-09-09T10:50:57+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=263680&optNo=HkEA3",
-      "implementation_types": []
-    },
-    {
-      "id": "corp:87518:course:qLIgH",
-      "company": "(株)チャーム・ケア・コーポレーション【東証プライム市場上場】",
-      "course": "【介護・福祉業界志望の方へ】“チャームならでは”を知る「幸せをカタチにする」ケア・プランニング体験",
-      "industries": [
-        "福祉サービス",
-        "不動産",
-        "サービス（その他）"
-      ],
-      "locations": [
-        "東京都",
-        "WEB"
-      ],
-      "event_dates": [
-        "2026-09-30",
-        "2027-04-06"
-      ],
-      "schedule_text": "・開催時期 4月6日～9月30日 ・実施日数 1日",
-      "deadline_text": "2026年9月10日",
-      "deadline": "2026-09-10",
-      "transport_type": "none",
-      "transport_amount": 0,
-      "transport_available": false,
-      "transport_original": "支給なし",
-      "amount_analysis_status": "no_transport",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "どなたでも参加できるプログラムです。 福祉業界気になるけど、どうなんだろう？と思っている人は是非参加してみてください たくさんの人が「チャームのプログラムを通じて興味を持てた！」と感想をいただけています！",
-      "first_seen": "2026-07-18T18:34:37+09:00",
-      "last_checked": "2026-09-09T10:41:27+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=87518&optNo=qLIgH",
       "implementation_types": []
     },
     {
@@ -189,7 +199,7 @@
       "lodging_text": "記載なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T18:22:17+09:00",
-      "last_checked": "2026-09-09T10:41:27+09:00",
+      "last_checked": "2026-09-09T10:50:56+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -229,11 +239,47 @@
       "lodging_text": "記載なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T18:34:04+09:00",
-      "last_checked": "2026-09-09T10:41:26+09:00",
+      "last_checked": "2026-09-09T10:50:55+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=87518&optNo=EYbPW",
+      "implementation_types": []
+    },
+    {
+      "id": "corp:87518:course:qLIgH",
+      "company": "(株)チャーム・ケア・コーポレーション【東証プライム市場上場】",
+      "course": "【介護・福祉業界志望の方へ】“チャームならでは”を知る「幸せをカタチにする」ケア・プランニング体験",
+      "industries": [
+        "福祉サービス",
+        "不動産",
+        "サービス（その他）"
+      ],
+      "locations": [
+        "東京都",
+        "WEB"
+      ],
+      "event_dates": [
+        "2026-09-30",
+        "2027-04-06"
+      ],
+      "schedule_text": "・開催時期 4月6日～9月30日 ・実施日数 1日",
+      "deadline_text": "2026年9月10日",
+      "deadline": "2026-09-10",
+      "transport_type": "none",
+      "transport_amount": 0,
+      "transport_available": false,
+      "transport_original": "支給なし",
+      "amount_analysis_status": "no_transport",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "どなたでも参加できるプログラムです。 福祉業界気になるけど、どうなんだろう？と思っている人は是非参加してみてください たくさんの人が「チャームのプログラムを通じて興味を持てた！」と感想をいただけています！",
+      "first_seen": "2026-07-18T18:34:37+09:00",
+      "last_checked": "2026-09-09T10:50:52+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=87518&optNo=qLIgH",
       "implementation_types": []
     },
     {
@@ -265,7 +311,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "大学院・大学・高専の理系学生の方が対象のコースです（学部学科・プログラミング知識は不問） 文系学生の方は、文理合同プログラムにぜひご参加ください!",
       "first_seen": "2026-07-25T05:08:30+09:00",
-      "last_checked": "2026-09-09T10:41:25+09:00",
+      "last_checked": "2026-09-09T10:50:52+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -273,6 +319,41 @@
       "implementation_types": [
         "オープン・カンパニー等",
         "仕事体験"
+      ]
+    },
+    {
+      "id": "corp:230806:course:P22Df",
+      "company": "神戸衡機(株)",
+      "course": "～神戸衡機の仕事が分かる～1dayオープン・カンパニー",
+      "industries": [
+        "精密機器",
+        "機械",
+        "その他電子・電気関連",
+        "商社（機械・プラント・環境）"
+      ],
+      "locations": [
+        "兵庫県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 7月中旬～8月下旬 ・実施日数 1日",
+      "deadline_text": "2026年8月31日",
+      "deadline": "2026-08-31",
+      "transport_type": "limit",
+      "transport_amount": 3000,
+      "transport_available": true,
+      "transport_original": "支給あり 1日あたり3,000円まで実費支給致します。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "記載なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T20:09:51+09:00",
+      "last_checked": "2026-09-09T10:42:02+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=230806&optNo=P22Df",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ]
     },
     {
@@ -105759,49 +105840,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=269208&optNo=6kkfV",
       "implementation_types": [
         "インターンシップ"
-      ]
-    },
-    {
-      "id": "corp:230806:course:goQEI",
-      "company": "神戸衡機(株)",
-      "course": "～神戸衡機の仕事が分かる～1dayオープン・カンパニー",
-      "industries": [
-        "精密機器",
-        "機械",
-        "その他電子・電気関連",
-        "商社（機械・プラント・環境）"
-      ],
-      "locations": [
-        "兵庫県"
-      ],
-      "event_dates": [
-        "2026-07-24",
-        "2026-07-31",
-        "2026-08-07",
-        "2026-08-21",
-        "2026-08-28",
-        "2026-09-04",
-        "2026-09-11"
-      ],
-      "schedule_text": "・開催時期 7月24日、7月31日、8月7日、8月21日、8月28日、9月4日、9月11日 ・実施日数 1日",
-      "deadline_text": "2026年9月11日",
-      "deadline": "2026-09-11",
-      "transport_type": "limit",
-      "transport_amount": 3000,
-      "transport_available": true,
-      "transport_original": "支給あり 1日あたり3,000円まで実費支給致します。",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "記載なし",
-      "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T20:10:02+09:00",
-      "last_checked": "2026-08-21T19:47:56+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=230806&optNo=goQEI",
-      "implementation_types": [
-        "オープン・カンパニー等"
       ]
     },
     {
@@ -467223,44 +467261,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=57835&optNo=NR241",
       "implementation_types": [
         "仕事体験"
-      ]
-    },
-    {
-      "id": "corp:289970:course:aJR56",
-      "company": "(株)タダノインフラソリューションズ",
-      "course": "【対面開催】不安・疑問解消！先輩社員座談会",
-      "industries": [
-        "機械",
-        "機械設計",
-        "プラント・エンジニアリング",
-        "重電・産業用電気機器",
-        "輸送用機器（船舶・航空・宇宙関連など）"
-      ],
-      "locations": [
-        "東京都"
-      ],
-      "event_dates": [
-        "2026-08-06"
-      ],
-      "schedule_text": "・開催時期 8月6日 ・実施日数 1日",
-      "deadline_text": "2026年8月3日",
-      "deadline": "2026-08-03",
-      "transport_type": "conditional",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 当社の規定に基づき支給いたします。",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T21:16:03+09:00",
-      "last_checked": "2026-08-06T23:47:41+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=289970&optNo=aJR56",
-      "implementation_types": [
-        "オープン・カンパニー等"
       ]
     },
     {
