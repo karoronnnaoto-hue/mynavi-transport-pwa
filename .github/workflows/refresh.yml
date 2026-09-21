@@ -22,11 +22,13 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python scripts/scrape.py --mode refresh --limit 120
+      - name: Ensure daily app update timestamp
+        run: python scripts/touch_display_refresh.py --once-per-day
       - name: Commit changed data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/jobs.json data/catalog.json data/crawl_state.json
+          git add docs/data/jobs.json data/items.json data/catalog.json data/crawl_state.json
           git diff --cached --quiet && exit 0
           git commit -m "Refresh existing internships"
           git pull --rebase origin "${GITHUB_REF_NAME}"

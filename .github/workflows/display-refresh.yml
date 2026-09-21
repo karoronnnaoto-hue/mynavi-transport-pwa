@@ -1,8 +1,6 @@
 name: Refresh app update display
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '52 15 * * *'
 permissions:
   contents: write
 concurrency:
