@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-21T23:13:36+09:00",
-  "last_mode": "discover",
+  "generated_at": "2026-09-21T23:24:40+09:00",
+  "last_mode": "detail_batch",
   "stats": {
     "catalog_courses": 13256,
     "collected_courses": 13226,
@@ -8,18 +8,18 @@
     "transport_supported_courses": 12155,
     "excluded_kanto_only_courses": 3058,
     "excluded_closed_courses": 234,
-    "excluded_expired_courses": 5269,
-    "excluded_science_only_courses": 911,
+    "excluded_expired_courses": 5268,
+    "excluded_science_only_courses": 912,
     "amount_known_courses": 1204,
     "amount_unlimited_courses": 285,
     "amount_unknown_courses": 1194,
     "excluded_no_transport_courses": 1071,
-    "discovered_links_this_run": 144,
-    "new_courses_this_run": 5,
-    "details_attempted_this_run": 37,
+    "discovered_links_this_run": 0,
+    "new_courses_this_run": 0,
+    "details_attempted_this_run": 0,
     "details_checked_this_run": 24,
     "details_closed_this_run": 0,
-    "detail_failures_this_run": 13,
+    "detail_failures_this_run": 0,
     "database_courses": 13226
   },
   "items": [
@@ -23830,7 +23830,7 @@
       "kanto_only": false
     },
     {
-      "id": "corp:16:course:8SOpQ",
+      "id": "corp:16:course:rJFS1",
       "company": "三菱重工業(株)",
       "course": "【事務系】MHI WINTER WORKSHOP 2026",
       "industries": [
@@ -23847,9 +23847,9 @@
         "2026-12-01",
         "2026-12-07"
       ],
-      "schedule_text": "・開催時期 11/25-26、12/1-2、12/7-8 ・実施日数 2～4日",
-      "deadline_text": "2026年10月18日",
-      "deadline": "2026-10-18",
+      "schedule_text": "・開催時期 11/25-26、12/1-2、12/7-8 ・実施日数 2～4日 ・詳細 1日目：高砂製作所（兵庫） 2日目：本社（東京）",
+      "deadline_text": "2026年10月15日",
+      "deadline": "2026-10-15",
       "transport_type": "unknown",
       "transport_amount": null,
       "transport_available": true,
@@ -23858,12 +23858,12 @@
       "lodging_provided": false,
       "lodging_text": "記載なし",
       "eligibility_text": "記載なし",
-      "first_seen": "2026-09-21T23:15:23+09:00",
-      "last_checked": "2026-09-21T23:15:23+09:00",
+      "first_seen": "2026-09-21T23:15:53+09:00",
+      "last_checked": "2026-09-21T23:15:53+09:00",
       "is_new": true,
       "status": "open",
       "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=16&optNo=8SOpQ",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=16&optNo=rJFS1",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -28533,7 +28533,7 @@
       "kanto_only": false
     },
     {
-      "id": "corp:109277:course:h7pKt",
+      "id": "corp:109277:course:SWBWp",
       "company": "(株)YKプランニング",
       "course": "【ＩＴ業界】基礎が学べる実践体験／システムエンジニアコース",
       "industries": [
@@ -28547,9 +28547,9 @@
         "山口県"
       ],
       "event_dates": [],
-      "schedule_text": "・開催時期 9月開催予定 ・実施日数 2～4日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "schedule_text": "・開催時期 9月開催予定 ・実施日数 5日～2週間未満",
+      "deadline_text": "2026年9月25日",
+      "deadline": "2026-09-25",
       "transport_type": "limit",
       "transport_amount": 3000,
       "transport_available": true,
@@ -28558,14 +28558,14 @@
       "lodging_provided": false,
       "lodging_text": "支給なし",
       "eligibility_text": "学部、専攻は問いません。",
-      "first_seen": "2026-09-21T23:15:09+09:00",
-      "last_checked": "2026-09-21T23:15:09+09:00",
+      "first_seen": "2026-09-21T23:16:02+09:00",
+      "last_checked": "2026-09-21T23:16:02+09:00",
       "is_new": true,
       "status": "open",
       "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=109277&optNo=h7pKt",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=109277&optNo=SWBWp",
       "implementation_types": [
-        "仕事体験"
+        "インターンシップ"
       ],
       "science_only": false,
       "kanto_only": false
@@ -41156,7 +41156,7 @@
       "kanto_only": false
     },
     {
-      "id": "corp:261758:course:Ebnjy",
+      "id": "corp:261758:course:mnTra",
       "company": "(株)マジカナファーム",
       "course": "◇酪農業界がわかる＆特別案内あり◇街での暮らしもわかる仕事体験コース",
       "industries": [
@@ -41168,7 +41168,7 @@
         "WEB"
       ],
       "event_dates": [],
-      "schedule_text": "・開催時期 2026年8月に5日間を1回程度 ・実施日数 5日～2週間未満 ・詳細 社員寮もあります！希望によっては5日間以上での開催も可能です。 また、別コースにて日帰りでの見学も受け付けています。",
+      "schedule_text": "・開催時期 2026年4月上旬から2027年2月末まで各月に約1回程度 ・実施日数 2～4日 ・詳細 社員寮もあるため、希望によっては5日間以上での開催も可能です。 また、日帰りでの見学も受け付けています。",
       "deadline_text": "2026年9月30日",
       "deadline": "2026-09-30",
       "transport_type": "unknown",
@@ -41179,14 +41179,14 @@
       "lodging_provided": false,
       "lodging_text": "支給なし マジカナファーム社員寮をご使用いただけます。",
       "eligibility_text": "特になし 家畜人工授精師職に興味がある方も大歓迎です！",
-      "first_seen": "2026-09-21T23:14:39+09:00",
-      "last_checked": "2026-09-21T23:14:39+09:00",
+      "first_seen": "2026-09-21T23:15:58+09:00",
+      "last_checked": "2026-09-21T23:15:58+09:00",
       "is_new": true,
       "status": "open",
       "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=261758&optNo=Ebnjy",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=261758&optNo=mnTra",
       "implementation_types": [
-        "インターンシップ"
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -72292,7 +72292,7 @@
       "kanto_only": false
     },
     {
-      "id": "corp:95328:course:W9TMa",
+      "id": "corp:95328:course:QYqm2",
       "company": "三菱電機ビルソリューションズ(株)",
       "course": "職場実習型インターンシップ【対面開催】",
       "industries": [
@@ -72306,8 +72306,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 2026年8月、9月、2027年2月 ・実施日数 5日～2週間未満",
-      "deadline_text": "2027年2月13日",
-      "deadline": "2027-02-13",
+      "deadline_text": "2027年2月27日",
+      "deadline": "2027-02-27",
       "transport_type": "unknown",
       "transport_amount": null,
       "transport_available": true,
@@ -72316,12 +72316,12 @@
       "lodging_provided": true,
       "lodging_text": "支給あり 通勤時間120分以上を目安",
       "eligibility_text": "四年生大学・修士の方",
-      "first_seen": "2026-09-21T23:14:58+09:00",
-      "last_checked": "2026-09-21T23:14:58+09:00",
+      "first_seen": "2026-09-21T23:15:58+09:00",
+      "last_checked": "2026-09-21T23:15:58+09:00",
       "is_new": true,
       "status": "open",
       "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=95328&optNo=W9TMa",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=95328&optNo=QYqm2",
       "implementation_types": [
         "インターンシップ"
       ],
@@ -96580,7 +96580,7 @@
       "kanto_only": false
     },
     {
-      "id": "corp:218437:course:hXv8W",
+      "id": "corp:218437:course:QjGZ4",
       "company": "社会福祉法人神戸あゆみの会",
       "course": "【障害福祉サービスが分かる！】支援の現場を体験しよう",
       "industries": [
@@ -96603,12 +96603,12 @@
       "lodging_provided": false,
       "lodging_text": "支給なし",
       "eligibility_text": "学部・学科は不問です。 障害福祉に関心のあるすべての学生さんが対象です。 ご興味のある方ぜひご参加ください。",
-      "first_seen": "2026-09-21T23:14:52+09:00",
-      "last_checked": "2026-09-21T23:14:52+09:00",
+      "first_seen": "2026-09-21T23:16:02+09:00",
+      "last_checked": "2026-09-21T23:16:02+09:00",
       "is_new": true,
       "status": "open",
       "closed_at": null,
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=218437&optNo=hXv8W",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=218437&optNo=QjGZ4",
       "implementation_types": [
         "仕事体験"
       ],
