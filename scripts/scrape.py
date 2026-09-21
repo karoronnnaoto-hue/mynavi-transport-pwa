@@ -551,7 +551,12 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
             include = old is None or url in manual
             priority = 0 if old is None else 1
         elif mode == "refresh":
-            include = old is not None and (last_dt is None or last_dt < now - timedelta(hours=6))
+            include = (
+                old is not None
+                and old.get("status", "open") == "open"
+                and not is_expired(old, today)
+                and (last_dt is None or last_dt < now - timedelta(hours=6))
+            )
             priority = 1
         elif mode == "urgent":
             include = old is not None and old.get("status", "open") == "open" and is_urgent(old, today)
@@ -618,11 +623,15 @@ def write_outputs(
     discovered_count: int = 0,
     new_count: int = 0,
     checked: int = 0,
+    attempted: int = 0,
+    closed: int = 0,
+    failures: int = 0,
 ) -> None:
     collected_items = dedupe_items(list(items_by_id.values()))
     transport_items = [item for item in collected_items if has_transport_support(item)]
     non_kanto_transport_items = [without_kanto_locations(item) for item in transport_items if not is_kanto_only(item)]
-    active_transport_items = [item for item in non_kanto_transport_items if not is_expired(item, now.date())]
+    open_transport_items = [item for item in non_kanto_transport_items if item.get("status", "open") == "open"]
+    active_transport_items = [item for item in open_transport_items if not is_expired(item, now.date())]
     items = [item for item in active_transport_items if not is_science_only(item)]
     for item in items:
         item["amount_analysis_status"] = amount_analysis_status(item)
@@ -640,7 +649,8 @@ def write_outputs(
         "displayed_courses": len(items),
         "transport_supported_courses": len(transport_items),
         "excluded_kanto_only_courses": len(transport_items) - len(non_kanto_transport_items),
-        "excluded_expired_courses": len(non_kanto_transport_items) - len(active_transport_items),
+        "excluded_closed_courses": len(non_kanto_transport_items) - len(open_transport_items),
+        "excluded_expired_courses": len(open_transport_items) - len(active_transport_items),
         "excluded_science_only_courses": len(active_transport_items) - len(items),
         "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
         "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
@@ -648,7 +658,10 @@ def write_outputs(
         "excluded_no_transport_courses": len(collected_items) - len(transport_items),
         "discovered_links_this_run": discovered_count,
         "new_courses_this_run": new_count,
+        "details_attempted_this_run": attempted,
         "details_checked_this_run": checked,
+        "details_closed_this_run": closed,
+        "detail_failures_this_run": failures,
         "database_courses": len(collected_items),
     }
     save_json(DB, {
@@ -696,6 +709,8 @@ def main() -> None:
     items_by_id = dict(old_by_id)
     candidates = select_candidates(args.mode, catalog, items_by_id, now)
     checked = 0
+    closed = 0
+    failures = 0
     detail_candidates = candidates if args.limit <= 0 else balance_candidates_by_implementation(candidates, catalog, args.limit)
     for _, _, key, url in detail_candidates:
         try:
@@ -710,11 +725,43 @@ def main() -> None:
             catalog["urls"][key]["kanto_only"] = is_kanto_only(item)
             items_by_id[key] = item
             checked += 1
-            time.sleep(args.request_interval)
+        except requests.HTTPError as exc:
+            status_code = exc.response.status_code if exc.response is not None else None
+            if status_code in {400, 404, 410} and old_by_id.get(key):
+                checked_at = now.isoformat(timespec="seconds")
+                item = dict(old_by_id[key])
+                item["last_checked"] = checked_at
+                item["status"] = "closed"
+                catalog["urls"][key]["last_checked"] = checked_at
+                catalog["urls"][key]["status"] = "closed"
+                items_by_id[key] = item
+                closed += 1
+                print("detail closed", status_code, url)
+            else:
+                failures += 1
+                print("detail failed", url, exc)
         except Exception as exc:
+            failures += 1
             print("detail failed", url, exc)
+        finally:
+            time.sleep(args.request_interval)
 
-    write_outputs(catalog, crawl_state, items_by_id, args.mode, now, discovered_count, new_count, checked)
+    if args.mode == "refresh" and detail_candidates and checked + closed == 0:
+        raise RuntimeError(f"Mynavi refresh failed for all {len(detail_candidates)} selected records")
+
+    write_outputs(
+        catalog,
+        crawl_state,
+        items_by_id,
+        args.mode,
+        now,
+        discovered_count,
+        new_count,
+        checked,
+        len(detail_candidates),
+        closed,
+        failures,
+    )
 
 
 if __name__ == "__main__":
