@@ -3,6 +3,14 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Check urgent deadlines
+      - Clean up closed internships
+      - Discover new internships
+      - Refresh all internships within 10 days
+      - Refresh app update display
+    types: [completed]
 permissions:
   contents: read
   pages: write
@@ -12,6 +20,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
