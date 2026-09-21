@@ -119,6 +119,17 @@ function score(i) {
   return i.transport_type === "unlimited" ? 99999999 : (i.transport_amount ?? -1);
 }
 
+function todayIso() {
+  return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
+function isExpired(i) {
+  const today = todayIso();
+  if (i.deadline && i.deadline < today) return true;
+  const dates = (i.event_dates || []).filter(Boolean);
+  return dates.length > 0 && dates.every((value) => value < today);
+}
+
 function fmtDate(v) {
   if (!v) return "不明";
   const d = new Date(v);
@@ -611,18 +622,20 @@ async function load() {
     const r = await fetch(`data/jobs.json?t=${Date.now()}`);
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const data = await r.json();
-    state.items = data.items || [];
+    const rawItems = data.items || [];
+    state.items = rawItems.filter((item) => !isExpired(item));
     populateIndustryOptions();
     populateLocationFilters();
     const stats = data.stats || {};
     const supported = stats.transport_supported_courses ?? stats.displayed_courses ?? state.items.length;
-    const displayed = stats.displayed_courses ?? state.items.length;
+    const displayed = state.items.length;
     const known = (stats.amount_known_courses ?? 0) + (stats.amount_unlimited_courses ?? 0);
     const scienceExcluded = stats.excluded_science_only_courses ?? 0;
     const kantoExcluded = stats.excluded_kanto_only_courses ?? 0;
+    const expiredExcluded = stats.excluded_expired_courses ?? Math.max(0, rawItems.length - state.items.length);
     const oneDayCount = state.items.filter(isOneDay).length;
     const multiDayCount = state.items.filter(isMultiDay).length;
-    $("updatedAt").textContent = `更新 ${fmtDate(data.generated_at)} / 表示 ${displayed.toLocaleString()}件 / 交通費あり ${supported.toLocaleString()}件 / 1Day ${oneDayCount.toLocaleString()}件 / 複数日 ${multiDayCount.toLocaleString()}件 / 関東のみ除外 ${kantoExcluded.toLocaleString()}件 / 理系除外 ${scienceExcluded.toLocaleString()}件 / 金額判定 ${known.toLocaleString()}件`;
+    $("updatedAt").textContent = `更新 ${fmtDate(data.generated_at)} / 表示 ${displayed.toLocaleString()}件 / 交通費あり ${supported.toLocaleString()}件 / 1Day ${oneDayCount.toLocaleString()}件 / 複数日 ${multiDayCount.toLocaleString()}件 / 関東のみ除外 ${kantoExcluded.toLocaleString()}件 / 期限切れ除外 ${expiredExcluded.toLocaleString()}件 / 理系除外 ${scienceExcluded.toLocaleString()}件 / 金額判定 ${known.toLocaleString()}件`;
     render();
   } catch (e) {
     $("empty").hidden = false;
@@ -675,5 +688,5 @@ document.querySelectorAll("[data-view]").forEach((button) => {
 });
 $("clearFilters").onclick = clearFilters;
 $("refresh").onclick = load;
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=13");
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=14");
 load();

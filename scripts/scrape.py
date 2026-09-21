@@ -403,6 +403,24 @@ def is_urgent(item: dict, today: date) -> bool:
         return False
     return today <= deadline <= today + timedelta(days=URGENT_DEADLINE_DAYS)
 
+
+def parse_iso_date(value: str | None) -> date | None:
+    if not value:
+        return None
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def is_expired(item: dict, today: date) -> bool:
+    deadline = parse_iso_date(item.get("deadline"))
+    if deadline and deadline < today:
+        return True
+    event_dates = [d for d in (parse_iso_date(x) for x in item.get("event_dates", [])) if d]
+    return bool(event_dates) and max(event_dates) < today
+
+
 def item_fingerprint(item: dict) -> str:
     """IDが取れない場合も、内容が同じ募集を重複表示しない。"""
     parts = [
@@ -542,7 +560,7 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
             include = old is not None and (
                 old.get("status", "open") != "open"
                 or not old.get("event_dates")
-                or any(d < today.isoformat() for d in old.get("event_dates", []))
+                or is_expired(old, today)
             )
             priority = 0
         elif mode == "all":
@@ -604,7 +622,8 @@ def write_outputs(
     collected_items = dedupe_items(list(items_by_id.values()))
     transport_items = [item for item in collected_items if has_transport_support(item)]
     non_kanto_transport_items = [without_kanto_locations(item) for item in transport_items if not is_kanto_only(item)]
-    items = [item for item in non_kanto_transport_items if not is_science_only(item)]
+    active_transport_items = [item for item in non_kanto_transport_items if not is_expired(item, now.date())]
+    items = [item for item in active_transport_items if not is_science_only(item)]
     for item in items:
         item["amount_analysis_status"] = amount_analysis_status(item)
         item["science_only"] = False
@@ -621,7 +640,8 @@ def write_outputs(
         "displayed_courses": len(items),
         "transport_supported_courses": len(transport_items),
         "excluded_kanto_only_courses": len(transport_items) - len(non_kanto_transport_items),
-        "excluded_science_only_courses": len(non_kanto_transport_items) - len(items),
+        "excluded_expired_courses": len(non_kanto_transport_items) - len(active_transport_items),
+        "excluded_science_only_courses": len(active_transport_items) - len(items),
         "amount_known_courses": sum(amount_analysis_status(x) == "amount_known" for x in items),
         "amount_unlimited_courses": sum(amount_analysis_status(x) == "unlimited" for x in items),
         "amount_unknown_courses": sum(amount_analysis_status(x) == "amount_unknown" for x in items),
