@@ -48,9 +48,17 @@ def main() -> None:
     now = datetime.now(JST)
     session = requests.Session()
 
-    candidates = select_candidates("rebuild", catalog, old_by_id, now)
+    candidates = select_candidates("all", catalog, old_by_id, now)
     candidates = [candidate for candidate in candidates if shard_matches(candidate[2], args.shard_index, args.shard_total)]
-    detail_candidates = balance_candidates_by_implementation(candidates, catalog, args.limit)
+    missing_candidates = [candidate for candidate in candidates if candidate[2] not in old_by_id]
+    stale_candidates = [candidate for candidate in candidates if candidate[2] in old_by_id]
+    if args.limit <= 0:
+        detail_candidates = missing_candidates + stale_candidates
+    else:
+        detail_candidates = list(balance_candidates_by_implementation(missing_candidates, catalog, args.limit))
+        remaining_limit = args.limit - len(detail_candidates)
+        if remaining_limit > 0:
+            detail_candidates += balance_candidates_by_implementation(stale_candidates, catalog, remaining_limit)
 
     items = []
     catalog_updates = {}
