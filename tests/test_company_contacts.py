@@ -100,6 +100,7 @@ class CompanyContactsTest(unittest.TestCase):
                 "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=1&optNo=a",
                 "transport_type": "limit",
                 "transport_amount": 10000,
+                "locations": ["兵庫県", "WEB"],
                 "transport_original": "支給あり 公共交通機関のみ実費支給（1日あたり上限1万円）。領収書と印鑑が必要。県外の方は要相談。",
             },
             {
@@ -107,6 +108,7 @@ class CompanyContactsTest(unittest.TestCase):
                 "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=1&optNo=b",
                 "transport_type": "unknown",
                 "transport_amount": None,
+                "locations": ["大阪府", "兵庫県"],
                 "transport_original": "ジョブカフェしまねの助成金をご利用ください。駅から送迎あり。",
             },
         ]
@@ -120,7 +122,8 @@ class CompanyContactsTest(unittest.TestCase):
         finally:
             output.unlink(missing_ok=True)
 
-        self.assertEqual(row["支給額詳細"], "上限 10,000円")
+        self.assertEqual(row["交通費金額"], "10000")
+        self.assertEqual(row["開催都道府県"], "兵庫県; 大阪府")
         self.assertEqual(row["支給単位"], "1日あたり")
         self.assertEqual(row["対象者・地域条件"], "県外者; 個別相談")
         self.assertEqual(row["対象交通手段"], "公共交通機関のみ")
@@ -128,6 +131,16 @@ class CompanyContactsTest(unittest.TestCase):
         self.assertEqual(row["外部助成制度"], "ジョブカフェしまね助成金")
         self.assertEqual(row["送迎"], "あり")
         self.assertIn("公共交通機関のみ実費支給", row["交通費原文"])
+
+    def test_prefers_full_over_numeric_amount(self) -> None:
+        items = [
+            {"transport_type": "limit", "transport_amount": 30000, "transport_original": "上限3万円"},
+            {"transport_type": "unlimited", "transport_amount": None, "transport_original": "全額支給"},
+        ]
+
+        from company_contacts import _transport_amount_value
+
+        self.assertEqual(_transport_amount_value(items), "全額")
 
 
 if __name__ == "__main__":

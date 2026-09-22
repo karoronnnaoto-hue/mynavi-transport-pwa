@@ -175,7 +175,6 @@ def _transport_conditions(item: dict) -> dict[str, str]:
     text = normalize_text(item.get("transport_original", ""))
     if not text:
         return {
-            "amounts": "",
             "unit": "",
             "targets": "",
             "modes": "",
@@ -186,16 +185,6 @@ def _transport_conditions(item: dict) -> dict[str, str]:
         }
 
     normalized = text.translate(str.maketrans("０１２３４５６７８９，", "0123456789,"))
-    amounts: list[str] = []
-    for match in re.finditer(r"([0-9,]+)\s*(円|万円)", normalized):
-        number, unit = match.groups()
-        amount = int(number.replace(",", "")) * (10000 if unit == "万円" else 1)
-        context = normalized[max(0, match.start() - 12) : match.end() + 12]
-        qualifier = "上限 " if re.search(r"上限|最大|まで|迄|以内", context) else ""
-        amounts.append(f"{qualifier}{amount:,}円")
-    if item.get("transport_type") == "unlimited":
-        amounts.insert(0, "全額")
-
     units: list[str] = []
     if re.search(r"1日|一日|日あたり|日当たり|日額|/日", normalized):
         units.append("1日あたり")
@@ -266,7 +255,6 @@ def _transport_conditions(item: dict) -> dict[str, str]:
         pickup = "記載あり（原文参照）"
 
     return {
-        "amounts": _unique_join(amounts, "; "),
         "unit": _unique_join(units, "; "),
         "targets": _unique_join(targets, "; "),
         "modes": _unique_join(modes, "; "),
@@ -275,6 +263,34 @@ def _transport_conditions(item: dict) -> dict[str, str]:
         "pickup": pickup,
         "original": text,
     }
+
+
+def _transport_amount_value(items: list[dict]) -> str | int:
+    if any(item.get("transport_type") == "unlimited" for item in items):
+        return "全額"
+
+    amounts: list[int] = []
+    for item in items:
+        amount = item.get("transport_amount")
+        if isinstance(amount, int) and amount > 0:
+            amounts.append(amount)
+        text = normalize_text(item.get("transport_original", "")).translate(
+            str.maketrans("０１２３４５６７８９，", "0123456789,")
+        )
+        for number, unit in re.findall(r"([0-9,]+)\s*(円|万円)", text):
+            value = int(number.replace(",", "")) * (10000 if unit == "万円" else 1)
+            if value > 0:
+                amounts.append(value)
+    return max(amounts) if amounts else ""
+
+
+def _prefectures(items: list[dict]) -> str:
+    values = []
+    for item in items:
+        for location in item.get("locations", []):
+            if location and location != "WEB" and location.endswith(("都", "道", "府", "県")):
+                values.append(location)
+    return _unique_join(values, "; ")
 
 
 def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTACT_CSV) -> None:
@@ -290,7 +306,8 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
         "電話番号",
         "ホームページ",
         "交通費区分",
-        "支給額詳細",
+        "交通費金額",
+        "開催都道府県",
         "支給単位",
         "対象者・地域条件",
         "対象交通手段",
@@ -340,7 +357,8 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
                 "電話番号": "; ".join(contact.get("phones", [])),
                 "ホームページ": "; ".join(contact.get("homepages", [])),
                 "交通費区分": breakdown,
-                "支給額詳細": _unique_join(conditions["amounts"]),
+                "交通費金額": _transport_amount_value(items),
+                "開催都道府県": _prefectures(items),
                 "支給単位": _unique_join(conditions["unit"]),
                 "対象者・地域条件": _unique_join(conditions["targets"]),
                 "対象交通手段": _unique_join(conditions["modes"]),
