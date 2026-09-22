@@ -301,13 +301,13 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
             grouped[corp_id].append(item)
 
     headers = [
+        "開催都道府県",
         "企業名",
         "メールアドレス",
         "電話番号",
         "ホームページ",
         "交通費区分",
         "交通費金額",
-        "開催都道府県",
         "支給単位",
         "対象者・地域条件",
         "対象交通手段",
@@ -352,13 +352,13 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
         source_url = (contact.get("source_urls") or [items[0].get("url", "")])[0]
         rows.append(
             {
+                "開催都道府県": _prefectures(items),
                 "企業名": contact.get("company") or items[0].get("company", ""),
                 "メールアドレス": "; ".join(contact.get("emails", [])),
                 "電話番号": "; ".join(contact.get("phones", [])),
                 "ホームページ": "; ".join(contact.get("homepages", [])),
                 "交通費区分": breakdown,
                 "交通費金額": _transport_amount_value(items),
-                "開催都道府県": _prefectures(items),
                 "支給単位": _unique_join(conditions["unit"]),
                 "対象者・地域条件": _unique_join(conditions["targets"]),
                 "対象交通手段": _unique_join(conditions["modes"]),
