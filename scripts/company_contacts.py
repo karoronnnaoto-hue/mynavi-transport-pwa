@@ -167,6 +167,116 @@ def _percentage(count: int, total: int) -> str:
     return f"{count / total:.1%}" if total else "0.0%"
 
 
+def _unique_join(values: list[str], separator: str = " / ") -> str:
+    return separator.join(dict.fromkeys(value for value in values if value))
+
+
+def _transport_conditions(item: dict) -> dict[str, str]:
+    text = normalize_text(item.get("transport_original", ""))
+    if not text:
+        return {
+            "amounts": "",
+            "unit": "",
+            "targets": "",
+            "modes": "",
+            "settlement": "",
+            "subsidy": "",
+            "pickup": "",
+            "original": "",
+        }
+
+    normalized = text.translate(str.maketrans("０１２３４５６７８９，", "0123456789,"))
+    amounts: list[str] = []
+    for match in re.finditer(r"([0-9,]+)\s*(円|万円)", normalized):
+        number, unit = match.groups()
+        amount = int(number.replace(",", "")) * (10000 if unit == "万円" else 1)
+        context = normalized[max(0, match.start() - 12) : match.end() + 12]
+        qualifier = "上限 " if re.search(r"上限|最大|まで|迄|以内", context) else ""
+        amounts.append(f"{qualifier}{amount:,}円")
+    if item.get("transport_type") == "unlimited":
+        amounts.insert(0, "全額")
+
+    units: list[str] = []
+    if re.search(r"1日|一日|日あたり|日当たり|日額|/日", normalized):
+        units.append("1日あたり")
+    if "往復" in normalized:
+        units.append("往復")
+    if "片道" in normalized:
+        units.append("片道")
+    if re.search(r"1回|一回|回あたり|回当たり", normalized):
+        units.append("1回あたり")
+
+    targets: list[str] = []
+    target_patterns = [
+        (r"現住所", "現住所に応じる"),
+        (r"遠方", "遠方者"),
+        (r"県外", "県外者"),
+        (r"県内", "県内者"),
+        (r"市外", "市外者"),
+        (r"市内", "市内者"),
+        (r"地域|エリア", "地域別"),
+        (r"当社規定|弊社規定|会社規定|規定に基づ", "会社規定"),
+        (r"要相談|個別に.*相談|応相談", "個別相談"),
+    ]
+    for pattern, label in target_patterns:
+        if re.search(pattern, normalized):
+            targets.append(label)
+
+    modes: list[str] = []
+    mode_patterns = [
+        (r"公共交通機関のみ", "公共交通機関のみ"),
+        (r"公共交通機関", "公共交通機関"),
+        (r"新幹線", "新幹線"),
+        (r"電車|鉄道|切符", "鉄道"),
+        (r"飛行機|航空", "飛行機"),
+        (r"高速バス|バス", "バス"),
+        (r"高速道路|高速代", "高速道路"),
+        (r"自家用車|自動車|車で|車利用|ガソリン", "自家用車"),
+        (r"タクシー", "タクシー"),
+    ]
+    for pattern, label in mode_patterns:
+        if re.search(pattern, normalized) and label not in modes:
+            if label == "公共交通機関" and "公共交通機関のみ" in modes:
+                continue
+            modes.append(label)
+
+    settlement: list[str] = []
+    settlement_patterns = [
+        (r"実費", "実費精算"),
+        (r"領収書|領収証", "領収書必須"),
+        (r"印鑑", "印鑑必須"),
+        (r"事前申請|事前に申請|事前の申請", "事前申請"),
+        (r"ご自身で.*申請|自身で.*申請|本人.*申請", "本人申請"),
+        (r"後日.*精算|後払い", "後日精算"),
+    ]
+    for pattern, label in settlement_patterns:
+        if re.search(pattern, normalized):
+            settlement.append(label)
+
+    subsidy = ""
+    if "ジョブカフェしまね" in normalized:
+        subsidy = "ジョブカフェしまね助成金"
+    elif re.search(r"助成金|補助金", normalized):
+        subsidy = "外部助成・補助制度あり"
+
+    pickup = ""
+    if re.search(r"送迎あり|送迎を.*(?:実施|行)", normalized):
+        pickup = "あり"
+    elif "送迎" in normalized:
+        pickup = "記載あり（原文参照）"
+
+    return {
+        "amounts": _unique_join(amounts, "; "),
+        "unit": _unique_join(units, "; "),
+        "targets": _unique_join(targets, "; "),
+        "modes": _unique_join(modes, "; "),
+        "settlement": _unique_join(settlement, "; "),
+        "subsidy": subsidy,
+        "pickup": pickup,
+        "original": text,
+    }
+
+
 def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTACT_CSV) -> None:
     grouped: dict[str, list[dict]] = defaultdict(list)
     for item in active_items:
@@ -180,6 +290,14 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
         "電話番号",
         "ホームページ",
         "交通費区分",
+        "支給額詳細",
+        "支給単位",
+        "対象者・地域条件",
+        "対象交通手段",
+        "精算・申請条件",
+        "外部助成制度",
+        "送迎",
+        "交通費原文",
         "全額割合",
         "一部割合",
         "条件付き割合",
@@ -195,10 +313,14 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
         contact = companies.get(corp_id, {})
         broad_counts: Counter[str] = Counter()
         detail_counts: Counter[str] = Counter()
+        conditions = defaultdict(list)
         for item in items:
             broad, detail = _transport_label(item)
             broad_counts[broad] += 1
             detail_counts[detail] += 1
+            for field, value in _transport_conditions(item).items():
+                if value:
+                    conditions[field].append(value)
         total = len(items)
         breakdown = " / ".join(
             f"{label} {count}件"
@@ -218,6 +340,14 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
                 "電話番号": "; ".join(contact.get("phones", [])),
                 "ホームページ": "; ".join(contact.get("homepages", [])),
                 "交通費区分": breakdown,
+                "支給額詳細": _unique_join(conditions["amounts"]),
+                "支給単位": _unique_join(conditions["unit"]),
+                "対象者・地域条件": _unique_join(conditions["targets"]),
+                "対象交通手段": _unique_join(conditions["modes"]),
+                "精算・申請条件": _unique_join(conditions["settlement"]),
+                "外部助成制度": _unique_join(conditions["subsidy"]),
+                "送迎": _unique_join(conditions["pickup"]),
+                "交通費原文": _unique_join(conditions["original"], " | "),
                 "全額割合": _percentage(broad_counts["full"], total),
                 "一部割合": _percentage(broad_counts["partial"], total),
                 "条件付き割合": _percentage(broad_counts["conditional"], total),
