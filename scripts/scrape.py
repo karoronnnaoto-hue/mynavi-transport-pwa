@@ -12,6 +12,8 @@ from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse
 import requests
 from bs4 import BeautifulSoup
 
+from company_contacts import extract_contact_details, update_contact_artifacts
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/data/jobs.json"
 DB = ROOT / "data/items.json"
@@ -349,6 +351,7 @@ def parse_detail(url: str, html: str, old_item: dict | None) -> dict:
     status = detect_status(alltext)
     locations = parse_locations(region or alltext)
     industries = extract_industries(soup)
+    contact = extract_contact_details(soup)
     transport_type, amount = classify(transport)
     key = course_key(url)
     now = datetime.now(JST).isoformat(timespec="seconds")
@@ -375,6 +378,10 @@ def parse_detail(url: str, html: str, old_item: dict | None) -> dict:
         "is_new": old_item is None,
         "status": status,
         "closed_at": now if status in {"closed", "cancelled"} else None,
+        "contact_emails": contact["emails"],
+        "contact_phones": contact["phones"],
+        "contact_homepages": contact["homepages"],
+        "contact_checked_at": now,
         "url": canonical_url(url),
     }
 
@@ -676,6 +683,7 @@ def write_outputs(
         "stats": stats,
         "items": items,
     })
+    update_contact_artifacts(collected_items, items, generated)
     save_json(CATALOG, catalog)
     save_json(STATE, crawl_state)
 

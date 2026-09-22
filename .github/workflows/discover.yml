@@ -68,7 +68,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/jobs.json data/items.json data/catalog.json data/crawl_state.json
+          git add docs/data/jobs.json docs/data/company_contacts.csv data/items.json data/company_contacts.json data/catalog.json data/crawl_state.json
           git diff --cached --quiet && exit 0
           git commit -m "Discover new internships"
           git pull --rebase origin "${GITHUB_REF_NAME}"
@@ -154,7 +154,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/jobs.json data/items.json data/catalog.json data/crawl_state.json
+          git add docs/data/jobs.json docs/data/company_contacts.csv data/items.json data/company_contacts.json data/catalog.json data/crawl_state.json
           git diff --cached --quiet && exit 0
           git commit -m "Merge internship detail shards"
           git pull --rebase origin "${GITHUB_REF_NAME}"
