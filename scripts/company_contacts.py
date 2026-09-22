@@ -158,7 +158,9 @@ def _transport_label(item: dict) -> tuple[str, str]:
         if isinstance(amount, int) and amount > 0:
             return "partial", f"一部（{amount:,}円）"
         return "partial", "一部"
-    return "other", "その他"
+    if kind == "conditional":
+        return "conditional", "条件付き（規定等）"
+    return "unknown", "金額不明"
 
 
 def _percentage(count: int, total: int) -> str:
@@ -180,7 +182,8 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
         "交通費区分",
         "全額割合",
         "一部割合",
-        "その他割合",
+        "条件付き割合",
+        "金額不明割合",
         "掲載コース数",
         "マイナビ企業ID",
         "連絡先最終確認",
@@ -201,7 +204,10 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
             f"{label} {count}件"
             for label, count in sorted(
                 detail_counts.items(),
-                key=lambda pair: ({"全額": 0, "その他": 2}.get(pair[0], 1), pair[0]),
+                key=lambda pair: (
+                    {"全額": 0, "条件付き（規定等）": 2, "金額不明": 3}.get(pair[0], 1),
+                    pair[0],
+                ),
             )
         )
         source_url = (contact.get("source_urls") or [items[0].get("url", "")])[0]
@@ -214,7 +220,8 @@ def write_contacts_csv(active_items: list[dict], store: dict, path: Path = CONTA
                 "交通費区分": breakdown,
                 "全額割合": _percentage(broad_counts["full"], total),
                 "一部割合": _percentage(broad_counts["partial"], total),
-                "その他割合": _percentage(broad_counts["other"], total),
+                "条件付き割合": _percentage(broad_counts["conditional"], total),
+                "金額不明割合": _percentage(broad_counts["unknown"], total),
                 "掲載コース数": total,
                 "マイナビ企業ID": corp_id,
                 "連絡先最終確認": contact.get("last_checked", ""),

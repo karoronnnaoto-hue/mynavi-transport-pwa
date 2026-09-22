@@ -51,6 +51,13 @@ class CompanyContactsTest(unittest.TestCase):
                 "id": "corp:1:course:c",
                 "company": "Example",
                 "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=1&optNo=c",
+                "transport_type": "conditional",
+                "transport_amount": None,
+            },
+            {
+                "id": "corp:1:course:d",
+                "company": "Example",
+                "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=1&optNo=d",
                 "transport_type": "unknown",
                 "transport_amount": None,
             },
@@ -77,10 +84,14 @@ class CompanyContactsTest(unittest.TestCase):
             output.unlink(missing_ok=True)
 
         self.assertEqual(len(rows), 1)
-        self.assertEqual(rows[0]["交通費区分"], "全額 1件 / 一部（10,000円） 1件 / その他 1件")
-        self.assertEqual(rows[0]["全額割合"], "33.3%")
-        self.assertEqual(rows[0]["一部割合"], "33.3%")
-        self.assertEqual(rows[0]["その他割合"], "33.3%")
+        self.assertEqual(
+            rows[0]["交通費区分"],
+            "全額 1件 / 一部（10,000円） 1件 / 条件付き（規定等） 1件 / 金額不明 1件",
+        )
+        self.assertEqual(rows[0]["全額割合"], "25.0%")
+        self.assertEqual(rows[0]["一部割合"], "25.0%")
+        self.assertEqual(rows[0]["条件付き割合"], "25.0%")
+        self.assertEqual(rows[0]["金額不明割合"], "25.0%")
 
 
 if __name__ == "__main__":
