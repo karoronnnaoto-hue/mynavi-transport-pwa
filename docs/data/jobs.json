@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-09-30T15:59:13+09:00",
-  "last_mode": "detail_batch",
+  "generated_at": "2026-09-30T16:14:15+09:00",
+  "last_mode": "urgent",
   "stats": {
     "catalog_courses": 14167,
     "collected_courses": 14124,
-    "displayed_courses": 2822,
-    "transport_supported_courses": 12984,
+    "displayed_courses": 2821,
+    "transport_supported_courses": 12983,
     "excluded_kanto_only_courses": 3319,
     "excluded_closed_courses": 350,
     "excluded_expired_courses": 5533,
     "excluded_science_only_courses": 960,
-    "amount_known_courses": 1278,
+    "amount_known_courses": 1277,
     "amount_unlimited_courses": 284,
     "amount_unknown_courses": 1260,
-    "excluded_no_transport_courses": 1140,
+    "excluded_no_transport_courses": 1141,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 0,
-    "details_checked_this_run": 33,
+    "details_attempted_this_run": 100,
+    "details_checked_this_run": 100,
     "details_closed_this_run": 0,
     "detail_failures_this_run": 0,
     "database_courses": 14124
@@ -9128,7 +9128,7 @@
       "lodging_text": "支給あり https://www.gogo-jobcafe-shimane.jp/event/detail/5746 ジョブカフェしまね（公益財団法人ふるさと島根定住財団）様の助成金をご利用ください。（上限9万円）",
       "eligibility_text": "学部学科不問です。お気軽にご参加ください。",
       "first_seen": "2026-07-18T21:33:42+09:00",
-      "last_checked": "2026-09-29T07:24:26+09:00",
+      "last_checked": "2026-09-30T16:18:07+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -9141,7 +9141,7 @@
       "contact_homepages": [
         "https://www.sumi8.jp/companyprofile/"
       ],
-      "contact_checked_at": "2026-09-29T07:24:26+09:00",
+      "contact_checked_at": "2026-09-30T16:18:07+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=275029&optNo=kQA80",
       "implementation_types": [
         "インターンシップ"
@@ -9753,6 +9753,57 @@
       "kanto_only": false
     },
     {
+      "id": "corp:215439:course:cjv4t",
+      "company": "社会福祉法人上越あたご福祉会",
+      "course": "【1day～4days】サクっと介護体験コース／上越あたご流のゲンバを知る仕事体験（半日も可！）",
+      "industries": [
+        "福祉サービス",
+        "不動産",
+        "教育",
+        "幼稚園・保育園"
+      ],
+      "locations": [
+        "新潟県",
+        "WEB"
+      ],
+      "event_dates": [
+        "2026-08-01",
+        "2026-09-30"
+      ],
+      "schedule_text": "・開催時期 以下の時期の中でご都合の良い日時を調整して実施します 7月中旬～下旬、8月1日～9月30日 ・実施日数 1日 、 2～4日 ・詳細 プログラム日数：1日、3日、5日 （ご希望に応じて対応いたします！） ※ご希望によっては上記以外の時期でも実施いたします",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "limit",
+      "transport_amount": 30000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費支給／上限30,000円",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 宿泊費支給／上限30,000円",
+      "eligibility_text": "特になし",
+      "first_seen": "2026-07-18T21:52:28+09:00",
+      "last_checked": "2026-09-30T16:17:45+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "recruit@joetsu-atago.or.jp"
+      ],
+      "contact_phones": [
+        "025-532-2713"
+      ],
+      "contact_homepages": [
+        "https://www.joetsu-atago.or.jp/"
+      ],
+      "contact_checked_at": "2026-09-30T16:17:45+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=215439&optNo=cjv4t",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:215439:course:gvGiv",
       "company": "社会福祉法人上越あたご福祉会",
       "course": "【5days】介護体験型インターンシップ ～ご利用者の満足度にコミットする～",
@@ -9798,57 +9849,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=215439&optNo=gvGiv",
       "implementation_types": [
         "インターンシップ"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:215439:course:cjv4t",
-      "company": "社会福祉法人上越あたご福祉会",
-      "course": "【1day～4days】サクっと介護体験コース／上越あたご流のゲンバを知る仕事体験（半日も可！）",
-      "industries": [
-        "福祉サービス",
-        "不動産",
-        "教育",
-        "幼稚園・保育園"
-      ],
-      "locations": [
-        "新潟県",
-        "WEB"
-      ],
-      "event_dates": [
-        "2026-08-01",
-        "2026-09-30"
-      ],
-      "schedule_text": "・開催時期 以下の時期の中でご都合の良い日時を調整して実施します 7月中旬～下旬、8月1日～9月30日 ・実施日数 1日 、 2～4日 ・詳細 プログラム日数：1日、3日、5日 （ご希望に応じて対応いたします！） ※ご希望によっては上記以外の時期でも実施いたします",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "limit",
-      "transport_amount": 30000,
-      "transport_available": true,
-      "transport_original": "支給あり 交通費支給／上限30,000円",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": true,
-      "lodging_text": "支給あり 宿泊費支給／上限30,000円",
-      "eligibility_text": "特になし",
-      "first_seen": "2026-07-18T21:52:28+09:00",
-      "last_checked": "2026-09-23T04:54:59+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "recruit@joetsu-atago.or.jp"
-      ],
-      "contact_phones": [
-        "025-532-2713"
-      ],
-      "contact_homepages": [
-        "https://www.joetsu-atago.or.jp/"
-      ],
-      "contact_checked_at": "2026-09-23T04:54:59+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=215439&optNo=cjv4t",
-      "implementation_types": [
-        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -10087,7 +10087,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "4年生大学の方",
       "first_seen": "2026-07-18T22:18:31+09:00",
-      "last_checked": "2026-09-23T00:18:11+09:00",
+      "last_checked": "2026-09-30T16:14:15+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -10100,7 +10100,7 @@
       "contact_homepages": [
         "http://www.taniuti.com/"
       ],
-      "contact_checked_at": "2026-09-23T00:18:11+09:00",
+      "contact_checked_at": "2026-09-30T16:14:15+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=227095&optNo=rkXS3",
       "implementation_types": [
         "仕事体験"
@@ -37304,7 +37304,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "特になし",
       "first_seen": "2026-07-18T21:19:27+09:00",
-      "last_checked": "2026-09-29T07:23:12+09:00",
+      "last_checked": "2026-09-30T16:17:01+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -37317,7 +37317,7 @@
         "https://instagram.com/ptok_official?igshid=YmMyMTA2M2Y=",
         "https://x.com/ptok_hikari"
       ],
-      "contact_checked_at": "2026-09-29T07:23:12+09:00",
+      "contact_checked_at": "2026-09-30T16:17:01+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=255645&optNo=a3i0U",
       "implementation_types": [
         "インターンシップ"
@@ -40026,6 +40026,49 @@
       "kanto_only": false
     },
     {
+      "id": "corp:108633:course:f4T4W",
+      "company": "(株)アサヒ建設コンサルタント",
+      "course": "※5日間IS参加希望者は参加必須※【交通費・宿泊費支給】建コンとは？アサヒ建設コンサルタントとは？",
+      "industries": [
+        "建設コンサルタント"
+      ],
+      "locations": [
+        "北海道",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年4月～2026年9月にかけて、毎月2回ほど開催予定。 ・実施日数 1日 ・詳細 ２時間程度を予定しています。 ※WEBの場合は1時間程度",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 旭川市外の方は往復分支給。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 旭川市外の方は上限1万円支給。",
+      "eligibility_text": "・建設コンサルタントの仕事について興味をいだいている方。",
+      "first_seen": "2026-07-18T18:37:36+09:00",
+      "last_checked": "2026-09-30T16:15:33+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "masa_ogura@asahicc.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "https://www.asahicc.co.jp"
+      ],
+      "contact_checked_at": "2026-09-30T16:15:33+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=108633&optNo=f4T4W",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:108633:course:I3-3H",
       "company": "(株)アサヒ建設コンサルタント",
       "course": "※オープン・カンパニー参加必須※【交通費・宿泊費支給】建コン業務・現場体験型5DAYSインターシップ",
@@ -40065,49 +40108,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=108633&optNo=I3-3H",
       "implementation_types": [
         "インターンシップ"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:108633:course:f4T4W",
-      "company": "(株)アサヒ建設コンサルタント",
-      "course": "※5日間IS参加希望者は参加必須※【交通費・宿泊費支給】建コンとは？アサヒ建設コンサルタントとは？",
-      "industries": [
-        "建設コンサルタント"
-      ],
-      "locations": [
-        "北海道",
-        "WEB"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 2026年4月～2026年9月にかけて、毎月2回ほど開催予定。 ・実施日数 1日 ・詳細 ２時間程度を予定しています。 ※WEBの場合は1時間程度",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 旭川市外の方は往復分支給。",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": true,
-      "lodging_text": "支給あり 旭川市外の方は上限1万円支給。",
-      "eligibility_text": "・建設コンサルタントの仕事について興味をいだいている方。",
-      "first_seen": "2026-07-18T18:37:36+09:00",
-      "last_checked": "2026-09-26T08:32:45+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "masa_ogura@asahicc.co.jp"
-      ],
-      "contact_phones": [],
-      "contact_homepages": [
-        "https://www.asahicc.co.jp"
-      ],
-      "contact_checked_at": "2026-09-26T08:32:45+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=108633&optNo=f4T4W",
-      "implementation_types": [
-        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -42605,7 +42605,7 @@
       "lodging_text": "支給あり 会社で手配",
       "eligibility_text": "4年生大学、高専、大学院",
       "first_seen": "2026-07-18T21:20:35+09:00",
-      "last_checked": "2026-09-29T07:23:20+09:00",
+      "last_checked": "2026-09-30T16:17:09+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -42618,7 +42618,7 @@
       "contact_homepages": [
         "https://www.acekyoto.com/"
       ],
-      "contact_checked_at": "2026-09-29T07:23:20+09:00",
+      "contact_checked_at": "2026-09-30T16:17:09+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=256113&optNo=FmDyn",
       "implementation_types": [
         "インターンシップ"
@@ -46739,7 +46739,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "保有スキルを気にせず、ご興味のある方の参加をお待ちしています！",
       "first_seen": "2026-07-18T21:40:31+09:00",
-      "last_checked": "2026-09-23T04:50:25+09:00",
+      "last_checked": "2026-09-30T16:15:22+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -46748,7 +46748,7 @@
       ],
       "contact_phones": [],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-23T04:50:25+09:00",
+      "contact_checked_at": "2026-09-30T16:15:22+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=211559&optNo=noISB",
       "implementation_types": [
         "仕事体験"
@@ -48180,7 +48180,7 @@
       "lodging_text": "支給あり 遠方からお越しの方は宿泊の手配を致しますので事前に連絡願います。",
       "eligibility_text": "物作りの好きな方",
       "first_seen": "2026-07-18T21:36:43+09:00",
-      "last_checked": "2026-09-29T07:24:43+09:00",
+      "last_checked": "2026-09-30T16:18:24+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -48191,7 +48191,7 @@
       "contact_homepages": [
         "http://www.snic.jp"
       ],
-      "contact_checked_at": "2026-09-29T07:24:43+09:00",
+      "contact_checked_at": "2026-09-30T16:18:24+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=279661&optNo=0uPgf",
       "implementation_types": [
         "インターンシップ"
@@ -50373,7 +50373,7 @@
       "lodging_text": "記載なし",
       "eligibility_text": "学年不問",
       "first_seen": "2026-07-18T19:11:35+09:00",
-      "last_checked": "2026-09-26T14:12:22+09:00",
+      "last_checked": "2026-09-30T16:17:48+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -50388,7 +50388,7 @@
         "http://www.toku-den.co.jp/home/",
         "http://toku-den.co.jp/home/"
       ],
-      "contact_checked_at": "2026-09-26T14:12:22+09:00",
+      "contact_checked_at": "2026-09-30T16:17:48+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=204554&optNo=SsyxW",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -51241,6 +51241,47 @@
       "kanto_only": false
     },
     {
+      "id": "corp:219275:course:rx57z",
+      "company": "(株)ニイノプラン",
+      "course": "【交通費補助】【仕事体験型】不動産売買・賃貸営業が全て学べる！1Day体験プログラム！",
+      "industries": [
+        "不動産",
+        "不動産（管理）"
+      ],
+      "locations": [
+        "静岡県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年4月～2026年9月まで毎月2回程度開催 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "fixed",
+      "transport_amount": 500,
+      "transport_available": true,
+      "transport_original": "支給あり 500円分のQUOカードをお渡しします。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "営業職に興味のある方",
+      "first_seen": "2026-07-18T21:59:02+09:00",
+      "last_checked": "2026-09-30T16:18:19+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "053-401-2105"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-09-30T16:18:19+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=219275&optNo=rx57z",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:219275:course:wsVWv",
       "company": "(株)ニイノプラン",
       "course": "【交通費補助/昼食支給有】【仕事体験型】不動産売買・賃貸営業が全て学べる！1Day体験プログラム！",
@@ -51275,47 +51316,6 @@
       "contact_homepages": [],
       "contact_checked_at": "2026-09-30T03:21:26+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=219275&optNo=wsVWv",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:219275:course:rx57z",
-      "company": "(株)ニイノプラン",
-      "course": "【交通費補助】【仕事体験型】不動産売買・賃貸営業が全て学べる！1Day体験プログラム！",
-      "industries": [
-        "不動産",
-        "不動産（管理）"
-      ],
-      "locations": [
-        "静岡県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 2026年4月～2026年9月まで毎月2回程度開催 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "fixed",
-      "transport_amount": 500,
-      "transport_available": true,
-      "transport_original": "支給あり 500円分のQUOカードをお渡しします。",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "営業職に興味のある方",
-      "first_seen": "2026-07-18T21:59:02+09:00",
-      "last_checked": "2026-09-23T04:56:55+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [],
-      "contact_phones": [
-        "053-401-2105"
-      ],
-      "contact_homepages": [],
-      "contact_checked_at": "2026-09-23T04:56:55+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=219275&optNo=rx57z",
       "implementation_types": [
         "仕事体験"
       ],
@@ -56646,7 +56646,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "在学中の方",
       "first_seen": "2026-07-18T19:52:17+09:00",
-      "last_checked": "2026-09-26T14:12:30+09:00",
+      "last_checked": "2026-09-30T16:17:56+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -56657,7 +56657,7 @@
       "contact_homepages": [
         "https://www.lext.co.jp/"
       ],
-      "contact_checked_at": "2026-09-26T14:12:30+09:00",
+      "contact_checked_at": "2026-09-30T16:17:56+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=222144&optNo=yqahO",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -66540,6 +66540,55 @@
       "kanto_only": false
     },
     {
+      "id": "corp:210309:course:s6dLp",
+      "company": "(株)日さく",
+      "course": "新潟県で働きたい学生必見！地下水・防災土木工事のプロフェッショナルを知る仕事体験【2day／新潟市】",
+      "industries": [
+        "建設",
+        "建設コンサルタント",
+        "設備工事・設備設計",
+        "商社（機械・プラント・環境）",
+        "鉱業"
+      ],
+      "locations": [
+        "新潟県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 8月初旬～10月下旬 毎月1回以上開催予定 ・実施日数 2～4日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unlimited",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費全額支給",
+      "amount_analysis_status": "unlimited",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 宿泊が必要な場合は、近くのビジネスホテルを手配いたします。 宿泊代金は当社負担となります。",
+      "eligibility_text": "文理、学部不問",
+      "first_seen": "2026-07-18T21:34:21+09:00",
+      "last_checked": "2026-09-30T16:15:06+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "jinji@nissaku.co.jp"
+      ],
+      "contact_phones": [
+        "048-644-3912",
+        "048-644-3958"
+      ],
+      "contact_homepages": [
+        "https://www.nissaku.co.jp/"
+      ],
+      "contact_checked_at": "2026-09-30T16:15:06+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=210309&optNo=s6dLp",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:210309:course:TAc7y",
       "company": "(株)日さく",
       "course": "防災地質調査を知る仕事体験【2day】",
@@ -66582,55 +66631,6 @@
       ],
       "contact_checked_at": "2026-09-30T03:12:02+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=210309&optNo=TAc7y",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:210309:course:s6dLp",
-      "company": "(株)日さく",
-      "course": "新潟県で働きたい学生必見！地下水・防災土木工事のプロフェッショナルを知る仕事体験【2day／新潟市】",
-      "industries": [
-        "建設",
-        "建設コンサルタント",
-        "設備工事・設備設計",
-        "商社（機械・プラント・環境）",
-        "鉱業"
-      ],
-      "locations": [
-        "新潟県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 8月初旬～10月下旬 毎月1回以上開催予定 ・実施日数 2～4日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unlimited",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 交通費全額支給",
-      "amount_analysis_status": "unlimited",
-      "lodging_provided": true,
-      "lodging_text": "支給あり 宿泊が必要な場合は、近くのビジネスホテルを手配いたします。 宿泊代金は当社負担となります。",
-      "eligibility_text": "文理、学部不問",
-      "first_seen": "2026-07-18T21:34:21+09:00",
-      "last_checked": "2026-09-23T04:48:21+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "jinji@nissaku.co.jp"
-      ],
-      "contact_phones": [
-        "048-644-3912",
-        "048-644-3958"
-      ],
-      "contact_homepages": [
-        "https://www.nissaku.co.jp/"
-      ],
-      "contact_checked_at": "2026-09-23T04:48:21+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=210309&optNo=s6dLp",
       "implementation_types": [
         "仕事体験"
       ],
@@ -66687,6 +66687,53 @@
       "kanto_only": false
     },
     {
+      "id": "corp:217675:course:Mf4hI",
+      "company": "(株)日成電機製作所",
+      "course": "★先着順★ 文系向け★1day【モノづくり】配線盤・工作機械業界を知ろう！営業見積体験★",
+      "industries": [
+        "半導体・電子・電気機器",
+        "精密機器",
+        "金属製品",
+        "機械"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 5月上旬～9月下旬 毎月開催予定 ・実施日数 1日 ・詳細 １日(ワンデー仕事体験)",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "limit",
+      "transport_amount": 10000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費支給/上限1万円",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 宿泊費支給/上限1万円",
+      "eligibility_text": "どなたでもお気軽にご参加くださいませ♪",
+      "first_seen": "2026-07-18T21:55:41+09:00",
+      "last_checked": "2026-09-30T16:18:02+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "adopt@nis-ele.co.jp"
+      ],
+      "contact_phones": [
+        "0569-49-0200"
+      ],
+      "contact_homepages": [
+        "https://www.nis-ele.co.jp"
+      ],
+      "contact_checked_at": "2026-09-30T16:18:02+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=217675&optNo=Mf4hI",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:217675:course:ajiXQ",
       "company": "(株)日成電機製作所",
       "course": "★先着順★ 理系向け1day【モノづくり】配線盤・工作機械業界を知ろう！電気回路・機械設計体験★",
@@ -66727,53 +66774,6 @@
       ],
       "contact_checked_at": "2026-09-30T03:20:36+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=217675&optNo=ajiXQ",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:217675:course:Mf4hI",
-      "company": "(株)日成電機製作所",
-      "course": "★先着順★ 文系向け★1day【モノづくり】配線盤・工作機械業界を知ろう！営業見積体験★",
-      "industries": [
-        "半導体・電子・電気機器",
-        "精密機器",
-        "金属製品",
-        "機械"
-      ],
-      "locations": [
-        "愛知県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 5月上旬～9月下旬 毎月開催予定 ・実施日数 1日 ・詳細 １日(ワンデー仕事体験)",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "limit",
-      "transport_amount": 10000,
-      "transport_available": true,
-      "transport_original": "支給あり 交通費支給/上限1万円",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": true,
-      "lodging_text": "支給あり 宿泊費支給/上限1万円",
-      "eligibility_text": "どなたでもお気軽にご参加くださいませ♪",
-      "first_seen": "2026-07-18T21:55:41+09:00",
-      "last_checked": "2026-09-23T04:55:49+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "adopt@nis-ele.co.jp"
-      ],
-      "contact_phones": [
-        "0569-49-0200"
-      ],
-      "contact_homepages": [
-        "https://www.nis-ele.co.jp"
-      ],
-      "contact_checked_at": "2026-09-23T04:55:49+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=217675&optNo=Mf4hI",
       "implementation_types": [
         "仕事体験"
       ],
@@ -68151,6 +68151,52 @@
       "kanto_only": false
     },
     {
+      "id": "corp:264631:course:9TFtX",
+      "company": "(株)村井工業",
+      "course": "シートメタルでモノづくり。1day仕事体験。",
+      "industries": [
+        "金属製品",
+        "機械",
+        "半導体・電子・電気機器"
+      ],
+      "locations": [
+        "富山県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 4月上旬～2月下旬 月2回程度開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 公共交通機関のみ、交通費支給。（領収書にて実費精算）",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "ものづくりに興味がある方、製作してみたい方。",
+      "first_seen": "2026-07-18T23:33:15+09:00",
+      "last_checked": "2026-09-30T16:15:47+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "yk-murai@murai-craft.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "https://saiyou.murai-craft.co.jp/",
+        "https://x.com/murai_CRAFT",
+        "https://www.youtube.com/watch?v=v9yjAX8ZwzA&t=1s"
+      ],
+      "contact_checked_at": "2026-09-30T16:15:47+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264631&optNo=9TFtX",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:264631:course:o8EV1",
       "company": "(株)村井工業",
       "course": "【5日間の実践型】設計・製図・製作まで体験する精密板金インターン。",
@@ -68242,52 +68288,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264631&optNo=tvWCU",
       "implementation_types": [
         "インターンシップ"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:264631:course:9TFtX",
-      "company": "(株)村井工業",
-      "course": "シートメタルでモノづくり。1day仕事体験。",
-      "industries": [
-        "金属製品",
-        "機械",
-        "半導体・電子・電気機器"
-      ],
-      "locations": [
-        "富山県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 4月上旬～9月下旬 月2回程度開催予定 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 公共交通機関のみ、交通費支給。（領収書にて実費精算）",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "ものづくりに興味がある方、製作してみたい方。",
-      "first_seen": "2026-07-18T23:33:15+09:00",
-      "last_checked": "2026-09-23T04:51:15+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "yk-murai@murai-craft.co.jp"
-      ],
-      "contact_phones": [],
-      "contact_homepages": [
-        "https://saiyou.murai-craft.co.jp/",
-        "https://x.com/murai_CRAFT",
-        "https://www.youtube.com/watch?v=v9yjAX8ZwzA&t=1s"
-      ],
-      "contact_checked_at": "2026-09-23T04:51:15+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264631&optNo=9TFtX",
-      "implementation_types": [
-        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -74473,7 +74473,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "文理不問・学部学科不問です。 専攻している内容と違う…という不安がある方もぜひご参加ください！",
       "first_seen": "2026-07-18T21:31:41+09:00",
-      "last_checked": "2026-09-29T07:24:10+09:00",
+      "last_checked": "2026-09-30T16:17:51+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -74486,7 +74486,7 @@
       "contact_homepages": [
         "https://www.tsuduki-ind.com/"
       ],
-      "contact_checked_at": "2026-09-29T07:24:10+09:00",
+      "contact_checked_at": "2026-09-30T16:17:51+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=273135&optNo=AQ2b3",
       "implementation_types": [
         "インターンシップ"
@@ -74554,8 +74554,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 6月～9月で月1回以上開催 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "deadline_text": "2027年2月10日",
+      "deadline": "2027-02-10",
       "transport_type": "fixed",
       "transport_amount": 2000,
       "transport_available": true,
@@ -74565,7 +74565,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T19:15:55+09:00",
-      "last_checked": "2026-09-26T14:12:47+09:00",
+      "last_checked": "2026-09-30T16:18:05+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -74576,7 +74576,7 @@
       "contact_homepages": [
         "http://www.suzukikagaku.co.jp/"
       ],
-      "contact_checked_at": "2026-09-26T14:12:47+09:00",
+      "contact_checked_at": "2026-09-30T16:18:05+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=205515&optNo=dyy-0",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -77897,6 +77897,55 @@
       "kanto_only": false
     },
     {
+      "id": "corp:218120:course:WVUj0",
+      "company": "NOVAホールディングス(株)",
+      "course": "【対面開催！！】3days",
+      "industries": [
+        "教育",
+        "サービス（その他）",
+        "幼稚園・保育園"
+      ],
+      "locations": [
+        "愛知県",
+        "大阪府"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 7月・8月・9月にて各月数回実施予定 ・実施日数 2～4日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり ご参加された学生の方は、交通費として1000円お渡し致します。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "＊四年制大学の方 ＊短期大学の方",
+      "first_seen": "2026-07-18T21:57:49+09:00",
+      "last_checked": "2026-09-30T16:18:10+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "jinji@nova.co.jp"
+      ],
+      "contact_phones": [
+        "03-4405-7075"
+      ],
+      "contact_homepages": [
+        "https://www.nova.co.jp/",
+        "https://www.gaba.co.jp/",
+        "https://nova-holdings.jp/"
+      ],
+      "contact_checked_at": "2026-09-30T16:18:10+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=218120&optNo=WVUj0",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:218120:course:E0dOs",
       "company": "NOVAホールディングス(株)",
       "course": "【対面・オンラインで開催!!】1day",
@@ -77940,55 +77989,6 @@
       ],
       "contact_checked_at": "2026-09-30T03:21:01+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=218120&optNo=E0dOs",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:218120:course:WVUj0",
-      "company": "NOVAホールディングス(株)",
-      "course": "【対面開催！！】3days",
-      "industries": [
-        "教育",
-        "サービス（その他）",
-        "幼稚園・保育園"
-      ],
-      "locations": [
-        "愛知県",
-        "大阪府"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 7月・8月・9月にて各月数回実施予定 ・実施日数 2～4日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "fixed",
-      "transport_amount": 1000,
-      "transport_available": true,
-      "transport_original": "支給あり ご参加された学生の方は、交通費として1000円お渡し致します。",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "＊四年制大学の方 ＊短期大学の方",
-      "first_seen": "2026-07-18T21:57:49+09:00",
-      "last_checked": "2026-09-23T04:56:38+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "jinji@nova.co.jp"
-      ],
-      "contact_phones": [
-        "03-4405-7075"
-      ],
-      "contact_homepages": [
-        "https://www.nova.co.jp/",
-        "https://www.gaba.co.jp/",
-        "https://nova-holdings.jp/"
-      ],
-      "contact_checked_at": "2026-09-23T04:56:38+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=218120&optNo=WVUj0",
       "implementation_types": [
         "仕事体験"
       ],
@@ -78303,7 +78303,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "全学年・全学部・全学科対象です！",
       "first_seen": "2026-07-18T21:41:41+09:00",
-      "last_checked": "2026-09-23T04:50:50+09:00",
+      "last_checked": "2026-09-30T16:15:31+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -78316,7 +78316,7 @@
       "contact_homepages": [
         "https://www.nplc.co.jp/"
       ],
-      "contact_checked_at": "2026-09-23T04:50:50+09:00",
+      "contact_checked_at": "2026-09-30T16:15:31+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=212045&optNo=ECnZm",
       "implementation_types": [
         "仕事体験"
@@ -79044,7 +79044,7 @@
       "lodging_text": "支給なし ※遠方の方は、別途相談可",
       "eligibility_text": "2028年3月卒業予定の方",
       "first_seen": "2026-07-18T21:47:16+09:00",
-      "last_checked": "2026-09-29T09:27:46+09:00",
+      "last_checked": "2026-09-30T16:18:50+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -79053,7 +79053,7 @@
         "0767-38-8010"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-29T09:27:46+09:00",
+      "contact_checked_at": "2026-09-30T16:18:50+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=295578&optNo=Z8hrz",
       "implementation_types": [
         "インターンシップ"
@@ -82277,7 +82277,7 @@
     {
       "id": "corp:264780:course:gzNU1",
       "company": "アーリアグループ [グループ募集]",
-      "course": "【選考無し/先着順】神戸本社開催！アーリアグループの【らしさ】を考える！発見ワーク！",
+      "course": "【選考無し！神戸】社員交流からアーリアを知る半日体験コース",
       "industries": [
         "専門コンサルティング",
         "サービス（その他）",
@@ -82289,9 +82289,9 @@
         "兵庫県"
       ],
       "event_dates": [],
-      "schedule_text": "・開催時期 ６月から月３回開催！９月まで実施予定 ・実施日数 1日 ・詳細 13：00～17：00の開催になります。",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "schedule_text": "・開催時期 ６月から月３回開催！９月まで実施予定！秋以降も実施！１０,１１月も実施！ ・実施日数 1日 ・詳細 13：00～17：00の開催になります。",
+      "deadline_text": "2026年11月30日",
+      "deadline": "2026-11-30",
       "transport_type": "unknown",
       "transport_amount": null,
       "transport_available": true,
@@ -82301,7 +82301,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "在学中の方",
       "first_seen": "2026-07-18T23:33:54+09:00",
-      "last_checked": "2026-09-23T04:52:05+09:00",
+      "last_checked": "2026-09-30T16:16:30+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -82314,7 +82314,7 @@
         "https://www.instagram.com/aria_1949/",
         "https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%82%A2%E3%83%BC%E3%83%AA%E3%82%A2-p5y"
       ],
-      "contact_checked_at": "2026-09-23T04:52:05+09:00",
+      "contact_checked_at": "2026-09-30T16:16:30+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264780&optNo=gzNU1",
       "implementation_types": [
         "仕事体験"
@@ -84645,9 +84645,9 @@
         "愛知県"
       ],
       "event_dates": [],
-      "schedule_text": "・開催時期 7月～9月に月1回以上開催 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "schedule_text": "・開催時期 12月～2月に月1回以上開催 ・実施日数 1日",
+      "deadline_text": "2026年10月31日",
+      "deadline": "2026-10-31",
       "transport_type": "fixed",
       "transport_amount": 1000,
       "transport_available": true,
@@ -84657,7 +84657,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "参加条件はありません。 どなたでもお気軽にご参加ください！",
       "first_seen": "2026-07-18T18:31:09+09:00",
-      "last_checked": "2026-09-26T08:31:29+09:00",
+      "last_checked": "2026-09-30T16:15:00+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -84672,7 +84672,7 @@
         "https://gctv.co.jp/company/",
         "https://youtu.be/aYJFGL2Ys_c"
       ],
-      "contact_checked_at": "2026-09-26T08:31:29+09:00",
+      "contact_checked_at": "2026-09-30T16:15:00+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=104821&optNo=6sKsa",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -85109,6 +85109,54 @@
       "kanto_only": false
     },
     {
+      "id": "corp:204039:course:C7bM4",
+      "company": "コマツ岩手(株)",
+      "course": "【WEB開催４５分】コマツ岩手の建設機械営業について知る！",
+      "industries": [
+        "商社（機械・プラント・環境）",
+        "リース・レンタル",
+        "検査・整備・メンテナンス"
+      ],
+      "locations": [
+        "岩手県",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月～9月 開催予定 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 対面開催の場合",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T19:10:27+09:00",
+      "last_checked": "2026-09-30T16:15:42+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou@komatsu-iwate.jp"
+      ],
+      "contact_phones": [
+        "019-638-1101"
+      ],
+      "contact_homepages": [
+        "https://komatsu-iwate.jp/",
+        "https://www.instagram.com/komatsu_iwate/"
+      ],
+      "contact_checked_at": "2026-09-30T16:15:42+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=204039&optNo=C7bM4",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:204039:course:PAOcl",
       "company": "コマツ岩手(株)",
       "course": "【WEB開催２時間コース】コマツ岩手の建設機械営業を知る＆先輩社員との座談会",
@@ -85199,54 +85247,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=204039&optNo=x89OY",
       "implementation_types": [
         "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:204039:course:C7bM4",
-      "company": "コマツ岩手(株)",
-      "course": "【WEB開催４５分】コマツ岩手の建設機械営業について知る！",
-      "industries": [
-        "商社（機械・プラント・環境）",
-        "リース・レンタル",
-        "検査・整備・メンテナンス"
-      ],
-      "locations": [
-        "岩手県",
-        "WEB"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月～9月 開催予定 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 対面開催の場合",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T19:10:27+09:00",
-      "last_checked": "2026-09-26T08:33:27+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "saiyou@komatsu-iwate.jp"
-      ],
-      "contact_phones": [
-        "019-638-1101"
-      ],
-      "contact_homepages": [
-        "https://komatsu-iwate.jp/",
-        "https://www.instagram.com/komatsu_iwate/"
-      ],
-      "contact_checked_at": "2026-09-26T08:33:27+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=204039&optNo=C7bM4",
-      "implementation_types": [
-        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -86117,6 +86117,96 @@
       "kanto_only": false
     },
     {
+      "id": "corp:206938:course:XbfZI",
+      "company": "ジェイ商事(株)",
+      "course": "【業界研究×事業紹介】＜遊技体験型オープン・カンパニー！＞",
+      "industries": [
+        "アミューズメント"
+      ],
+      "locations": [
+        "宮城県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 １ＤＡＹ開催予定！6月～9月まで広く開催しております！（日程は随時更新予定♪） ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし 県外からご参加の方には 往復金額の＜5000円まで＞を支給",
+      "eligibility_text": "専門・短大・高専・4年制大学または大学院在学（※学部・学科不問）",
+      "first_seen": "2026-07-18T19:21:47+09:00",
+      "last_checked": "2026-09-30T16:18:38+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou-jinji@ju-group-recruit.jp"
+      ],
+      "contact_phones": [
+        "022-236-3561",
+        "070-1345-7625"
+      ],
+      "contact_homepages": [
+        "https://ju-group.jp/"
+      ],
+      "contact_checked_at": "2026-09-30T16:18:38+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=206938&optNo=XbfZI",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:206938:course:UhkfQ",
+      "company": "ジェイ商事(株)",
+      "course": "【体験型オープン・カンパニー】マーケティングゲーム体験コース",
+      "industries": [
+        "アミューズメント"
+      ],
+      "locations": [
+        "宮城県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 １ＤＡＹ開催予定！6月～9月まで広く開催しております！（日程は随時更新予定♪） ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし 県外からご参加の方には 往復金額の＜5000円まで＞を支給",
+      "eligibility_text": "専門・短大・高専・4年制大学または大学院在学（※学部・学科不問）",
+      "first_seen": "2026-07-18T19:21:36+09:00",
+      "last_checked": "2026-09-30T16:16:33+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou-jinji@ju-group-recruit.jp"
+      ],
+      "contact_phones": [
+        "022-236-3561",
+        "070-1345-7625"
+      ],
+      "contact_homepages": [
+        "https://ju-group.jp/"
+      ],
+      "contact_checked_at": "2026-09-30T16:16:33+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=206938&optNo=UhkfQ",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:206938:course:k1DVQ",
       "company": "ジェイ商事(株)",
       "course": "【体験型オープン・カンパニー】ペルソナ設計・サービスコンセプト企画体験コース",
@@ -86155,96 +86245,6 @@
       ],
       "contact_checked_at": "2026-09-30T01:12:04+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=206938&optNo=k1DVQ",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:206938:course:XbfZI",
-      "company": "ジェイ商事(株)",
-      "course": "【業界研究×事業紹介】＜遊技体験型オープン・カンパニー！＞",
-      "industries": [
-        "アミューズメント"
-      ],
-      "locations": [
-        "宮城県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 １ＤＡＹ開催予定！6月～9月まで広く開催しております！（日程は随時更新予定♪） ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし 県外からご参加の方には 往復金額の＜5000円まで＞を支給",
-      "eligibility_text": "専門・短大・高専・4年制大学または大学院在学（※学部・学科不問）",
-      "first_seen": "2026-07-18T19:21:47+09:00",
-      "last_checked": "2026-09-26T14:13:53+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "saiyou-jinji@ju-group-recruit.jp"
-      ],
-      "contact_phones": [
-        "022-236-3561",
-        "070-1345-7625"
-      ],
-      "contact_homepages": [
-        "https://ju-group.jp/"
-      ],
-      "contact_checked_at": "2026-09-26T14:13:53+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=206938&optNo=XbfZI",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:206938:course:UhkfQ",
-      "company": "ジェイ商事(株)",
-      "course": "【体験型オープン・カンパニー】マーケティングゲーム体験コース",
-      "industries": [
-        "アミューズメント"
-      ],
-      "locations": [
-        "宮城県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 １ＤＡＹ開催予定！6月～9月まで広く開催しております！（日程は随時更新予定♪） ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし 県外からご参加の方には 往復金額の＜5000円まで＞を支給",
-      "eligibility_text": "専門・短大・高専・4年制大学または大学院在学（※学部・学科不問）",
-      "first_seen": "2026-07-18T19:21:36+09:00",
-      "last_checked": "2026-09-26T14:07:40+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "saiyou-jinji@ju-group-recruit.jp"
-      ],
-      "contact_phones": [
-        "022-236-3561",
-        "070-1345-7625"
-      ],
-      "contact_homepages": [
-        "https://ju-group.jp/"
-      ],
-      "contact_checked_at": "2026-09-26T14:07:40+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=206938&optNo=UhkfQ",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -87396,8 +87396,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 2026年5月～9月 月に2回程度 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
       "transport_type": "conditional",
       "transport_amount": null,
       "transport_available": true,
@@ -87407,7 +87407,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "無し",
       "first_seen": "2026-07-18T19:14:14+09:00",
-      "last_checked": "2026-09-26T08:34:59+09:00",
+      "last_checked": "2026-09-30T16:16:07+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -87420,7 +87420,7 @@
       "contact_homepages": [
         "https://www.diamond-eng.co.jp/"
       ],
-      "contact_checked_at": "2026-09-26T08:34:59+09:00",
+      "contact_checked_at": "2026-09-30T16:16:07+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=205327&optNo=WtPFl",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -88939,6 +88939,52 @@
       "kanto_only": false
     },
     {
+      "id": "corp:213218:course:GnhOU",
+      "company": "トーカロイグループ 【(株)トーカロイ・(株)トーカロイMTG・(株)トーカロイTGK・(株)トーカロイホールディングス】 [グループ募集]",
+      "course": "【愛知開催／1day】世界に1つだけの『定規』を作りませんか。~交通費支給～※注意事項有り",
+      "industries": [
+        "金属製品",
+        "自動車・自動車部品",
+        "精密機器",
+        "化学",
+        "機械"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 7月～9月にて開催予定 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unlimited",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 実費を支給します。※他県などの遠方からお越しの方は、別途相談させていただきます。",
+      "amount_analysis_status": "unlimited",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "どなたでも参加可能です。 モノづくりに興味がある方",
+      "first_seen": "2026-07-18T21:45:13+09:00",
+      "last_checked": "2026-09-30T16:16:47+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo-a@tokaloy.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "https://www.tokaloy.co.jp/wp-content/themes/tokaloy/tokaloy/book/index.html#page=1"
+      ],
+      "contact_checked_at": "2026-09-30T16:16:47+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213218&optNo=GnhOU",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:213218:course:y0Zhd",
       "company": "トーカロイグループ 【(株)トーカロイ・(株)トーカロイMTG・(株)トーカロイTGK・(株)トーカロイホールディングス】 [グループ募集]",
       "course": "【岡山開催／1day】世界に1つだけの『定規』を作りませんか。~交通費支給～※注意事項有り",
@@ -88978,52 +89024,6 @@
       ],
       "contact_checked_at": "2026-09-26T14:07:45+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213218&optNo=y0Zhd",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:213218:course:GnhOU",
-      "company": "トーカロイグループ 【(株)トーカロイ・(株)トーカロイMTG・(株)トーカロイTGK・(株)トーカロイホールディングス】 [グループ募集]",
-      "course": "【愛知開催／1day】世界に1つだけの『定規』を作りませんか。~交通費支給～※注意事項有り",
-      "industries": [
-        "金属製品",
-        "自動車・自動車部品",
-        "精密機器",
-        "化学",
-        "機械"
-      ],
-      "locations": [
-        "愛知県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 7月～9月にて開催予定 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unlimited",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 実費を支給します。※他県などの遠方からお越しの方は、別途相談させていただきます。",
-      "amount_analysis_status": "unlimited",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "どなたでも参加可能です。 モノづくりに興味がある方",
-      "first_seen": "2026-07-18T21:45:13+09:00",
-      "last_checked": "2026-09-23T04:52:30+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "saiyo-a@tokaloy.co.jp"
-      ],
-      "contact_phones": [],
-      "contact_homepages": [
-        "https://www.tokaloy.co.jp/wp-content/themes/tokaloy/tokaloy/book/index.html#page=1"
-      ],
-      "contact_checked_at": "2026-09-23T04:52:30+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213218&optNo=GnhOU",
       "implementation_types": [
         "仕事体験"
       ],
@@ -93831,7 +93831,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T19:30:26+09:00",
-      "last_checked": "2026-09-26T14:09:19+09:00",
+      "last_checked": "2026-09-30T16:16:58+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -93844,7 +93844,7 @@
       "contact_homepages": [
         "https://misakura.co/"
       ],
-      "contact_checked_at": "2026-09-26T14:09:19+09:00",
+      "contact_checked_at": "2026-09-30T16:16:58+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=210875&optNo=SY2Mf",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -94776,7 +94776,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "九州圏外にお住まいの方はまずはオープン・カンパニーへのご参加をお願いいたします。",
       "first_seen": "2026-07-18T21:43:42+09:00",
-      "last_checked": "2026-09-23T04:51:57+09:00",
+      "last_checked": "2026-09-30T16:16:21+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -94787,7 +94787,7 @@
         "092-475-6551"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-23T04:51:57+09:00",
+      "contact_checked_at": "2026-09-30T16:16:21+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=212740&optNo=tsXDp",
       "implementation_types": [
         "仕事体験"
@@ -97558,9 +97558,9 @@
         "WEB"
       ],
       "event_dates": [],
-      "schedule_text": "・開催時期 5月上旬から９月下旬にて月に1回程度開催予定 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "schedule_text": "・開催時期 月に1回程度開催予定 ・実施日数 1日",
+      "deadline_text": "2026年12月31日",
+      "deadline": "2026-12-31",
       "transport_type": "fixed",
       "transport_amount": 1000,
       "transport_available": true,
@@ -97570,7 +97570,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "全学部全学科対象",
       "first_seen": "2026-07-18T18:19:46+09:00",
-      "last_checked": "2026-09-26T08:29:40+09:00",
+      "last_checked": "2026-09-30T16:14:26+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -97583,7 +97583,7 @@
       "contact_homepages": [
         "https://www.goshu.co.jp/"
       ],
-      "contact_checked_at": "2026-09-26T08:29:40+09:00",
+      "contact_checked_at": "2026-09-30T16:14:26+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=100770&optNo=1e5Wh",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -97688,6 +97688,55 @@
       "kanto_only": false
     },
     {
+      "id": "corp:102744:course:LdmqV",
+      "company": "井上建設(株)",
+      "course": "【1日】建設業と会社を知ろう！(説明会/現場見学)",
+      "industries": [
+        "建設",
+        "住宅（リフォーム）",
+        "設備工事・設備設計",
+        "建築設計",
+        "不動産"
+      ],
+      "locations": [
+        "徳島県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 5月中旬～9月下旬 希望日程に合せ月1回以上随時開催します。 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 領収書で清算します。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T18:24:32+09:00",
+      "last_checked": "2026-09-30T16:14:43+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "jinji@inoue-naruto.jp"
+      ],
+      "contact_phones": [
+        "088-686-5145",
+        "088-686-5596"
+      ],
+      "contact_homepages": [
+        "https://inoue-naruto.jp/"
+      ],
+      "contact_checked_at": "2026-09-30T16:14:43+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=102744&optNo=LdmqV",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:102744:course:B6zEy",
       "company": "井上建設(株)",
       "course": "【3days仕事体験】施工管理が自分に合うかを確かめる3日間｜※交通費・ランチ支給",
@@ -97781,55 +97830,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=102744&optNo=tOC6d",
       "implementation_types": [
         "インターンシップ"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:102744:course:LdmqV",
-      "company": "井上建設(株)",
-      "course": "【1日】建設業と会社を知ろう！(説明会/現場見学)",
-      "industries": [
-        "建設",
-        "住宅（リフォーム）",
-        "設備工事・設備設計",
-        "建築設計",
-        "不動産"
-      ],
-      "locations": [
-        "徳島県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 5月中旬～9月下旬 希望日程に合せ月1回以上随時開催します。 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unknown",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 領収書で清算します。",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T18:24:32+09:00",
-      "last_checked": "2026-09-26T08:30:39+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "jinji@inoue-naruto.jp"
-      ],
-      "contact_phones": [
-        "088-686-5145",
-        "088-686-5596"
-      ],
-      "contact_homepages": [
-        "https://inoue-naruto.jp/"
-      ],
-      "contact_checked_at": "2026-09-26T08:30:39+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=102744&optNo=LdmqV",
-      "implementation_types": [
-        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -98898,6 +98898,49 @@
       "kanto_only": false
     },
     {
+      "id": "corp:107606:course:v0XnX",
+      "company": "伊米ヶ崎建設(株)",
+      "course": "業界と会社を知ろう！企業研究コース！",
+      "industries": [
+        "建設",
+        "建築設計"
+      ],
+      "locations": [
+        "新潟県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月初旬から9月下旬 各月3回程度開催 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "limit",
+      "transport_amount": 40000,
+      "transport_available": true,
+      "transport_original": "支給あり 4万円まで支給",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "素直な気持ちで取り組み学びを吸収できる方。",
+      "first_seen": "2026-07-18T18:35:12+09:00",
+      "last_checked": "2026-09-30T16:15:08+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "chika-s@imegasaki.co.jp"
+      ],
+      "contact_phones": [
+        "080-3698-0894"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-09-30T16:15:08+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=107606&optNo=v0XnX",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:107606:course:bw7dy",
       "company": "伊米ヶ崎建設(株)",
       "course": "建設業がわかる3DAYSプログラム",
@@ -98939,49 +98982,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=107606&optNo=bw7dy",
       "implementation_types": [
         "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:107606:course:v0XnX",
-      "company": "伊米ヶ崎建設(株)",
-      "course": "業界と会社を知ろう！企業研究コース！",
-      "industries": [
-        "建設",
-        "建築設計"
-      ],
-      "locations": [
-        "新潟県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月初旬から9月下旬 各月3回程度開催 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "limit",
-      "transport_amount": 40000,
-      "transport_available": true,
-      "transport_original": "支給あり 4万円まで支給",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "素直な気持ちで取り組み学びを吸収できる方。",
-      "first_seen": "2026-07-18T18:35:12+09:00",
-      "last_checked": "2026-09-26T08:31:55+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "chika-s@imegasaki.co.jp"
-      ],
-      "contact_phones": [
-        "080-3698-0894"
-      ],
-      "contact_homepages": [],
-      "contact_checked_at": "2026-09-26T08:31:55+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=107606&optNo=v0XnX",
-      "implementation_types": [
-        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -99257,6 +99257,49 @@
       "kanto_only": false
     },
     {
+      "id": "corp:264854:course:VC0vH",
+      "company": "伸和興業(株)",
+      "course": "【1DAY／3DAYS】伸和興業の施工管理仕事体験コース",
+      "industries": [
+        "建設",
+        "設備工事・設備設計",
+        "建築設計",
+        "建設コンサルタント"
+      ],
+      "locations": [
+        "宮城県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 ６月、７月、８月、９月 ・実施日数 1日 、 2～4日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "fixed",
+      "transport_amount": 2000,
+      "transport_available": true,
+      "transport_original": "支給あり １日２，０００円",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "特になし",
+      "first_seen": "2026-07-18T23:35:09+09:00",
+      "last_checked": "2026-09-30T16:16:38+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "022-797-5848"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-09-30T16:16:38+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264854&optNo=VC0vH",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:264854:course:zByXo",
       "company": "伸和興業(株)",
       "course": "【体験】伸和興業の仕事が分かる1DAYプログラム",
@@ -99343,49 +99386,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264854&optNo=YassB",
       "implementation_types": [
         "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:264854:course:VC0vH",
-      "company": "伸和興業(株)",
-      "course": "【1DAY／3DAYS】伸和興業の施工管理仕事体験コース",
-      "industries": [
-        "建設",
-        "設備工事・設備設計",
-        "建築設計",
-        "建設コンサルタント"
-      ],
-      "locations": [
-        "宮城県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 ６月、７月、８月、９月 ・実施日数 1日 、 2～4日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "fixed",
-      "transport_amount": 2000,
-      "transport_available": true,
-      "transport_original": "支給あり １日２，０００円",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "特になし",
-      "first_seen": "2026-07-18T23:35:09+09:00",
-      "last_checked": "2026-09-23T04:52:22+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [],
-      "contact_phones": [
-        "022-797-5848"
-      ],
-      "contact_homepages": [],
-      "contact_checked_at": "2026-09-23T04:52:22+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264854&optNo=VC0vH",
-      "implementation_types": [
-        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -99980,8 +99980,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 毎月開催（4月～9月） ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "deadline_text": "2027年2月14日",
+      "deadline": "2027-02-14",
       "transport_type": "conditional",
       "transport_amount": null,
       "transport_available": true,
@@ -99991,7 +99991,7 @@
       "lodging_text": "支給あり 県外の方については別途ご相談ください。",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T19:55:15+09:00",
-      "last_checked": "2026-09-26T14:13:28+09:00",
+      "last_checked": "2026-09-30T16:18:22+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -100004,7 +100004,7 @@
       "contact_homepages": [
         "https://smgp.co.jp"
       ],
-      "contact_checked_at": "2026-09-26T14:13:28+09:00",
+      "contact_checked_at": "2026-09-30T16:18:22+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=223538&optNo=y0R3a",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -100942,9 +100942,9 @@
         "WEB"
       ],
       "event_dates": [],
-      "schedule_text": "・開催時期 2026年6月～2026年9月の各月で複数回開催予定 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "schedule_text": "・開催時期 2026年10月～2027年2月の各月で複数回開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
       "transport_type": "unknown",
       "transport_amount": null,
       "transport_available": true,
@@ -100954,7 +100954,7 @@
       "lodging_text": "支給あり",
       "eligibility_text": "全学部・全学科",
       "first_seen": "2026-07-18T19:36:45+09:00",
-      "last_checked": "2026-09-26T14:10:25+09:00",
+      "last_checked": "2026-09-30T16:17:15+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -100965,7 +100965,7 @@
       "contact_homepages": [
         "https://kyoritukogyo.co.jp"
       ],
-      "contact_checked_at": "2026-09-26T14:10:25+09:00",
+      "contact_checked_at": "2026-09-30T16:17:15+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213669&optNo=gpx03",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -100985,9 +100985,9 @@
         "山口県"
       ],
       "event_dates": [],
-      "schedule_text": "・開催時期 2026年6月～2026年9月の各月で複数回開催予定 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "schedule_text": "・開催時期 2026年10月～2027年2月の各月で複数回開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
       "transport_type": "unknown",
       "transport_amount": null,
       "transport_available": true,
@@ -100997,7 +100997,7 @@
       "lodging_text": "支給あり",
       "eligibility_text": "全学科・全学科",
       "first_seen": "2026-07-18T19:36:34+09:00",
-      "last_checked": "2026-09-26T14:10:17+09:00",
+      "last_checked": "2026-09-30T16:17:06+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -101008,7 +101008,7 @@
       "contact_homepages": [
         "https://kyoritukogyo.co.jp"
       ],
-      "contact_checked_at": "2026-09-26T14:10:17+09:00",
+      "contact_checked_at": "2026-09-30T16:17:06+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213669&optNo=J7tvq",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -102698,8 +102698,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 2026年4月、5月、6月、7月、8月、9月毎月開催。 ・実施日数 1日 ・詳細 毎月火曜日、水曜日、木曜日開催。曜日はいずれかからご選択ください。",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "deadline_text": "2027年2月10日",
+      "deadline": "2027-02-10",
       "transport_type": "limit",
       "transport_amount": 2000,
       "transport_available": true,
@@ -102709,7 +102709,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "大学生・専門学校生",
       "first_seen": "2026-07-18T23:32:10+09:00",
-      "last_checked": "2026-09-23T04:50:01+09:00",
+      "last_checked": "2026-09-30T16:15:14+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -102720,7 +102720,7 @@
         "0566-62-5251"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-23T04:50:01+09:00",
+      "contact_checked_at": "2026-09-30T16:15:14+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=263608&optNo=UTbw3",
       "implementation_types": [
         "仕事体験"
@@ -104745,6 +104745,104 @@
       "kanto_only": false
     },
     {
+      "id": "corp:213828:course:AtJBI",
+      "company": "堀田建設(株)",
+      "course": "【半日コース】入社したら最初にやる仕事って？土木現場監督の1年目を体験【文系歓迎・交通費全額支給】",
+      "industries": [
+        "建設",
+        "住宅",
+        "住宅（リフォーム）",
+        "空間デザイン",
+        "建築設計"
+      ],
+      "locations": [
+        "三重県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月～9月 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unlimited",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費は全額支給します。 自家用車でお越しの方にも支給しますので、安心してご参加ください。",
+      "amount_analysis_status": "unlimited",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "文理不問！建設業に興味がある方なら、どなたでも参加できます。",
+      "first_seen": "2026-07-18T21:48:12+09:00",
+      "last_checked": "2026-09-30T16:17:37+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "recruit@hottacon.co.jp"
+      ],
+      "contact_phones": [
+        "0595-82-3311"
+      ],
+      "contact_homepages": [
+        "https://www.hottacon.co.jp/",
+        "https://youtu.be/h4JpffwBwoA"
+      ],
+      "contact_checked_at": "2026-09-30T16:17:37+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213828&optNo=AtJBI",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:213828:course:4VmTs",
+      "company": "堀田建設(株)",
+      "course": "【半日コース】入社したら最初にやる仕事って？建築現場監督の1年目を体験【文系歓迎・交通費全額支給】",
+      "industries": [
+        "建設",
+        "住宅",
+        "住宅（リフォーム）",
+        "空間デザイン",
+        "建築設計"
+      ],
+      "locations": [
+        "三重県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月～9月 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "unlimited",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費は全額支給します。 自家用車でお越しの方にも支給しますので、安心してご参加ください。",
+      "amount_analysis_status": "unlimited",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "文理不問！建設業に興味がある方なら、どなたでも参加できます。",
+      "first_seen": "2026-07-18T21:47:55+09:00",
+      "last_checked": "2026-09-30T16:17:28+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "recruit@hottacon.co.jp"
+      ],
+      "contact_phones": [
+        "0595-82-3311"
+      ],
+      "contact_homepages": [
+        "https://www.hottacon.co.jp/",
+        "https://youtu.be/h4JpffwBwoA"
+      ],
+      "contact_checked_at": "2026-09-30T16:17:28+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213828&optNo=4VmTs",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:204802:course:86fRf",
       "company": "堀田建設(株)",
       "course": "“堀田の建築、土木”を学ぶ1day施工管理仕事体験",
@@ -104780,104 +104878,6 @@
       "contact_homepages": [],
       "contact_checked_at": "2026-09-30T14:51:12+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=204802&optNo=86fRf",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:213828:course:AtJBI",
-      "company": "堀田建設(株)",
-      "course": "【半日コース】入社したら最初にやる仕事って？土木現場監督の1年目を体験【文系歓迎・交通費全額支給】",
-      "industries": [
-        "建設",
-        "住宅",
-        "住宅（リフォーム）",
-        "空間デザイン",
-        "建築設計"
-      ],
-      "locations": [
-        "三重県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月～9月 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unlimited",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 交通費は全額支給します。 自家用車でお越しの方にも支給しますので、安心してご参加ください。",
-      "amount_analysis_status": "unlimited",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "文理不問！建設業に興味がある方なら、どなたでも参加できます。",
-      "first_seen": "2026-07-18T21:48:12+09:00",
-      "last_checked": "2026-09-23T04:53:53+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "recruit@hottacon.co.jp"
-      ],
-      "contact_phones": [
-        "0595-82-3311"
-      ],
-      "contact_homepages": [
-        "https://www.hottacon.co.jp/",
-        "https://youtu.be/h4JpffwBwoA"
-      ],
-      "contact_checked_at": "2026-09-23T04:53:53+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213828&optNo=AtJBI",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:213828:course:4VmTs",
-      "company": "堀田建設(株)",
-      "course": "【半日コース】入社したら最初にやる仕事って？建築現場監督の1年目を体験【文系歓迎・交通費全額支給】",
-      "industries": [
-        "建設",
-        "住宅",
-        "住宅（リフォーム）",
-        "空間デザイン",
-        "建築設計"
-      ],
-      "locations": [
-        "三重県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月～9月 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "unlimited",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり 交通費は全額支給します。 自家用車でお越しの方にも支給しますので、安心してご参加ください。",
-      "amount_analysis_status": "unlimited",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "文理不問！建設業に興味がある方なら、どなたでも参加できます。",
-      "first_seen": "2026-07-18T21:47:55+09:00",
-      "last_checked": "2026-09-23T04:53:45+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "recruit@hottacon.co.jp"
-      ],
-      "contact_phones": [
-        "0595-82-3311"
-      ],
-      "contact_homepages": [
-        "https://www.hottacon.co.jp/",
-        "https://youtu.be/h4JpffwBwoA"
-      ],
-      "contact_checked_at": "2026-09-23T04:53:45+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=213828&optNo=4VmTs",
       "implementation_types": [
         "仕事体験"
       ],
@@ -106174,53 +106174,6 @@
       "kanto_only": false
     },
     {
-      "id": "corp:112804:course:oD6aH",
-      "company": "大興建設(株)",
-      "course": "働くイメージが広がる！大興建設のオープン・カンパニー",
-      "industries": [
-        "建設",
-        "設備工事・設備設計",
-        "環境・リサイクル",
-        "建築設計",
-        "建設コンサルタント"
-      ],
-      "locations": [
-        "WEB"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月～9月に各月1回以上開催します。 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "fixed",
-      "transport_amount": 2000,
-      "transport_available": true,
-      "transport_original": "支給あり 一律2,000円",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "少しでも気になってる方ならOK！",
-      "first_seen": "2026-07-18T18:51:37+09:00",
-      "last_checked": "2026-09-26T08:30:30+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [],
-      "contact_phones": [
-        "0586-86-8120",
-        "0586-86-8121"
-      ],
-      "contact_homepages": [
-        "https://www.taiko-jp.com/"
-      ],
-      "contact_checked_at": "2026-09-26T08:30:30+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=112804&optNo=oD6aH",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
       "id": "corp:207270:course:Fml1z",
       "company": "大谷自動車(株)",
       "course": "【対面・WEB開催】接客のプロから学べる！トップ営業を体感【対面は交通費支給】",
@@ -106248,7 +106201,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "※全学部全学科対象、文系・理系は問いません。",
       "first_seen": "2026-07-18T21:24:23+09:00",
-      "last_checked": "2026-09-23T04:45:58+09:00",
+      "last_checked": "2026-09-30T16:14:32+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -106259,7 +106212,7 @@
       "contact_homepages": [
         "http://www.otani-j.co.jp/"
       ],
-      "contact_checked_at": "2026-09-23T04:45:58+09:00",
+      "contact_checked_at": "2026-09-30T16:14:32+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=207270&optNo=Fml1z",
       "implementation_types": [
         "仕事体験"
@@ -110372,7 +110325,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T19:22:21+09:00",
-      "last_checked": "2026-09-26T14:14:10+09:00",
+      "last_checked": "2026-09-30T16:18:47+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -110383,7 +110336,7 @@
       "contact_homepages": [
         "https://www.iwatanigas.co.jp/index.html"
       ],
-      "contact_checked_at": "2026-09-26T14:14:10+09:00",
+      "contact_checked_at": "2026-09-30T16:18:47+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=207047&optNo=5AKH6",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -110418,7 +110371,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "参加条件特になし",
       "first_seen": "2026-07-18T21:08:50+09:00",
-      "last_checked": "2026-09-29T07:22:55+09:00",
+      "last_checked": "2026-09-30T16:16:44+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -110433,7 +110386,7 @@
         "https://www.iwabe.co.jp",
         "https://chitajob.jp/company-data/cj0039-%e5%b2%a9%e9%83%a8%e5%bb%ba%e8%a8%ad%e6%a0%aa%e5%bc%8f%e4%bc%9a%e7%a4%be/"
       ],
-      "contact_checked_at": "2026-09-29T07:22:55+09:00",
+      "contact_checked_at": "2026-09-30T16:16:44+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=241938&optNo=DBuOz",
       "implementation_types": [
         "インターンシップ"
@@ -111743,6 +111696,54 @@
       "kanto_only": false
     },
     {
+      "id": "corp:221336:course:6m7cU",
+      "company": "御幸建設グループ【御幸建設(株)/(株)ミユキ商事/(株)ミユキサブリース】 [グループ募集]",
+      "course": "建築現場を体験コース",
+      "industries": [
+        "建設",
+        "建築設計",
+        "不動産",
+        "不動産（管理）"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月～9月(月2回程度実施) ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり お足代とし岡崎市・豊田市よりお越しの方は1,000円 岡崎市・豊田市以外の地域よりお越しの方は2,000円支給させていただきます。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学部全学科",
+      "first_seen": "2026-07-18T22:04:27+09:00",
+      "last_checked": "2026-09-30T16:18:52+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "m-asada@miyuki-kensetu.co.jp"
+      ],
+      "contact_phones": [
+        "0564-26-0080",
+        "0564-26-1234"
+      ],
+      "contact_homepages": [
+        "https://www.miyuki-kensetu.co.jp/"
+      ],
+      "contact_checked_at": "2026-09-30T16:18:52+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=221336&optNo=6m7cU",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:221336:course:rQezH",
       "company": "御幸建設グループ【御幸建設(株)/(株)ミユキ商事/(株)ミユキサブリース】 [グループ募集]",
       "course": "営業の現場を体験コース",
@@ -111832,54 +111833,6 @@
       ],
       "contact_checked_at": "2026-09-23T04:58:59+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=221336&optNo=AOiJV",
-      "implementation_types": [
-        "仕事体験"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:221336:course:6m7cU",
-      "company": "御幸建設グループ【御幸建設(株)/(株)ミユキ商事/(株)ミユキサブリース】 [グループ募集]",
-      "course": "建築現場を体験コース",
-      "industries": [
-        "建設",
-        "建築設計",
-        "不動産",
-        "不動産（管理）"
-      ],
-      "locations": [
-        "愛知県"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月～9月(月2回程度実施) ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "fixed",
-      "transport_amount": 1000,
-      "transport_available": true,
-      "transport_original": "支給あり お足代とし岡崎市・豊田市よりお越しの方は1,000円 岡崎市・豊田市以外の地域よりお越しの方は2,000円支給させていただきます。",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "支給なし",
-      "eligibility_text": "全学部全学科",
-      "first_seen": "2026-07-18T22:04:27+09:00",
-      "last_checked": "2026-09-23T04:58:43+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "m-asada@miyuki-kensetu.co.jp"
-      ],
-      "contact_phones": [
-        "0564-26-0080",
-        "0564-26-1234"
-      ],
-      "contact_homepages": [
-        "https://www.miyuki-kensetu.co.jp/"
-      ],
-      "contact_checked_at": "2026-09-23T04:58:43+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=221336&optNo=6m7cU",
       "implementation_types": [
         "仕事体験"
       ],
@@ -115539,8 +115492,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 7月上旬、7月下旬、8月上旬、8月下旬、9月上旬 ・実施日数 1日 、 2～4日 ・詳細 【プログラム】 ・文理共通：1day仕事体験(グループワーク業務体験と現場見学の2STEP制) ・理系限定：1day仕事体験、2days仕事体験",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "deadline_text": "2027年2月10日",
+      "deadline": "2027-02-10",
       "transport_type": "limit",
       "transport_amount": 5000,
       "transport_available": true,
@@ -115550,7 +115503,7 @@
       "lodging_text": "支給あり",
       "eligibility_text": "文理不問",
       "first_seen": "2026-07-18T21:42:16+09:00",
-      "last_checked": "2026-09-23T04:50:59+09:00",
+      "last_checked": "2026-09-30T16:15:39+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -115562,7 +115515,7 @@
         "03-3241-6942"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-23T04:50:59+09:00",
+      "contact_checked_at": "2026-09-30T16:15:39+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=212081&optNo=IMA32",
       "implementation_types": [
         "仕事体験"
@@ -120726,8 +120679,8 @@
       ],
       "event_dates": [],
       "schedule_text": "・開催時期 5月中旬～9月下旬 ・実施日数 1日 ・詳細 1日コースの仕事体験の中で、現場の熱意を感じ取っていただき、やりがいを持った社員と交流していただきます",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
       "transport_type": "limit",
       "transport_amount": 10000,
       "transport_available": true,
@@ -120737,7 +120690,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "特になし。",
       "first_seen": "2026-07-18T21:53:36+09:00",
-      "last_checked": "2026-09-23T04:55:24+09:00",
+      "last_checked": "2026-09-30T16:17:53+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -120752,7 +120705,7 @@
       "contact_homepages": [
         "https://www.kahoku-kk.com/"
       ],
-      "contact_checked_at": "2026-09-23T04:55:24+09:00",
+      "contact_checked_at": "2026-09-30T16:17:53+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=215930&optNo=aDxsX",
       "implementation_types": [
         "仕事体験"
@@ -125979,7 +125932,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "特になし。",
       "first_seen": "2026-07-18T21:43:58+09:00",
-      "last_checked": "2026-09-29T07:24:51+09:00",
+      "last_checked": "2026-09-30T16:18:33+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -125988,7 +125941,7 @@
         "053-428-2136"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-29T07:24:51+09:00",
+      "contact_checked_at": "2026-09-30T16:18:33+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=288089&optNo=VYD5l",
       "implementation_types": [
         "インターンシップ"
@@ -126860,6 +126813,52 @@
       "kanto_only": false
     },
     {
+      "id": "corp:100035:course:UAiJh",
+      "company": "社会福祉法人聖徳会",
+      "course": "【業務体験はコチラから！】福祉のシゴトとキャリアを考えるコース",
+      "industries": [
+        "福祉サービス",
+        "幼稚園・保育園",
+        "医療機関"
+      ],
+      "locations": [
+        "大阪府"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年4月～2026年9月 ・実施日数 1日",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "limit",
+      "transport_amount": 2000,
+      "transport_available": true,
+      "transport_original": "支給あり 1日あたり上限2,000円",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "記載なし",
+      "eligibility_text": "＊福祉業界に少しでも興味のある方 ＊これから福祉業界について学びたい方",
+      "first_seen": "2026-07-18T18:18:29+09:00",
+      "last_checked": "2026-09-30T16:14:18+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "y.mori@shoutokukai.or.jp"
+      ],
+      "contact_phones": [
+        "072-331-4166"
+      ],
+      "contact_homepages": [
+        "https://shoutokukai.net/"
+      ],
+      "contact_checked_at": "2026-09-30T16:14:18+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=100035&optNo=UAiJh",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:100035:course:XjXMO",
       "company": "社会福祉法人聖徳会",
       "course": "【まずはコチラから！】聖徳会を知るセミナー(対面/オンライン開催)",
@@ -127000,52 +126999,6 @@
       "kanto_only": false
     },
     {
-      "id": "corp:100035:course:UAiJh",
-      "company": "社会福祉法人聖徳会",
-      "course": "【業務体験はコチラから！】福祉のシゴトとキャリアを考えるコース",
-      "industries": [
-        "福祉サービス",
-        "幼稚園・保育園",
-        "医療機関"
-      ],
-      "locations": [
-        "大阪府"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 2026年4月～2026年9月 ・実施日数 1日",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "limit",
-      "transport_amount": 2000,
-      "transport_available": true,
-      "transport_original": "支給あり 1日あたり上限2,000円",
-      "amount_analysis_status": "amount_known",
-      "lodging_provided": false,
-      "lodging_text": "記載なし",
-      "eligibility_text": "＊福祉業界に少しでも興味のある方 ＊これから福祉業界について学びたい方",
-      "first_seen": "2026-07-18T18:18:29+09:00",
-      "last_checked": "2026-09-26T08:29:06+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "y.mori@shoutokukai.or.jp"
-      ],
-      "contact_phones": [
-        "072-331-4166"
-      ],
-      "contact_homepages": [
-        "https://shoutokukai.net/"
-      ],
-      "contact_checked_at": "2026-09-26T08:29:06+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=100035&optNo=UAiJh",
-      "implementation_types": [
-        "オープン・カンパニー等"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
       "id": "corp:206095:course:mj2U0",
       "company": "社会福祉法人聖隷福祉事業団",
       "course": "【関西】オンライン or 対面説明会※まずはココから！",
@@ -127072,7 +127025,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "全学部学科対象",
       "first_seen": "2026-07-18T19:17:59+09:00",
-      "last_checked": "2026-09-26T14:13:36+09:00",
+      "last_checked": "2026-09-30T16:18:30+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -127085,7 +127038,7 @@
       "contact_homepages": [
         "https://www.seirei.or.jp/hq/"
       ],
-      "contact_checked_at": "2026-09-26T14:13:36+09:00",
+      "contact_checked_at": "2026-09-30T16:18:30+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=206095&optNo=mj2U0",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -128606,7 +128559,7 @@
       "lodging_text": "支給あり 必要な方は当社が宿泊先を手配いたします。 ※宿泊先予約の都合がありますので必ず2週間前までに申し込みください。",
       "eligibility_text": "記載なし",
       "first_seen": "2026-07-18T18:44:39+09:00",
-      "last_checked": "2026-09-26T08:34:09+09:00",
+      "last_checked": "2026-09-30T16:15:59+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -128615,7 +128568,7 @@
         "0267-22-1750"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-26T08:34:09+09:00",
+      "contact_checked_at": "2026-09-30T16:15:59+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=111659&optNo=plH3t",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -128649,7 +128602,7 @@
       "lodging_text": "支給あり 必要な方は宿泊先を当社が手配いたします。 ※宿泊先予約の都合がありますので必ず2週間前に申し込みください。",
       "eligibility_text": "どなたでもお気軽にご参加ください。",
       "first_seen": "2026-07-18T18:44:28+09:00",
-      "last_checked": "2026-09-26T08:34:00+09:00",
+      "last_checked": "2026-09-30T16:15:50+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -128658,7 +128611,7 @@
         "0267-22-1750"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-26T08:34:00+09:00",
+      "contact_checked_at": "2026-09-30T16:15:50+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=111659&optNo=ay8c1",
       "implementation_types": [
         "オープン・カンパニー等"
@@ -129655,7 +129608,7 @@
       "lodging_text": "支給あり 上限有（金額につきましては別途相談。）",
       "eligibility_text": "どなたでもご参加いただけます。",
       "first_seen": "2026-07-18T21:45:20+09:00",
-      "last_checked": "2026-09-29T07:25:00+09:00",
+      "last_checked": "2026-09-30T16:18:41+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -129664,7 +129617,7 @@
         "0145-45-2311"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-29T07:25:00+09:00",
+      "contact_checked_at": "2026-09-30T16:18:41+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=291665&optNo=Tebh0",
       "implementation_types": [
         "インターンシップ"
@@ -130477,6 +130430,53 @@
       "kanto_only": false
     },
     {
+      "id": "corp:207090:course:Fzmca",
+      "company": "西谷技術コンサルタント(株)",
+      "course": "【文理不問】最新技術を駆使する「３Ｄ計測・一般測量」職種の魅力を1.5時間でお伝えします！",
+      "industries": [
+        "建設コンサルタント",
+        "サービス（その他）",
+        "専門コンサルティング",
+        "建設",
+        "建築設計"
+      ],
+      "locations": [
+        "鳥取県",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月下旬、７月～９月各月実施 ・実施日数 1日 ・詳細 1.5時間程度を予定しています ※ご希望に応じて調整可能です",
+      "deadline_text": "2026年9月30日",
+      "deadline": "2026-09-30",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり リアル開催の場合、交通費支給 ※遠方にお住みの場合、リモートでの開催とさせていただく場合がございます",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "記載なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T19:22:43+09:00",
+      "last_checked": "2026-09-30T16:16:49+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo@nishi-tc.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "https://www.nishi-tc.co.jp"
+      ],
+      "contact_checked_at": "2026-09-30T16:16:49+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=207090&optNo=Fzmca",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:207090:course:sB5bo",
       "company": "西谷技術コンサルタント(株)",
       "course": "【仕事体験/２～３日間】測量（３Ｄ計測）・建物等調査（建築）の実務体験／文理不問／実施日数相談可！",
@@ -130657,53 +130657,6 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=207090&optNo=o3a72",
       "implementation_types": [
         "インターンシップ"
-      ],
-      "science_only": false,
-      "kanto_only": false
-    },
-    {
-      "id": "corp:207090:course:Fzmca",
-      "company": "西谷技術コンサルタント(株)",
-      "course": "【文理不問】最新技術を駆使する「３Ｄ計測・一般測量」職種の魅力を1.5時間でお伝えします！",
-      "industries": [
-        "建設コンサルタント",
-        "サービス（その他）",
-        "専門コンサルティング",
-        "建設",
-        "建築設計"
-      ],
-      "locations": [
-        "鳥取県",
-        "WEB"
-      ],
-      "event_dates": [],
-      "schedule_text": "・開催時期 6月下旬、７月～９月各月実施 ・実施日数 1日 ・詳細 1.5時間程度を予定しています ※ご希望に応じて調整可能です",
-      "deadline_text": "2026年9月30日",
-      "deadline": "2026-09-30",
-      "transport_type": "conditional",
-      "transport_amount": null,
-      "transport_available": true,
-      "transport_original": "支給あり リアル開催の場合、交通費支給 ※遠方にお住みの場合、リモートでの開催とさせていただく場合がございます",
-      "amount_analysis_status": "amount_unknown",
-      "lodging_provided": false,
-      "lodging_text": "記載なし",
-      "eligibility_text": "記載なし",
-      "first_seen": "2026-07-18T19:22:43+09:00",
-      "last_checked": "2026-09-26T14:08:04+09:00",
-      "is_new": false,
-      "status": "open",
-      "closed_at": null,
-      "contact_emails": [
-        "saiyo@nishi-tc.co.jp"
-      ],
-      "contact_phones": [],
-      "contact_homepages": [
-        "https://www.nishi-tc.co.jp"
-      ],
-      "contact_checked_at": "2026-09-26T14:08:04+09:00",
-      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=207090&optNo=Fzmca",
-      "implementation_types": [
-        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -133266,7 +133219,7 @@
       "lodging_text": "支給なし",
       "eligibility_text": "応募資格 【対象の学校種】 大学／大学院／専門学校／短期大学／高等専門学校 【応募資格詳細】 全学部全学科対象 ※建設学科歓迎",
       "first_seen": "2026-07-18T19:04:58+09:00",
-      "last_checked": "2026-09-26T08:32:20+09:00",
+      "last_checked": "2026-09-30T16:15:25+09:00",
       "is_new": false,
       "status": "open",
       "closed_at": null,
@@ -133275,7 +133228,7 @@
         "0248278800"
       ],
       "contact_homepages": [],
-      "contact_checked_at": "2026-09-26T08:32:20+09:00",
+      "contact_checked_at": "2026-09-30T16:15:25+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=201807&optNo=BGs1a",
       "implementation_types": [
         "オープン・カンパニー等"
