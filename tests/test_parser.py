@@ -1,4 +1,6 @@
-from scripts.scrape import amount_analysis_status, balance_candidates_by_implementation, canonical_url, classify, course_key, dedupe_items, extract_detail_links, has_transport_support, implementation_type_for_seed, is_kanto_only, is_science_only, parse_dates, parse_detail, without_kanto_locations
+from datetime import datetime
+
+from scripts.scrape import JST, amount_analysis_status, balance_candidates_by_implementation, canonical_url, classify, close_catalog_record, course_key, dedupe_items, extract_detail_links, has_transport_support, implementation_type_for_seed, is_kanto_only, is_science_only, parse_dates, parse_detail, select_candidates, without_kanto_locations
 
 def test_money():
     assert classify('交通費 上限30,000円まで支給') == ('limit', 30000)
@@ -93,3 +95,30 @@ def test_detail_candidates_are_balanced_by_implementation_type():
 
 def test_implementation_type_for_seed():
     assert implementation_type_for_seed("https://job.mynavi.jp/28/pc/search/is_it2.html") == "仕事体験"
+
+
+def test_closed_catalog_record_is_not_retried_as_missing_detail():
+    catalog = {"urls": {
+        "closed": {"url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=1&optNo=A", "status": "closed"},
+        "open": {"url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=2&optNo=B", "status": "open"},
+        "legacy_closed": {"url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=3&optNo=C"},
+    }}
+    items = {"legacy_closed": {"id": "legacy_closed", "status": "closed"}}
+    now = datetime(2026, 10, 18, 12, 0, tzinfo=JST)
+
+    discover_keys = [key for _, _, key, _ in select_candidates("discover", catalog, items, now)]
+    detail_batch_keys = [key for _, _, key, _ in select_candidates("all", catalog, items, now)]
+
+    assert discover_keys == ["open"]
+    assert detail_batch_keys == ["open"]
+
+
+def test_close_catalog_record_persists_terminal_state_without_history_item():
+    catalog = {"urls": {"course": {"url": "https://example.test/course"}}}
+    now = datetime(2026, 10, 18, 12, 0, tzinfo=JST)
+
+    checked_at = close_catalog_record(catalog, "course", now)
+
+    assert checked_at == "2026-10-18T12:00:00+09:00"
+    assert catalog["urls"]["course"]["last_checked"] == checked_at
+    assert catalog["urls"]["course"]["status"] == "closed"

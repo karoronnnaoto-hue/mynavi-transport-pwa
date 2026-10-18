@@ -34,18 +34,19 @@ jobs:
           python-version: '3.12'
           cache: pip
       - uses: actions/setup-node@v4
-        if: ${{ github.event.inputs.full_scan == 'true' }}
         with:
           node-version: '22'
       - run: pip install -r requirements.txt
       - name: Install browser crawler
-        if: ${{ github.event.inputs.full_scan == 'true' }}
         run: |
-          npm install --no-save playwright
+          npm install
           npx playwright install --with-deps chromium
+      - name: Discover catalog in browser
+        if: ${{ github.event.inputs.full_scan != 'true' }}
+        run: node scripts/discover_browser.js --max-pages 9 --delay-ms 1500 --no-traffic-filter
       - name: Build full catalog
         if: ${{ github.event.inputs.full_scan == 'true' }}
-        run: node scripts/discover_browser.js --max-pages 0 --delay-ms 1500
+        run: node scripts/discover_browser.js --max-pages 0 --delay-ms 1500 --no-traffic-filter
       - name: Commit full catalog
         if: ${{ github.event.inputs.full_scan == 'true' }}
         run: |
@@ -59,7 +60,7 @@ jobs:
       - name: Collect course data
         if: ${{ github.event.inputs.full_scan != 'true' }}
         run: |
-          python scripts/scrape.py --mode discover --limit 180
+          python scripts/scrape.py --mode discover --limit 180 --skip-list-discovery
       - name: Ensure daily app update timestamp
         if: ${{ github.event.inputs.full_scan != 'true' }}
         run: python scripts/touch_display_refresh.py --once-per-day

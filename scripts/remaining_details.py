@@ -19,7 +19,11 @@ def main() -> None:
     catalog = load_json(CATALOG, {"urls": {}})
     db = load_json(DB, {"items": []})
     collected = {item.get("id") for item in db.get("items", []) if item.get("id")}
-    catalog_keys = {key for key, record in catalog.get("urls", {}).items() if record.get("url")}
+    catalog_keys = {
+        key
+        for key, record in catalog.get("urls", {}).items()
+        if record.get("url") and record.get("status", "open") == "open"
+    }
     print(len(catalog_keys - collected))
 
 

@@ -38,6 +38,7 @@ MAX_DETAIL_PAGES_PER_RUN = 90
 REQUEST_INTERVAL_SECONDS = 2.5
 DETAIL_REFRESH_DAYS = 1
 URGENT_DEADLINE_DAYS = 3
+PERMANENT_DETAIL_HTTP_STATUSES = {400, 404, 410}
 NO_TRANSPORT_TEXT = "交通費欄を特定できませんでした。"
 
 HEADERS = {
@@ -544,6 +545,7 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
         if not url:
             continue
         old = items_by_id.get(key)
+        record_status = record.get("status") or (old or {}).get("status", "open")
         last = record.get("last_checked") or ""
         last_dt = None
         if last:
@@ -555,7 +557,7 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
         include = False
         priority = 5
         if mode == "discover":
-            include = old is None or url in manual
+            include = (old is None and record_status == "open") or url in manual
             priority = 0 if old is None else 1
         elif mode == "refresh":
             include = (
@@ -576,7 +578,9 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
             )
             priority = 0
         elif mode == "all":
-            include = old is None or last_dt is None or last_dt < now - timedelta(days=DETAIL_REFRESH_DAYS)
+            include = record_status == "open" and (
+                old is None or last_dt is None or last_dt < now - timedelta(days=DETAIL_REFRESH_DAYS)
+            )
             priority = 0 if old is None else 1
         elif mode == "rebuild":
             include = True
@@ -585,6 +589,14 @@ def select_candidates(mode: str, catalog: dict, items_by_id: dict, now: datetime
             candidates.append((priority, last, key, url))
     candidates.sort()
     return candidates
+
+
+def close_catalog_record(catalog: dict, key: str, now: datetime) -> str:
+    checked_at = now.isoformat(timespec="seconds")
+    record = catalog.setdefault("urls", {}).setdefault(key, {})
+    record["last_checked"] = checked_at
+    record["status"] = "closed"
+    return checked_at
 
 
 def balance_candidates_by_implementation(
@@ -694,6 +706,11 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=MAX_DETAIL_PAGES_PER_RUN, help="詳細取得件数。0以下で無制限。")
     parser.add_argument("--list-pages", type=int, default=MAX_LIST_PAGES_PER_RUN, help="一覧巡回ページ数。0以下で次ページが尽きるまで。")
     parser.add_argument("--request-interval", type=float, default=REQUEST_INTERVAL_SECONDS)
+    parser.add_argument(
+        "--skip-list-discovery",
+        action="store_true",
+        help="一覧取得を省略し、事前にブラウザ更新されたカタログを使用する。",
+    )
     args = parser.parse_args()
 
     old_payload = load_json(DB, load_json(OUT, {"items": []}))
@@ -711,8 +728,12 @@ def main() -> None:
     discovered_count = 0
     new_count = 0
     list_limit = None if args.list_pages <= 0 else args.list_pages
-    if args.mode in {"discover", "all"}:
+    if args.mode in {"discover", "all"} and not args.skip_list_discovery:
         discovered_count, new_count = discover_courses(session, catalog, crawl_state, now, list_limit, args.request_interval)
+    elif args.mode == "discover" and args.skip_list_discovery:
+        browser_stats = crawl_state.get("browser_discovery", {})
+        discovered_count = int(browser_stats.get("discovered_courses", 0))
+        new_count = int(browser_stats.get("new_courses", 0))
 
     items_by_id = dict(old_by_id)
     candidates = select_candidates(args.mode, catalog, items_by_id, now)
@@ -735,14 +756,13 @@ def main() -> None:
             checked += 1
         except requests.HTTPError as exc:
             status_code = exc.response.status_code if exc.response is not None else None
-            if status_code in {400, 404, 410} and old_by_id.get(key):
-                checked_at = now.isoformat(timespec="seconds")
-                item = dict(old_by_id[key])
-                item["last_checked"] = checked_at
-                item["status"] = "closed"
-                catalog["urls"][key]["last_checked"] = checked_at
-                catalog["urls"][key]["status"] = "closed"
-                items_by_id[key] = item
+            if status_code in PERMANENT_DETAIL_HTTP_STATUSES:
+                checked_at = close_catalog_record(catalog, key, now)
+                if old_by_id.get(key):
+                    item = dict(old_by_id[key])
+                    item["last_checked"] = checked_at
+                    item["status"] = "closed"
+                    items_by_id[key] = item
                 closed += 1
                 print("detail closed", status_code, url)
             else:

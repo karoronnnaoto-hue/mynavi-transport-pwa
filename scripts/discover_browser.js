@@ -269,8 +269,7 @@ async function crawlSeed(browser, seed, args) {
       const links = await collectDetailLinks(page);
       const signature = links.map((link) => courseKey(link.url)).slice(0, 12).join("|");
       if (signature && signatures.has(signature)) {
-        console.log(`same page repeated, stopping seed: ${seed}`);
-        break;
+        throw new Error(`same page repeated while paging: ${seed}`);
       }
       if (signature) signatures.add(signature);
 
@@ -285,8 +284,7 @@ async function crawlSeed(browser, seed, args) {
       try {
         await clickAndSettle(page, next, args.delayMs);
       } catch (error) {
-        console.error(`next page failed, keeping collected links: ${seed}: ${error.message}`);
-        break;
+        throw new Error(`next page failed: ${seed}: ${error.message}`);
       }
     }
   } finally {
@@ -317,6 +315,9 @@ async function main() {
     for (const seed of args.seeds) {
       try {
         const result = await crawlSeed(browser, seed, args);
+        if (result.discovered.size === 0) {
+          throw new Error("no detail links were discovered");
+        }
         const implementationType = implementationTypeForSeed(seed);
         for (const [url, hint] of result.discovered.entries()) {
           const record = allDiscovered.get(url) || { hint, implementationTypes: new Set() };
@@ -332,6 +333,11 @@ async function main() {
     }
   } finally {
     await browser.close();
+  }
+
+  if (failedSeeds.length > 0) {
+    const details = failedSeeds.map((failure) => `${failure.seed}: ${failure.error}`).join("; ");
+    throw new Error(`browser discovery failed; catalog was not updated: ${details}`);
   }
 
   const now = jstNow();

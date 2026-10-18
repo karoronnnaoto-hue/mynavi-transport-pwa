@@ -19,6 +19,7 @@ def main() -> None:
     crawl_state = load_json(STATE, {})
 
     checked = 0
+    closed = 0
     failures = 0
     for path in sorted(args.fragments.glob("*.json")):
         fragment = load_json(path, {})
@@ -28,6 +29,7 @@ def main() -> None:
         for key, update in fragment.get("catalog_updates", {}).items():
             catalog.setdefault("urls", {}).setdefault(key, {}).update(update)
         checked += fragment.get("checked", 0)
+        closed += fragment.get("closed", 0)
         failures += len(fragment.get("failures", []))
 
     now = datetime.now(JST)
@@ -35,10 +37,21 @@ def main() -> None:
     crawl_state["detail_batch"].update({
         "last_merged_at": now.isoformat(timespec="seconds"),
         "last_parallel_checked": checked,
+        "last_parallel_closed": closed,
         "last_parallel_failures": failures,
     })
-    write_outputs(catalog, crawl_state, items_by_id, args.mode, now, checked=checked)
-    print(f"merged fragments: checked={checked} failures={failures}")
+    write_outputs(
+        catalog,
+        crawl_state,
+        items_by_id,
+        args.mode,
+        now,
+        checked=checked,
+        attempted=checked + closed + failures,
+        closed=closed,
+        failures=failures,
+    )
+    print(f"merged fragments: checked={checked} closed={closed} failures={failures}")
 
 
 if __name__ == "__main__":

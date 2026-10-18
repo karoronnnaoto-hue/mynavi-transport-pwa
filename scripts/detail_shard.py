@@ -13,8 +13,10 @@ from scrape import (
     DB,
     JST,
     OUT,
+    PERMANENT_DETAIL_HTTP_STATUSES,
     amount_analysis_status,
     balance_candidates_by_implementation,
+    close_catalog_record,
     fetch,
     has_transport_support,
     is_kanto_only,
@@ -64,6 +66,7 @@ def main() -> None:
     catalog_updates = {}
     failures = []
     checked = 0
+    closed = 0
     time.sleep(args.shard_index * 0.9)
     for _, _, key, url in detail_candidates:
         try:
@@ -81,6 +84,22 @@ def main() -> None:
             }
             checked += 1
             time.sleep(args.request_interval)
+        except requests.HTTPError as exc:
+            status_code = exc.response.status_code if exc.response is not None else None
+            if status_code in PERMANENT_DETAIL_HTTP_STATUSES:
+                checked_at = close_catalog_record(catalog, key, now)
+                catalog_updates[key] = {
+                    "last_checked": checked_at,
+                    "status": "closed",
+                }
+                if old_by_id.get(key):
+                    item = dict(old_by_id[key])
+                    item["last_checked"] = checked_at
+                    item["status"] = "closed"
+                    items.append(item)
+                closed += 1
+            else:
+                failures.append({"key": key, "url": url, "error": str(exc)})
         except Exception as exc:
             failures.append({"key": key, "url": url, "error": str(exc)})
 
@@ -89,11 +108,15 @@ def main() -> None:
         "shard_index": args.shard_index,
         "shard_total": args.shard_total,
         "checked": checked,
+        "closed": closed,
         "failures": failures,
         "items": items,
         "catalog_updates": catalog_updates,
     })
-    print(f"shard {args.shard_index}/{args.shard_total}: checked={checked} failures={len(failures)}")
+    print(
+        f"shard {args.shard_index}/{args.shard_total}: "
+        f"checked={checked} closed={closed} failures={len(failures)}"
+    )
 
 
 if __name__ == "__main__":
