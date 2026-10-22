@@ -5,37 +5,37 @@
     "https://job.mynavi.jp/28/pc/search/is_it3.html": true
   },
   "browser_discovery": {
-    "last_run": "2026-10-23T02:17:41.655+09:00",
+    "last_run": "2026-10-23T05:55:27.487+09:00",
     "max_pages_per_seed": 9,
     "traffic_only": false,
-    "discovered_courses": 1214,
-    "new_courses": 97,
+    "discovered_courses": 1200,
+    "new_courses": 44,
     "failed_seeds": [],
     "seeds": [
       {
         "seed": "https://job.mynavi.jp/28/pc/search/is_it1.html",
         "pages": 9,
-        "links": 312,
+        "links": 313,
         "page_details": [
           {
             "pageNo": 1,
             "url": "https://job.mynavi.jp/28/pc/search/is_it1.html",
-            "links": 38
+            "links": 36
           },
           {
             "pageNo": 2,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 34
+            "links": 39
           },
           {
             "pageNo": 3,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 35
+            "links": 32
           },
           {
             "pageNo": 4,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 33
+            "links": 31
           },
           {
             "pageNo": 5,
@@ -50,81 +50,29 @@
           {
             "pageNo": 7,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 32
+            "links": 33
           },
           {
             "pageNo": 8,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 35
+            "links": 39
           },
           {
             "pageNo": 9,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 36
+            "links": 34
           }
         ]
       },
       {
         "seed": "https://job.mynavi.jp/28/pc/search/is_it2.html",
         "pages": 9,
-        "links": 458,
+        "links": 455,
         "page_details": [
           {
             "pageNo": 1,
             "url": "https://job.mynavi.jp/28/pc/search/is_it2.html",
-            "links": 55
-          },
-          {
-            "pageNo": 2,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 47
-          },
-          {
-            "pageNo": 3,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 54
-          },
-          {
-            "pageNo": 4,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 53
-          },
-          {
-            "pageNo": 5,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 57
-          },
-          {
-            "pageNo": 6,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 50
-          },
-          {
-            "pageNo": 7,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 49
-          },
-          {
-            "pageNo": 8,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 49
-          },
-          {
-            "pageNo": 9,
-            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 44
-          }
-        ]
-      },
-      {
-        "seed": "https://job.mynavi.jp/28/pc/search/is_it3.html",
-        "pages": 9,
-        "links": 445,
-        "page_details": [
-          {
-            "pageNo": 1,
-            "url": "https://job.mynavi.jp/28/pc/search/is_it3.html",
-            "links": 49
+            "links": 51
           },
           {
             "pageNo": 2,
@@ -134,37 +82,89 @@
           {
             "pageNo": 3,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 57
+            "links": 49
           },
           {
             "pageNo": 4,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 43
+            "links": 56
           },
           {
             "pageNo": 5,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 49
+            "links": 53
           },
           {
             "pageNo": 6,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 50
+            "links": 45
           },
           {
             "pageNo": 7,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 42
+            "links": 50
           },
           {
             "pageNo": 8,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
-            "links": 49
+            "links": 50
           },
           {
             "pageNo": 9,
             "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 45
+          }
+        ]
+      },
+      {
+        "seed": "https://job.mynavi.jp/28/pc/search/is_it3.html",
+        "pages": 9,
+        "links": 433,
+        "page_details": [
+          {
+            "pageNo": 1,
+            "url": "https://job.mynavi.jp/28/pc/search/is_it3.html",
+            "links": 47
+          },
+          {
+            "pageNo": 2,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
             "links": 50
+          },
+          {
+            "pageNo": 3,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 61
+          },
+          {
+            "pageNo": 4,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 51
+          },
+          {
+            "pageNo": 5,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 37
+          },
+          {
+            "pageNo": 6,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 51
+          },
+          {
+            "pageNo": 7,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 51
+          },
+          {
+            "pageNo": 8,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 48
+          },
+          {
+            "pageNo": 9,
+            "url": "https://job.mynavi.jp/28/pc/corpinfo/searchCorpListByIs/doNextPage",
+            "links": 37
           }
         ]
       }
