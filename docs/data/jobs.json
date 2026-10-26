@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-27T06:19:32+09:00",
-  "last_mode": "refresh",
+  "generated_at": "2026-10-27T08:51:21+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 19178,
     "collected_courses": 19081,
-    "displayed_courses": 4052,
+    "displayed_courses": 4054,
     "transport_supported_courses": 14997,
     "excluded_kanto_only_courses": 3945,
-    "excluded_closed_courses": 4328,
+    "excluded_closed_courses": 4323,
     "excluded_expired_courses": 1361,
-    "excluded_science_only_courses": 1311,
-    "amount_known_courses": 1909,
+    "excluded_science_only_courses": 1314,
+    "amount_known_courses": 1910,
     "amount_unlimited_courses": 386,
-    "amount_unknown_courses": 1757,
+    "amount_unknown_courses": 1758,
     "excluded_no_transport_courses": 4084,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 350,
-    "details_checked_this_run": 349,
-    "details_closed_this_run": 1,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 78,
+    "details_closed_this_run": 72,
     "detail_failures_this_run": 0,
     "database_courses": 19081
   },
@@ -5792,6 +5792,60 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=269443&optNo=VaIJz",
       "implementation_types": [
         "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:60826:course:QgOa0",
+      "company": "(株)タクミナ【東証スタンダード上場】",
+      "course": "【理系】会社説明会＆人事担当者と一緒に行う自己分析コース＜1Day＞",
+      "industries": [
+        "機械",
+        "機械設計",
+        "精密機器",
+        "プラント・エンジニアリング"
+      ],
+      "locations": [
+        "大阪府"
+      ],
+      "event_dates": [
+        "2026-07-28",
+        "2026-08-26",
+        "2026-09-25",
+        "2027-04-23",
+        "2027-05-27",
+        "2027-06-26"
+      ],
+      "schedule_text": "・開催時期 4月23日、5月27日、6月26日、7月28日、8月26日、9月25日 ・実施日数 1日",
+      "deadline_text": "2027年2月27日",
+      "deadline": "2027-02-27",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 往復上限1万5千円",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "開発職や技術職等に興味のある方",
+      "first_seen": "2026-07-18T21:37:30+09:00",
+      "last_checked": "2026-10-27T08:55:24+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "jinji@tacmina.co.jp"
+      ],
+      "contact_phones": [
+        "06-6208-3971"
+      ],
+      "contact_homepages": [
+        "https://www.tacmina.co.jp"
+      ],
+      "contact_checked_at": "2026-10-27T08:55:24+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=60826&optNo=QgOa0",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -132340,6 +132394,54 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=258373&optNo=MdjEQ",
       "implementation_types": [
         "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:104821:course:vaP5l",
+      "company": "グリーンシティコム(株)【旧社名：グリーンシティケーブルテレビ】",
+      "course": "【企画営業職】地域密着イベントの企画の秘密に迫る！",
+      "industries": [
+        "通信・インフラ",
+        "放送",
+        "イベント・興行"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 12月～2月に月1回以上開催 ・実施日数 1日",
+      "deadline_text": "2026年12月31日",
+      "deadline": "2026-12-31",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費としてQUOカード1,000円分（一律）をお渡しします。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "参加条件はありません。 お気軽にご参加ください！",
+      "first_seen": "2026-07-18T19:07:07+09:00",
+      "last_checked": "2026-10-27T08:54:48+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou@gctv.co.jp"
+      ],
+      "contact_phones": [
+        "0561-57-0192"
+      ],
+      "contact_homepages": [
+        "https://gctv.co.jp/",
+        "https://gctv.co.jp/company/",
+        "https://youtu.be/aYJFGL2Ys_c"
+      ],
+      "contact_checked_at": "2026-10-27T08:54:48+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=104821&optNo=vaP5l",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
