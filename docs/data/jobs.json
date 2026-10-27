@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-28T06:14:05+09:00",
-  "last_mode": "detail_batch",
+  "generated_at": "2026-10-28T08:26:30+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 19221,
     "collected_courses": 19125,
-    "displayed_courses": 4048,
-    "transport_supported_courses": 15010,
-    "excluded_kanto_only_courses": 3950,
-    "excluded_closed_courses": 4337,
-    "excluded_expired_courses": 1360,
+    "displayed_courses": 4050,
+    "transport_supported_courses": 15009,
+    "excluded_kanto_only_courses": 3949,
+    "excluded_closed_courses": 4331,
+    "excluded_expired_courses": 1364,
     "excluded_science_only_courses": 1315,
-    "amount_known_courses": 1907,
+    "amount_known_courses": 1909,
     "amount_unlimited_courses": 390,
     "amount_unknown_courses": 1751,
-    "excluded_no_transport_courses": 4115,
+    "excluded_no_transport_courses": 4116,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 560,
-    "details_checked_this_run": 554,
-    "details_closed_this_run": 6,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 56,
+    "details_closed_this_run": 94,
     "detail_failures_this_run": 0,
     "database_courses": 19125
   },
@@ -40831,6 +40831,59 @@
       "contact_homepages": [],
       "contact_checked_at": "2026-10-28T01:20:07+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=465&optNo=G3Nyn",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:99275:course:g62Ay",
+      "company": "兼房(株)【東証スタンダード市場・名証メイン市場上場】",
+      "course": "【先輩社員登場】営業部門・管理部門の半日プログラム",
+      "industries": [
+        "金属製品",
+        "非鉄金属",
+        "機械",
+        "機械設計",
+        "環境・リサイクル"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [
+        "2026-11-18",
+        "2026-12-02",
+        "2027-02-09"
+      ],
+      "schedule_text": "・開催時期 11月18日（水）・12月2日（水）・2月9日（火） ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり 一律1,000円支給",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "【積極募集】 2028年3月卒業予定の方",
+      "first_seen": "2026-07-18T22:06:48+09:00",
+      "last_checked": "2026-10-28T08:31:12+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "kyujin@kanefusa.co.jp"
+      ],
+      "contact_phones": [
+        "0587-95-2823"
+      ],
+      "contact_homepages": [
+        "https://www.kanefusa.co.jp/",
+        "https://mypage.3010.i-webs.jp/kanefusa2028/"
+      ],
+      "contact_checked_at": "2026-10-28T08:31:12+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=99275&optNo=g62Ay",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -132149,6 +132202,54 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=258373&optNo=MdjEQ",
       "implementation_types": [
         "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:104821:course:T4cPD",
+      "company": "グリーンシティコム(株)【旧社名：グリーンシティケーブルテレビ】",
+      "course": "【番組制作職】地域密着ならではのコンテンツ作りを体験！",
+      "industries": [
+        "通信・インフラ",
+        "放送",
+        "イベント・興行"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 12月～2月に月1回以上開催 ・実施日数 1日",
+      "deadline_text": "2026年12月31日",
+      "deadline": "2026-12-31",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費としてQUOカード1,000円分をお渡しします。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "参加条件はありません。 お気軽にご参加ください！",
+      "first_seen": "2026-07-18T19:06:45+09:00",
+      "last_checked": "2026-10-28T08:27:33+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou@gctv.co.jp"
+      ],
+      "contact_phones": [
+        "0561-57-0192"
+      ],
+      "contact_homepages": [
+        "https://gctv.co.jp/",
+        "https://gctv.co.jp/company/",
+        "https://youtu.be/aYJFGL2Ys_c"
+      ],
+      "contact_checked_at": "2026-10-28T08:27:33+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=104821&optNo=T4cPD",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
