@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-31T05:51:31+09:00",
-  "last_mode": "refresh",
+  "generated_at": "2026-10-31T08:34:25+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 19435,
     "collected_courses": 19336,
-    "displayed_courses": 3957,
-    "transport_supported_courses": 15035,
+    "displayed_courses": 3961,
+    "transport_supported_courses": 15036,
     "excluded_kanto_only_courses": 3961,
-    "excluded_closed_courses": 4354,
-    "excluded_expired_courses": 1482,
+    "excluded_closed_courses": 4350,
+    "excluded_expired_courses": 1483,
     "excluded_science_only_courses": 1281,
-    "amount_known_courses": 1868,
+    "amount_known_courses": 1870,
     "amount_unlimited_courses": 383,
-    "amount_unknown_courses": 1706,
-    "excluded_no_transport_courses": 4301,
+    "amount_unknown_courses": 1708,
+    "excluded_no_transport_courses": 4300,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 350,
-    "details_checked_this_run": 349,
-    "details_closed_this_run": 1,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 55,
+    "details_closed_this_run": 95,
     "detail_failures_this_run": 0,
     "database_courses": 19336
   },
@@ -80360,6 +80360,54 @@
       "kanto_only": false
     },
     {
+      "id": "corp:83953:course:e0cDp",
+      "company": "(株)シーアールイー",
+      "course": "エンジニアと航空機設計を体験！【1WEEKコース】",
+      "industries": [
+        "機械設計",
+        "ソフトウエア",
+        "輸送用機器（船舶・航空・宇宙関連など）",
+        "情報処理",
+        "受託開発"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2月開催予定 ・実施日数 5日～2週間未満",
+      "deadline_text": "2027年2月25日",
+      "deadline": "2027-02-25",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 地域ごとに一律支給あり（会社規定による）",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし ご自宅やご実家が遠方にあり、通勤が困難な方には会社の宿泊施設（無料）がご利用いただけます。（会社規定による）",
+      "eligibility_text": "2028年卒以上（大学3年生、修士1年生以上など） 航空機に興味のある方はぜひともご参加ください！",
+      "first_seen": "2026-08-16T22:44:32+09:00",
+      "last_checked": "2026-10-31T08:37:36+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "eng-ikusei@cre-nagoya.com"
+      ],
+      "contact_phones": [
+        "052-323-7731"
+      ],
+      "contact_homepages": [
+        "https://www.cre-nagoya.com/internship/"
+      ],
+      "contact_checked_at": "2026-10-31T08:37:36+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=83953&optNo=e0cDp",
+      "implementation_types": [
+        "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:70805:course:spyVf",
       "company": "(株)シークス",
       "course": "3D CAD体験会～自動車モデルアッセンブリー～【1Day仕事体験】※文理不問",
@@ -85420,6 +85468,96 @@
       ],
       "contact_checked_at": "2026-10-28T09:45:54+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=261211&optNo=Ow3l-",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:205372:course:s0hia",
+      "company": "(株)トータルハウジング",
+      "course": "【営業】リアルな仕事体験で住宅営業を知ろう！ 1day仕事体験",
+      "industries": [
+        "住宅",
+        "不動産",
+        "建築設計"
+      ],
+      "locations": [
+        "鹿児島県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月～2月 月に1回開催 ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり 一律1,000円支給します！",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学部全学科",
+      "first_seen": "2026-07-18T21:16:48+09:00",
+      "last_checked": "2026-10-31T08:39:04+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "099-210-5120"
+      ],
+      "contact_homepages": [
+        "https://www.total-housing.net/",
+        "https://www.instagram.com/totalhousing_recruit/"
+      ],
+      "contact_checked_at": "2026-10-31T08:39:04+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=205372&optNo=s0hia",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:205372:course:UIn0l",
+      "company": "(株)トータルハウジング",
+      "course": "【工務】現場で学べる貴重な機会！1day仕事体験",
+      "industries": [
+        "住宅",
+        "不動産",
+        "建築設計"
+      ],
+      "locations": [
+        "鹿児島県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月～2月 月に1回開催 ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり 一律1,000円支給します！",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学部全学科",
+      "first_seen": "2026-07-18T21:16:31+09:00",
+      "last_checked": "2026-10-31T08:38:56+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "099-210-5120"
+      ],
+      "contact_homepages": [
+        "https://www.total-housing.net/",
+        "https://www.instagram.com/totalhousing_recruit/"
+      ],
+      "contact_checked_at": "2026-10-31T08:38:56+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=205372&optNo=UIn0l",
       "implementation_types": [
         "仕事体験"
       ],
@@ -161933,6 +162071,52 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=221336&optNo=6m7cU",
       "implementation_types": [
         "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:58052:course:KAey2",
+      "company": "徳倉建設(株)【名証メイン上場】",
+      "course": "建設インフラ×社会人すごろくで描く、後悔しない「今後の活動の軸」を作ろう！",
+      "industries": [
+        "建設",
+        "設備工事・設備設計",
+        "建築設計"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 【開催予定】10月～12月 ・実施日数 1日 ・詳細 1開催日につき3時間程度",
+      "deadline_text": "2026年12月31日",
+      "deadline": "2026-12-31",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費（定額）をお支払いします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学部全学科",
+      "first_seen": "2026-07-18T21:35:04+09:00",
+      "last_checked": "2026-10-31T08:39:26+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "jinji@info.tokura.co.jp"
+      ],
+      "contact_phones": [
+        "052-211-8735"
+      ],
+      "contact_homepages": [
+        "https://www.tokura.co.jp/"
+      ],
+      "contact_checked_at": "2026-10-31T08:39:26+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=58052&optNo=KAey2",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
