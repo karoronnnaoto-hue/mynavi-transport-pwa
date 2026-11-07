@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-07T07:58:52+09:00",
-  "last_mode": "detail_batch",
+  "generated_at": "2026-11-07T09:20:00+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 19779,
     "collected_courses": 19678,
-    "displayed_courses": 3938,
-    "transport_supported_courses": 15061,
-    "excluded_kanto_only_courses": 3973,
-    "excluded_closed_courses": 4517,
-    "excluded_expired_courses": 1386,
+    "displayed_courses": 3945,
+    "transport_supported_courses": 15059,
+    "excluded_kanto_only_courses": 3971,
+    "excluded_closed_courses": 4509,
+    "excluded_expired_courses": 1387,
     "excluded_science_only_courses": 1247,
-    "amount_known_courses": 1868,
+    "amount_known_courses": 1870,
     "amount_unlimited_courses": 374,
-    "amount_unknown_courses": 1696,
-    "excluded_no_transport_courses": 4617,
+    "amount_unknown_courses": 1701,
+    "excluded_no_transport_courses": 4619,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 560,
-    "details_checked_this_run": 549,
-    "details_closed_this_run": 11,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 32,
+    "details_closed_this_run": 118,
     "detail_failures_this_run": 0,
     "database_courses": 19678
   },
@@ -10881,6 +10881,60 @@
       ],
       "contact_checked_at": "2026-11-02T05:42:42+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=84870&optNo=JPtXf",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:294095:course:DL4nm",
+      "company": "中日本建設コンサルタント(株)",
+      "course": "【愛知】建設コンサルタント業務の体験(1day仕事体験)",
+      "industries": [
+        "建設コンサルタント",
+        "建設",
+        "建築設計",
+        "設備工事・設備設計",
+        "サービス（その他）"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [
+        "2026-08-19",
+        "2026-08-26",
+        "2026-09-02",
+        "2026-12-17",
+        "2026-12-23"
+      ],
+      "schedule_text": "・開催時期 8月19日、8月26日、9月2日、12月17日、12月23日 ・実施日数 1日",
+      "deadline_text": "2026年12月20日",
+      "deadline": "2026-12-20",
+      "transport_type": "limit",
+      "transport_amount": 1500,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費を実費支給します（上限1,500円）",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "建設コンサルタントに興味のある方 （高専・大学・大学院生の方）",
+      "first_seen": "2026-09-24T07:11:36+09:00",
+      "last_checked": "2026-11-07T09:23:29+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou@nakanihon.co.jp"
+      ],
+      "contact_phones": [
+        "0522326031"
+      ],
+      "contact_homepages": [
+        "https://www.nakanihon.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-07T09:23:29+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=294095&optNo=DL4nm",
       "implementation_types": [
         "仕事体験"
       ],
@@ -92973,6 +93027,144 @@
       "kanto_only": false
     },
     {
+      "id": "corp:52261:course:t8vd1",
+      "company": "(株)ユアテック【東証プライム上場】",
+      "course": "営業・事務職コース（１day）",
+      "industries": [
+        "設備工事・設備設計",
+        "建築設計",
+        "建設"
+      ],
+      "locations": [
+        "宮城県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月上旬～9月下旬 ・実施日数 1日 ・詳細 営業・事務職部門のうち、参加する部門は以下のとおりです。 １．営業 ２．経理 ３．資材調達 ４．総務 ５．人事労務",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり ※交通費（集合場所までの）を支給いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり ※遠方からの移動で当日の集合時間に間に合わない方について、前泊の希望を受付いたします。 ※当社にて宿泊施設を手配し宿泊していただきます。 ※但し、開催場所近郊（仙台）に宿泊場所（実家等）が手配できない方に限ります。 ※事前に申請がなく、ご自身で手配した宿泊施設で前泊した場合は、自費（対象外）とさせていただきます。",
+      "eligibility_text": "※当社業務に興味がある方であれば、学科・専攻は問いません。",
+      "first_seen": "2026-07-19T00:45:03+09:00",
+      "last_checked": "2026-11-07T09:25:54+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo@yurtec.co.jp"
+      ],
+      "contact_phones": [
+        "022-296-2111"
+      ],
+      "contact_homepages": [
+        "https://www.yurtec.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-07T09:25:54+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=52261&optNo=t8vd1",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:52261:course:caDEt",
+      "company": "(株)ユアテック【東証プライム上場】",
+      "course": "機械・建築・土木コース（2days）",
+      "industries": [
+        "設備工事・設備設計",
+        "建築設計",
+        "建設"
+      ],
+      "locations": [
+        "宮城県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 202年6月上旬～2027年2月下旬 ・実施日数 2～4日 ・詳細 当社の施工部門のうち「機械・土木・建築（設備）・建築（設計）」を履修した社員が多く活躍している部門にフォーカスして開催いたします。 参加する部門は以下の4部門です。 １．空調管設備 ２．土木 ３．建築 ４．再生可能エネルギー",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり ※交通費（集合場所までの）を支給いたします。 ※集合場所からの移動は貸切バスを予定しており、その代金についても当社にて負担いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり ※1泊2日の研修中の宿泊費については当社にて負担いたします。 ※遠方からの移動で当日の集合時間に間に合わない方は、当社にて宿泊施設を手配いたします。（当社負担） ※但し、開催場所近郊（仙台）にご実家等ない方に限ります。 ※事前に申請がなく、ご自身で手配した宿泊施設に宿泊した場合は、自費（対象外）とさせていただきます。",
+      "eligibility_text": "機械・建築・土木系の施工管理、設計積算にご興味のある方であれば、文理不問でご参加いただけます。",
+      "first_seen": "2026-07-19T00:44:46+09:00",
+      "last_checked": "2026-11-07T09:25:46+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo@yurtec.co.jp"
+      ],
+      "contact_phones": [
+        "022-296-2111"
+      ],
+      "contact_homepages": [
+        "https://www.yurtec.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-07T09:25:46+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=52261&optNo=caDEt",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:52261:course:J8h3X",
+      "company": "(株)ユアテック【東証プライム上場】",
+      "course": "電気・電子・通信コース（2days）",
+      "industries": [
+        "設備工事・設備設計",
+        "建築設計",
+        "建設"
+      ],
+      "locations": [
+        "宮城県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年6月上旬～2027年2月下旬 ・実施日数 2～4日 ・詳細 当社の施工部門のうち「電気・情報・通信・電子系」を履修した社員が多く活躍している部門にフォーカスして開催いたします。 参加する部門は以下の6部門です １．電気設備 ２．情報通信 ３．再生可能エネルギー ４．配電 ５．送電 ６．発変電",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり ※交通費（集合場所までの）を支給いたします。 ※集合場所からの移動は貸切バスを予定しており、その代金についても当社にて負担いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり ※1泊2日の研修中の宿泊費については当社にて負担いたします。 ※遠方からの移動で当日の集合時間に間に合わない方は、当社にて宿泊施設を手配いたします。（当社負担） ※但し、開催場所近郊（仙台）にご実家等がない方に限ります。 ※事前に申請がなく、ご自身で手配した宿泊施設に宿泊された場合は、自費（対象外）とさせていただきます。",
+      "eligibility_text": "電気系技術職の施工管理、設計積算のお仕事にご興味のある方であれば文理不問でご参加いただけます。",
+      "first_seen": "2026-07-19T00:48:14+09:00",
+      "last_checked": "2026-11-07T09:24:01+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo@yurtec.co.jp"
+      ],
+      "contact_phones": [
+        "022-296-2111"
+      ],
+      "contact_homepages": [
+        "https://www.yurtec.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-07T09:24:01+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=52261&optNo=J8h3X",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:52261:course:SJRhD",
       "company": "(株)ユアテック【東証プライム上場】",
       "course": "【新潟開催】技術職、営業・事務職 合同コース（1day）",
@@ -96510,6 +96702,57 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=279236&optNo=5J90B",
       "implementation_types": [
         "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:202367:course:qqidd",
+      "company": "(株)中尾組",
+      "course": "タイパ重視の１DAY職業体験！※昼食・交通費支給（文理不問です）",
+      "industries": [
+        "建設",
+        "建築設計",
+        "住宅",
+        "住宅（リフォーム）",
+        "設備工事・設備設計"
+      ],
+      "locations": [
+        "奈良県",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月～8月で月に1～2回程度開催 ・実施日数 1日 ・詳細 タイパ重視の１DAY職業体験にアクセスいただきありがとうございます。 奈良県桜井市に在する地域ゼネコンの中尾組。 国内有数の木材産地である奈良で木造建築をはじめ、寺社仏閣、公共工事（建築・土木）等、幅広い施工実績を有しています。 現場監督・施工管理の仕事内容を知りたい方、建築や土木、モノづくりに少しでも興味のある方は是非ご応募ください。（文理不問）",
+      "deadline_text": "2027年2月8日",
+      "deadline": "2027-02-08",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり ※交通費は所属の大学等、または下宿先から当社最寄りの【桜井駅】までの交通を支給します。 遠方の方は要相談。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "文理不問です。低回生や既卒生の方も積極的に受け付けております！",
+      "first_seen": "2026-07-18T21:06:46+09:00",
+      "last_checked": "2026-11-07T09:25:30+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "masato-suzuki@nakaogumi.co.jp"
+      ],
+      "contact_phones": [
+        "0744-42-3567",
+        "0744-45-5334"
+      ],
+      "contact_homepages": [
+        "https://www.nakaogumi.co.jp/",
+        "https://www.instagram.com/nakaogumi_sakurai/#"
+      ],
+      "contact_checked_at": "2026-11-07T09:25:30+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=202367&optNo=qqidd",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -124600,6 +124843,53 @@
       "kanto_only": false
     },
     {
+      "id": "corp:247482:course:ni20a",
+      "company": "アイワ電設開発(株)",
+      "course": "【交通費支給】時速300kmの鉄道と暮らしを支えるアイワの技術力体感1day仕事体験／先輩座談会つき",
+      "industries": [
+        "設備工事・設備設計",
+        "半導体・電子・電気機器",
+        "重電・産業用電気機器",
+        "建設",
+        "鉄道"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 ８月・９月 ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "limit",
+      "transport_amount": 10000,
+      "transport_available": true,
+      "transport_original": "支給あり 当社までの公共交通機関の交通費支給(上限往復1万円)",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "在学中・既卒3年以内の方",
+      "first_seen": "2026-07-18T23:05:18+09:00",
+      "last_checked": "2026-11-07T09:20:20+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "052-451-2266"
+      ],
+      "contact_homepages": [
+        "https://www.aiwa-d-k.co.jp/",
+        "https://www.youtube.com/watch?v=3Y-fu8I-G9U"
+      ],
+      "contact_checked_at": "2026-11-07T09:20:20+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=247482&optNo=ni20a",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:238081:course:1Nf1v",
       "company": "アイ・ティ・エス(株)",
       "course": "【札幌開催】ITで医療・企業を支える仕事のリアルがわかるオープン・カンパニー",
@@ -133695,6 +133985,49 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=253434&optNo=C1SoU",
       "implementation_types": [
         "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:72794:course:nPxH1",
+      "company": "トヨタモビリティパーツ(株) 愛知・岐阜・三重・静岡支社",
+      "course": "【愛知で働ける】安心安全を支える”【BtoB】ルート営業・企画”1day仕事体験",
+      "industries": [
+        "商社（自動車関連・輸送用機器）",
+        "専門店（自動車販売・自動車関連）"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 7月～9月、1～2月 ・実施日数 1日 、 2～4日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 対面の場合、支給いたします（上限あり）",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "四年制大学の方、大学院の方",
+      "first_seen": "2026-07-19T02:04:55+09:00",
+      "last_checked": "2026-11-07T09:26:02+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou@toyota-mp.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "https://toyota-mp.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-07T09:26:02+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=72794&optNo=nPxH1",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
