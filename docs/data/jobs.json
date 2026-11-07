@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-08T05:41:44+09:00",
-  "last_mode": "detail_batch",
+  "generated_at": "2026-11-08T08:04:02+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 19809,
     "collected_courses": 19708,
-    "displayed_courses": 3950,
+    "displayed_courses": 3954,
     "transport_supported_courses": 15062,
     "excluded_kanto_only_courses": 3972,
-    "excluded_closed_courses": 4510,
-    "excluded_expired_courses": 1379,
+    "excluded_closed_courses": 4505,
+    "excluded_expired_courses": 1380,
     "excluded_science_only_courses": 1251,
-    "amount_known_courses": 1869,
+    "amount_known_courses": 1870,
     "amount_unlimited_courses": 374,
-    "amount_unknown_courses": 1707,
+    "amount_unknown_courses": 1710,
     "excluded_no_transport_courses": 4646,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 560,
-    "details_checked_this_run": 552,
-    "details_closed_this_run": 8,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 12,
+    "details_closed_this_run": 138,
     "detail_failures_this_run": 0,
     "database_courses": 19708
   },
@@ -8499,6 +8499,56 @@
       "kanto_only": false
     },
     {
+      "id": "corp:243597:course:kVNV1",
+      "company": "千代田計装(株)",
+      "course": "【文理不問・半日】「計装」体験会（仕事体験）",
+      "industries": [
+        "設備工事・設備設計",
+        "商社（機械・プラント・環境）",
+        "ソフトウエア",
+        "建築設計"
+      ],
+      "locations": [
+        "福岡県"
+      ],
+      "event_dates": [
+        "2026-08-05",
+        "2026-09-03",
+        "2027-01-07",
+        "2027-02-10"
+      ],
+      "schedule_text": "・開催時期 8月5日・20日・28日、9月3日・9日・15日・29日、1月7日・26日、2月10日・25日 ・実施日数 1日",
+      "deadline_text": "2027年2月25日",
+      "deadline": "2027-02-25",
+      "transport_type": "limit",
+      "transport_amount": 10000,
+      "transport_available": true,
+      "transport_original": "支給あり 【持ち物】 ・領収書 ・印鑑 【交通費】 ・公共交通機関利用分を支給（上限10,000円／実費）",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "特になし",
+      "first_seen": "2026-07-18T23:09:32+09:00",
+      "last_checked": "2026-11-08T08:06:57+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "a-togo@ckcnw.co.jp"
+      ],
+      "contact_phones": [
+        "092-844-6501"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-11-08T08:06:57+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=243597&optNo=kVNV1",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:82710:course:cWbQm",
       "company": "(株)トヨタマップマスター",
       "course": "【対面】ミライの地図技術2days仕事体験",
@@ -12370,6 +12420,61 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=73503&optNo=Q1IY0",
       "implementation_types": [
         "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:99275:course:bAdJ3",
+      "company": "兼房(株)【東証スタンダード市場・名証メイン市場上場】",
+      "course": "技術部門の仕事を体感！ 1DAY仕事体験",
+      "industries": [
+        "金属製品",
+        "非鉄金属",
+        "機械",
+        "機械設計",
+        "環境・リサイクル"
+      ],
+      "locations": [
+        "愛知県"
+      ],
+      "event_dates": [
+        "2026-08-25",
+        "2026-09-08",
+        "2026-11-04",
+        "2026-12-08",
+        "2027-02-12"
+      ],
+      "schedule_text": "・開催時期 8月25日（火）、9月8日（火）、11月4日（水）・12月8日（火）・2月12日（金） ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 当社規定の沿って、大学からの距離で支給いたします。 また当日は名鉄犬山線柏森駅から当社までの送迎を行います。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 遠方からお越しの方には5,000円支給いたします。",
+      "eligibility_text": "全学年",
+      "first_seen": "2026-07-19T04:36:21+09:00",
+      "last_checked": "2026-11-08T08:05:38+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "kyujin@kanefusa.co.jp"
+      ],
+      "contact_phones": [
+        "0587-95-2823"
+      ],
+      "contact_homepages": [
+        "https://www.kanefusa.co.jp/",
+        "https://mypage.3010.i-webs.jp/kanefusa2028/"
+      ],
+      "contact_checked_at": "2026-11-08T08:05:38+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=99275&optNo=bAdJ3",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -102262,6 +102367,50 @@
       "kanto_only": false
     },
     {
+      "id": "corp:281773:course:es2zY",
+      "company": "(株)大島組",
+      "course": "【1DAY／学部不問／対面／少人数制 建築の新しい視点に出会える1DAYオープン・カンパニー",
+      "industries": [
+        "建設",
+        "建築設計",
+        "住宅"
+      ],
+      "locations": [
+        "新潟県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 月に１回程度開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月20日",
+      "deadline": "2027-02-20",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 距離に応じて補助させて頂きます。（上限金額あり）",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "文系理系、学年等は問いません！ どなたでも参加OKです！",
+      "first_seen": "2026-07-18T21:12:31+09:00",
+      "last_checked": "2026-11-08T08:10:38+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "c-fuse@ooshimagumi.com"
+      ],
+      "contact_phones": [
+        "025-543-4541"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-11-08T08:10:38+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=281773&optNo=es2zY",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:290068:course:swKev",
       "company": "(株)大市珍味",
       "course": "【WEB/参加特典あり】伝統×革新の食品メーカーの業務を徹底解説！",
@@ -178674,6 +178823,49 @@
       "contact_homepages": [],
       "contact_checked_at": "2026-10-31T14:45:43+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=85274&optNo=P4HJY",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:236152:course:zA69m",
+      "company": "社会福祉法人富士旭出学園",
+      "course": "１dayお仕事体験 障害支援体験コース【駅まで送迎・給食付・交通費支給あり】",
+      "industries": [
+        "福祉サービス",
+        "財団・社団・その他団体"
+      ],
+      "locations": [
+        "静岡県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年10月～2027年2月まで 各月4日実施予定 ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 法人の規程に準じて対応します。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "学部学科は問いません。どなたでもご参加いただけます。",
+      "first_seen": "2026-07-18T22:43:17+09:00",
+      "last_checked": "2026-11-08T08:09:29+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "seishinen@fujiasahidegakuen.com"
+      ],
+      "contact_phones": [
+        "0544-58-2681"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-11-08T08:09:29+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=236152&optNo=zA69m",
       "implementation_types": [
         "仕事体験"
       ],
