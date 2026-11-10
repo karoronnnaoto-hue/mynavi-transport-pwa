@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-10T07:48:58+09:00",
-  "last_mode": "urgent",
+  "generated_at": "2026-11-10T11:40:01+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 19948,
     "collected_courses": 19847,
-    "displayed_courses": 3939,
-    "transport_supported_courses": 15077,
-    "excluded_kanto_only_courses": 3977,
-    "excluded_closed_courses": 4562,
-    "excluded_expired_courses": 1353,
-    "excluded_science_only_courses": 1246,
+    "displayed_courses": 3942,
+    "transport_supported_courses": 15075,
+    "excluded_kanto_only_courses": 3976,
+    "excluded_closed_courses": 4554,
+    "excluded_expired_courses": 1354,
+    "excluded_science_only_courses": 1249,
     "amount_known_courses": 1876,
     "amount_unlimited_courses": 371,
-    "amount_unknown_courses": 1692,
-    "excluded_no_transport_courses": 4770,
+    "amount_unknown_courses": 1695,
+    "excluded_no_transport_courses": 4772,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 100,
-    "details_checked_this_run": 100,
-    "details_closed_this_run": 0,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 30,
+    "details_closed_this_run": 120,
     "detail_failures_this_run": 0,
     "database_courses": 19847
   },
@@ -45159,6 +45159,54 @@
       "kanto_only": false
     },
     {
+      "id": "corp:266365:course:yKRL0",
+      "company": "東北ポール(株)【日本コンクリート工業グループ】",
+      "course": "【文理共通】当社製品が見られる！東北ポールオープン・カンパニー",
+      "industries": [
+        "建設",
+        "その他メーカー",
+        "建材・エクステリア",
+        "鉄鋼"
+      ],
+      "locations": [
+        "岩手県",
+        "福島県"
+      ],
+      "event_dates": [
+        "2026-12-16",
+        "2027-02-09",
+        "2027-02-24"
+      ],
+      "schedule_text": "・開催時期 12月16日、2月9日、2月24日 ・実施日数 1日",
+      "deadline_text": "2026年12月2日",
+      "deadline": "2026-12-02",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "大学・大学院及び短大、専門学校等に在籍している方",
+      "first_seen": "2026-07-18T20:58:56+09:00",
+      "last_checked": "2026-11-10T11:44:25+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "022-263-5252"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-11-10T11:44:25+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=266365&optNo=yKRL0",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:266365:course:VsdFQ",
       "company": "東北ポール(株)【日本コンクリート工業グループ】",
       "course": "【文理共通】当社製品を見て、体験して学べる！ 1Dayコース",
@@ -52843,6 +52891,53 @@
       "contact_homepages": [],
       "contact_checked_at": "2026-11-07T01:04:47+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=273779&optNo=JJsX1",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:80620:course:MyYuY",
+      "company": "(株)エフ・シー・シー",
+      "course": "【文系歓迎！】見て知る！自動車部品工場のリアル",
+      "industries": [
+        "自動車・自動車部品",
+        "化学"
+      ],
+      "locations": [
+        "静岡県"
+      ],
+      "event_dates": [
+        "2027-01-13"
+      ],
+      "schedule_text": "・開催時期 1月13日 ・実施日数 1日 ・詳細 各日程13:30～16:30での実施",
+      "deadline_text": "2026年12月23日",
+      "deadline": "2026-12-23",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり お住いの地域から静岡県浜松市までの往復交通費（当社規定額）を支給いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "自力で渡ケ島工場にお越しいただけることが可能な方 公共交通機関でお越しいただくのが困難な地域に位置しております。 ※自家用車でお越しいただくことも可能です",
+      "first_seen": "2026-07-18T22:06:25+09:00",
+      "last_checked": "2026-11-10T11:42:40+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "recruit@fcc-net.co.jp"
+      ],
+      "contact_phones": [
+        "053-523-2401"
+      ],
+      "contact_homepages": [
+        "https://www.fcc-net.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-10T11:42:40+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=80620&optNo=MyYuY",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -102080,6 +102175,50 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=100213&optNo=8-74o",
       "implementation_types": [
         "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:281773:course:j8WSV",
+      "company": "(株)大島組",
+      "course": "1DAY／学部不問／対面／少人数制【AI×遠隔操作×ICT建機】建設業の“未来”を、1日で体験せよ。",
+      "industries": [
+        "建設",
+        "建築設計",
+        "住宅"
+      ],
+      "locations": [
+        "新潟県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 月に１回程度開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月20日",
+      "deadline": "2027-02-20",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 距離に応じて補助させて頂きます。（上限金額あり）",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "文系理系、学年等は問いません！ どなたでも参加OKです！",
+      "first_seen": "2026-07-18T21:13:11+09:00",
+      "last_checked": "2026-11-10T11:45:30+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "c-fuse@ooshimagumi.com"
+      ],
+      "contact_phones": [
+        "025-543-4541"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-11-10T11:45:30+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=281773&optNo=j8WSV",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
