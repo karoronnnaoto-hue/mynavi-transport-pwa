@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-14T07:30:08+09:00",
-  "last_mode": "detail_batch",
+  "generated_at": "2026-11-14T09:47:53+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 20121,
     "collected_courses": 20024,
-    "displayed_courses": 3939,
+    "displayed_courses": 3940,
     "transport_supported_courses": 15095,
     "excluded_kanto_only_courses": 3986,
-    "excluded_closed_courses": 4576,
-    "excluded_expired_courses": 1334,
-    "excluded_science_only_courses": 1260,
+    "excluded_closed_courses": 4573,
+    "excluded_expired_courses": 1335,
+    "excluded_science_only_courses": 1261,
     "amount_known_courses": 1872,
-    "amount_unlimited_courses": 377,
+    "amount_unlimited_courses": 378,
     "amount_unknown_courses": 1690,
     "excluded_no_transport_courses": 4929,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 560,
-    "details_checked_this_run": 555,
-    "details_closed_this_run": 5,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 20,
+    "details_closed_this_run": 130,
     "detail_failures_this_run": 0,
     "database_courses": 20024
   },
@@ -147430,6 +147430,55 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=72640&optNo=sM00m",
       "implementation_types": [
         "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:285898:course:koUh4",
+      "company": "全農東北エネルギー(株)【全農エネルギー(株)グループ】",
+      "course": "【18時開催／オンライン】授業後でも参加OK！先輩社員と考える2時間の企画ワークショップ",
+      "industries": [
+        "商社（化学・石油・ガス・電気）",
+        "ガス・エネルギー",
+        "電力",
+        "化学",
+        "石油"
+      ],
+      "locations": [
+        "宮城県",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年12月、2027年1月の各月1回ずつ定期開催 ・実施日数 1日 ・詳細 2月に追加開催の可能性あり。",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "unlimited",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 【対面開催の場合】 宮城県外からの参加者には実費支給 （公共交通機関の領収書の提出必須）",
+      "amount_analysis_status": "unlimited",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "なし",
+      "first_seen": "2026-10-09T08:48:25+09:00",
+      "last_checked": "2026-11-14T09:51:11+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "shimizu_y@zec.jp"
+      ],
+      "contact_phones": [
+        "022-738-8175"
+      ],
+      "contact_homepages": [
+        "https://zennoh-energy.co.jp/company/zennoh-tohoku/profile/"
+      ],
+      "contact_checked_at": "2026-11-14T09:51:11+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=285898&optNo=koUh4",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
