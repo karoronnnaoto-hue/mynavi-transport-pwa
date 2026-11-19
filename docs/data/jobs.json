@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-19T09:41:50+09:00",
-  "last_mode": "detail_batch",
+  "generated_at": "2026-11-19T10:45:18+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 20200,
     "collected_courses": 20102,
-    "displayed_courses": 3923,
+    "displayed_courses": 3926,
     "transport_supported_courses": 15111,
     "excluded_kanto_only_courses": 3992,
-    "excluded_closed_courses": 4616,
-    "excluded_expired_courses": 1328,
+    "excluded_closed_courses": 4612,
+    "excluded_expired_courses": 1329,
     "excluded_science_only_courses": 1252,
-    "amount_known_courses": 1870,
+    "amount_known_courses": 1871,
     "amount_unlimited_courses": 374,
-    "amount_unknown_courses": 1679,
+    "amount_unknown_courses": 1681,
     "excluded_no_transport_courses": 4991,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 560,
-    "details_checked_this_run": 557,
-    "details_closed_this_run": 3,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 18,
+    "details_closed_this_run": 132,
     "detail_failures_this_run": 0,
     "database_courses": 20102
   },
@@ -26298,6 +26298,64 @@
       ],
       "contact_checked_at": "2026-11-19T03:19:59+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=95680&optNo=GhN8z",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:79938:course:ZwZ7z",
+      "company": "(株)サエラ",
+      "course": "【薬学生向け】スタッフと会える！話せる！店舗見学",
+      "industries": [
+        "調剤薬局"
+      ],
+      "locations": [
+        "愛知県",
+        "大阪府",
+        "兵庫県",
+        "奈良県",
+        "岡山県"
+      ],
+      "event_dates": [
+        "2026-11-04",
+        "2026-11-16",
+        "2026-11-18",
+        "2026-11-20",
+        "2026-11-30",
+        "2026-12-04",
+        "2026-12-14",
+        "2026-12-22"
+      ],
+      "schedule_text": "・開催時期 11月4日、11月16日、11月18日、11月20日、11月30日、12月4日、12月14日、12月22日 ・実施日数 1日",
+      "deadline_text": "2027年2月20日",
+      "deadline": "2027-02-20",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 当社規定により、交通費をお支払いします(上限あり)。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T22:04:05+09:00",
+      "last_checked": "2026-11-19T10:49:06+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saera.shinsotsu@saera-ph.co.jp"
+      ],
+      "contact_phones": [
+        "0120-336-510"
+      ],
+      "contact_homepages": [
+        "https://www.saera-ph.co.jp/",
+        "https://www.saera-ph.co.jp/search/"
+      ],
+      "contact_checked_at": "2026-11-19T10:49:06+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=79938&optNo=ZwZ7z",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
@@ -144833,6 +144891,52 @@
       "kanto_only": false
     },
     {
+      "id": "corp:264854:course:YassB",
+      "company": "伸和興業(株)",
+      "course": "建設会社の仕事が分かる！オープン・カンパニー！",
+      "industries": [
+        "建設",
+        "設備工事・設備設計",
+        "建築設計",
+        "建設コンサルタント"
+      ],
+      "locations": [
+        "宮城県",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 １１月、１２月、１月、２月 ・実施日数 1日",
+      "deadline_text": "2026年12月20日",
+      "deadline": "2026-12-20",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "記載なし",
+      "eligibility_text": "大学院、大学、高専、専門 伸和興業に少しでもご興味がある方",
+      "first_seen": "2026-07-18T20:56:18+09:00",
+      "last_checked": "2026-11-19T10:47:52+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "022-797-5848"
+      ],
+      "contact_homepages": [
+        "https://www.shinwakk.jp/"
+      ],
+      "contact_checked_at": "2026-11-19T10:47:52+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264854&optNo=YassB",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:264854:course:VC0vH",
       "company": "伸和興業(株)",
       "course": "【1DAY／3DAYS】伸和興業の施工管理仕事体験コース",
@@ -158068,6 +158172,52 @@
       ],
       "contact_checked_at": "2026-11-14T18:37:46+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=50459&optNo=QJdjI",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:259674:course:B9gMt",
+      "company": "岡山イーグル(株)",
+      "course": "【対面2時間（座談会あり）】会社説明会×工場見学×座談会",
+      "industries": [
+        "自動車・自動車部品",
+        "金属製品",
+        "その他メーカー"
+      ],
+      "locations": [
+        "岡山県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 6月、7月、8月、9月（各月1回以上開催） ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "fixed",
+      "transport_amount": 5000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費は一律5,000円です。 最寄りの備中高梁駅から送迎いたします",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学部・全学科・全学年",
+      "first_seen": "2026-07-18T20:49:57+09:00",
+      "last_checked": "2026-11-19T10:47:36+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "shigehiro.ota@ekkeagle.com"
+      ],
+      "contact_phones": [
+        "0866-57-3150"
+      ],
+      "contact_homepages": [
+        "https://www.ekkeagle.com/jp/oek/"
+      ],
+      "contact_checked_at": "2026-11-19T10:47:36+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=259674&optNo=B9gMt",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
