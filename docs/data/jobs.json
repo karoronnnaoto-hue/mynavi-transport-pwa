@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-20T09:17:32+09:00",
-  "last_mode": "detail_batch",
+  "generated_at": "2026-11-20T10:45:29+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 20246,
     "collected_courses": 20147,
-    "displayed_courses": 3918,
+    "displayed_courses": 3923,
     "transport_supported_courses": 15115,
     "excluded_kanto_only_courses": 3996,
-    "excluded_closed_courses": 4627,
+    "excluded_closed_courses": 4621,
     "excluded_expired_courses": 1321,
-    "excluded_science_only_courses": 1253,
-    "amount_known_courses": 1866,
+    "excluded_science_only_courses": 1254,
+    "amount_known_courses": 1867,
     "amount_unlimited_courses": 373,
-    "amount_unknown_courses": 1679,
+    "amount_unknown_courses": 1683,
     "excluded_no_transport_courses": 5032,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 560,
-    "details_checked_this_run": 550,
-    "details_closed_this_run": 10,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 23,
+    "details_closed_this_run": 127,
     "detail_failures_this_run": 0,
     "database_courses": 20147
   },
@@ -114503,6 +114503,51 @@
       "kanto_only": false
     },
     {
+      "id": "corp:99482:course:TkEu1",
+      "company": "(株)菅組",
+      "course": "【あなぶきアリーナ香川施工】自己分析で将来の迷いを整理！1day（交通費支給／日程個別調整）",
+      "industries": [
+        "建設",
+        "建築設計",
+        "住宅",
+        "住宅（リフォーム）"
+      ],
+      "locations": [
+        "香川県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 個別調整にて随時開催 ・実施日数 1日 ・詳細 10：00 ～ 16：00 頃 ※日程に関しましては随時個別で調整させていただきます。",
+      "deadline_text": "2026年11月29日",
+      "deadline": "2026-11-29",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 会社規定に則り、往復相当分を支給いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "建築施工管理職：建築系学科を履修している専門、高専、大学、大学院の学生の方 積算職：全学部全学科対象（理系歓迎） 営業職：全学部全学科対象（理系歓迎）",
+      "first_seen": "2026-07-18T22:07:01+09:00",
+      "last_checked": "2026-11-20T10:51:23+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou@suga-ac.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "http://www.suga-ac.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-20T10:51:23+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=99482&optNo=TkEu1",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:273641:course:kxbIX",
       "company": "(株)菰下鎔断",
       "course": "【対面開催】社食が食べれる鉄鋼業界・会社セミナー！【社食＆送迎付き】",
@@ -143492,6 +143537,55 @@
       "kanto_only": false
     },
     {
+      "id": "corp:102744:course:LdmqV",
+      "company": "井上建設(株)",
+      "course": "【1日】建設業と会社を知ろう！(説明会/現場見学)",
+      "industries": [
+        "建設",
+        "住宅（リフォーム）",
+        "設備工事・設備設計",
+        "建築設計",
+        "不動産"
+      ],
+      "locations": [
+        "徳島県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 5月中旬～9月下旬 希望日程に合せ月1回以上随時開催します。 ・実施日数 1日",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 領収書で清算します。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T18:24:32+09:00",
+      "last_checked": "2026-11-20T10:49:36+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "jinji@inoue-naruto.jp"
+      ],
+      "contact_phones": [
+        "088-686-5145",
+        "088-686-5596"
+      ],
+      "contact_homepages": [
+        "https://inoue-naruto.jp/"
+      ],
+      "contact_checked_at": "2026-11-20T10:49:36+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=102744&optNo=LdmqV",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:102744:course:B6zEy",
       "company": "井上建設(株)",
       "course": "【3days仕事体験】施工管理が自分に合うかを確かめる3日間｜※交通費・ランチ支給",
@@ -144726,6 +144820,51 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=296667&optNo=PJX4p",
       "implementation_types": [
         "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:264854:course:zByXo",
+      "company": "伸和興業(株)",
+      "course": "【体験】伸和興業の仕事が分かる1DAYプログラム",
+      "industries": [
+        "建設",
+        "設備工事・設備設計",
+        "建築設計",
+        "建設コンサルタント"
+      ],
+      "locations": [
+        "宮城県"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 １１月、１２月、１月、２月 ・実施日数 1日",
+      "deadline_text": "2026年12月20日",
+      "deadline": "2026-12-20",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "記載なし",
+      "eligibility_text": "大学院、大学、高専、専門 伸和興業に少しでもご興味がある方",
+      "first_seen": "2026-07-18T20:56:29+09:00",
+      "last_checked": "2026-11-20T10:46:14+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "022-797-5848"
+      ],
+      "contact_homepages": [
+        "https://www.shinwakk.jp/"
+      ],
+      "contact_checked_at": "2026-11-20T10:46:14+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=264854&optNo=zByXo",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -158156,6 +158295,53 @@
       "kanto_only": false
     },
     {
+      "id": "corp:207047:course:5AKH6",
+      "company": "岩谷瓦斯(株)【イワタニグループ】",
+      "course": "【化学×インフラ】会社の雰囲気が分かる！岩谷ガス業界セミナー【水素エネルギー】",
+      "industries": [
+        "化学",
+        "プラント・エンジニアリング",
+        "設備工事・設備設計",
+        "ガス・エネルギー",
+        "環境・リサイクル"
+      ],
+      "locations": [
+        "大阪府",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 ２０２６年８月～９月 各月随時開催予定 ・実施日数 1日",
+      "deadline_text": "2027年3月31日",
+      "deadline": "2027-03-31",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 対面実施の場合は支給予定",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T19:22:21+09:00",
+      "last_checked": "2026-11-20T10:49:52+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "hp-otoiawase@iig.iwatani.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "https://www.iwatanigas.co.jp/index.html"
+      ],
+      "contact_checked_at": "2026-11-20T10:49:52+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=207047&optNo=5AKH6",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:241938:course:DBuOz",
       "company": "岩部建設(株)",
       "course": "建築/土木の施工管理のお仕事を体験！ 5日間インターンシップ",
@@ -162752,6 +162938,52 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=281143&optNo=0mEdB",
       "implementation_types": [
         "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:86533:course:yntXs",
+      "company": "日本メディカルシステム(株)【薬剤師職】",
+      "course": "【web会社説明会】日本メディカルシステム株式会社",
+      "industries": [
+        "調剤薬局",
+        "医療機関",
+        "ドラッグストア",
+        "化粧品",
+        "商社（薬品・化粧品）"
+      ],
+      "locations": [
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 4月～9月の土日祝日を含む日程で月1回以上開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月28日",
+      "deadline": "2027-02-28",
+      "transport_type": "fixed",
+      "transport_amount": 2000,
+      "transport_available": true,
+      "transport_original": "支給あり 備考：通信費として2000円分のデジタルギフトを支給いたします。 ※同日開催の他プログラムに参加されても1回分のみのお渡しとなります。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "薬剤師国家資格取得予定者、および取得者。 ※専門職につき、当該資格の取得を予定している方を対象とするため。",
+      "first_seen": "2026-07-18T21:55:11+09:00",
+      "last_checked": "2026-11-20T10:51:06+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "newph@jmsys.co.jp"
+      ],
+      "contact_phones": [],
+      "contact_homepages": [
+        "https://www.jmsys.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-20T10:51:06+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=86533&optNo=yntXs",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
