@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-23T07:51:17+09:00",
-  "last_mode": "urgent",
+  "generated_at": "2026-11-23T09:45:44+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 20344,
     "collected_courses": 20243,
-    "displayed_courses": 3934,
+    "displayed_courses": 3940,
     "transport_supported_courses": 15130,
     "excluded_kanto_only_courses": 3997,
-    "excluded_closed_courses": 4640,
+    "excluded_closed_courses": 4634,
     "excluded_expired_courses": 1289,
     "excluded_science_only_courses": 1270,
-    "amount_known_courses": 1889,
+    "amount_known_courses": 1893,
     "amount_unlimited_courses": 370,
-    "amount_unknown_courses": 1675,
+    "amount_unknown_courses": 1677,
     "excluded_no_transport_courses": 5113,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 100,
-    "details_checked_this_run": 100,
-    "details_closed_this_run": 0,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 19,
+    "details_closed_this_run": 131,
     "detail_failures_this_run": 0,
     "database_courses": 20243
   },
@@ -39899,6 +39899,51 @@
       "kanto_only": false
     },
     {
+      "id": "corp:83068:course:20Ar3",
+      "company": "にいかわ信用金庫",
+      "course": "【文理不問】しんきん感\"信金感・親近感・thinking感″を体験しよう!",
+      "industries": [
+        "信用金庫・労働金庫・信用組合"
+      ],
+      "locations": [
+        "富山県"
+      ],
+      "event_dates": [
+        "2026-12-10",
+        "2027-01-14"
+      ],
+      "schedule_text": "・開催時期 12月10、11、17、18日、1月14～15日、他2～3月で月１回以上開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "fixed",
+      "transport_amount": 3000,
+      "transport_available": true,
+      "transport_original": "支給あり 一律3000円程度※変動あり",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学年全学部全学科",
+      "first_seen": "2026-07-19T03:13:24+09:00",
+      "last_checked": "2026-11-23T09:52:20+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "jinji@niikawa.shinkin.jp"
+      ],
+      "contact_phones": [
+        "0765-24-1847"
+      ],
+      "contact_homepages": [],
+      "contact_checked_at": "2026-11-23T09:52:20+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=83068&optNo=20Ar3",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:52258:course:Gwwv3",
       "company": "アイコム(株)【東証プライム市場上場】",
       "course": "【対面開催】１DAY社内SE職の仕事を体験してみよう！",
@@ -47563,6 +47608,56 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=271814&optNo=-Oend",
       "implementation_types": [
         "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:79994:course:TqIGB",
+      "company": "(株)コーアガス日本",
+      "course": "普段何気なく使用しているガスの裏側！1day職場体験！（特別案内有り）",
+      "industries": [
+        "ガス・エネルギー",
+        "設備工事・設備設計",
+        "住宅（リフォーム）"
+      ],
+      "locations": [
+        "鹿児島県"
+      ],
+      "event_dates": [
+        "2026-12-23",
+        "2027-01-28",
+        "2027-02-17"
+      ],
+      "schedule_text": "・開催時期 12月23日、1月28日、2月17日 ・実施日数 1日",
+      "deadline_text": "2027年2月18日",
+      "deadline": "2027-02-18",
+      "transport_type": "fixed",
+      "transport_amount": 1000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費支給（それぞれ一律支給で、仕事体験実施日数に関わりなく） 住居が鹿児島市内学生 ：1,000円/回 住居が鹿児島県内かつ鹿児島市外学生：2,000円/回 住居が鹿児島県外学生 ：5,000円/回",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "特にありません。",
+      "first_seen": "2026-07-19T02:50:12+09:00",
+      "last_checked": "2026-11-23T09:50:02+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "soumu-hr@koagas-n.co.jp"
+      ],
+      "contact_phones": [
+        "099-257-8812"
+      ],
+      "contact_homepages": [
+        "http://koagas-n.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-23T09:50:02+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=79994&optNo=TqIGB",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -60110,6 +60205,55 @@
       "kanto_only": false
     },
     {
+      "id": "corp:101297:course:rZ7Jf",
+      "company": "(株)HARP",
+      "course": "仮想的ネットワーク構築体験/クラウドエンジニア",
+      "industries": [
+        "情報処理",
+        "ソフトウエア",
+        "インターネット関連"
+      ],
+      "locations": [
+        "北海道"
+      ],
+      "event_dates": [
+        "2027-02-15",
+        "2027-02-19"
+      ],
+      "schedule_text": "・開催時期 2027年2月15日（月）～2月19日（金） ・実施日数 5日～2週間未満",
+      "deadline_text": "2026年12月31日",
+      "deadline": "2026-12-31",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 当社の規程に則り支給いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし 札幌圏外からお越しの場合のみ、弊社の規程に則り支給いたします。",
+      "eligibility_text": "参加必須条件：Linuxの使用経験（コマンドによる操作経験） 参加歓迎要件：サーバ構築経験 ネットワーク構築経験（規模は問わない）",
+      "first_seen": "2026-07-18T18:23:28+09:00",
+      "last_checked": "2026-11-23T09:48:51+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo@e-harp.jp"
+      ],
+      "contact_phones": [
+        "011-221-5800"
+      ],
+      "contact_homepages": [
+        "https://www.e-harp.jp/"
+      ],
+      "contact_checked_at": "2026-11-23T09:48:51+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=101297&optNo=rZ7Jf",
+      "implementation_types": [
+        "インターンシップ"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:74607:course:Dpyu-",
       "company": "(株)オプテージ【関西電力グループ】",
       "course": "OPTAGE 3Days Winter Program -What's next？-アプリケーションエンジニア",
@@ -62846,6 +62990,56 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=73365&optNo=Tf0pv",
       "implementation_types": [
         "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:101297:course:bcehh",
+      "company": "(株)HARP",
+      "course": "Webアプリケーション開発体験/アプリケーションエンジニア",
+      "industries": [
+        "情報処理",
+        "ソフトウエア",
+        "インターネット関連"
+      ],
+      "locations": [
+        "北海道"
+      ],
+      "event_dates": [
+        "2027-02-22",
+        "2027-02-23",
+        "2027-03-01"
+      ],
+      "schedule_text": "・開催時期 2027年2月22日（月）～3月1日（月） ※2月23日（火）は祝日のためお休み ・実施日数 5日～2週間未満",
+      "deadline_text": "2026年12月31日",
+      "deadline": "2026-12-31",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 当社の規程に則り支給いたします。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし 札幌圏外からお越しの場合のみ、弊社の規程に則り支給いたします。",
+      "eligibility_text": "参加必須条件：プログラミング経験 参加歓迎要件：授業以外の開発経験・git利用経験",
+      "first_seen": "2026-07-18T18:23:17+09:00",
+      "last_checked": "2026-11-23T09:48:43+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo@e-harp.jp"
+      ],
+      "contact_phones": [
+        "011-221-5800"
+      ],
+      "contact_homepages": [
+        "https://www.e-harp.jp/"
+      ],
+      "contact_checked_at": "2026-11-23T09:48:43+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=101297&optNo=bcehh",
+      "implementation_types": [
+        "インターンシップ"
       ],
       "science_only": false,
       "kanto_only": false
@@ -75429,6 +75623,53 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=251097&optNo=7ckf6",
       "implementation_types": [
         "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:102127:course:0pfXY",
+      "company": "(株)オガワ",
+      "course": "看板・サイン業界の裏側をWEBで完全理解！オガワの1dayオープン・カンパニー！",
+      "industries": [
+        "金属製品",
+        "その他メーカー"
+      ],
+      "locations": [
+        "広島県",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 １１月～２月 月一回以上開催予定 ・実施日数 1日",
+      "deadline_text": "2027年1月31日",
+      "deadline": "2027-01-31",
+      "transport_type": "limit",
+      "transport_amount": 5000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費支給／上限5,000円",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T18:23:37+09:00",
+      "last_checked": "2026-11-23T09:49:02+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyo@sign21.co.jp"
+      ],
+      "contact_phones": [
+        "082-837-0770",
+        "082-837-1010"
+      ],
+      "contact_homepages": [
+        "https://www.sign21.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-23T09:49:02+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=102127&optNo=0pfXY",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
@@ -162787,6 +163028,54 @@
       ],
       "contact_checked_at": "2026-11-19T02:30:41+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=218851&optNo=1gUyh",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:221981:course:gNWia",
+      "company": "新栄プラント(株)",
+      "course": "27・28・29卒低学年も大歓迎！自己分析ワークあり！新栄プラントまるわかりセミナー！交通費支給！",
+      "industries": [
+        "商社（機械・プラント・環境）",
+        "商社（電子・電気機器・OA機器）",
+        "商社（精密機器）"
+      ],
+      "locations": [
+        "北海道",
+        "WEB"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年6月～2027年2月まで毎月1回以上開催予定。 ・実施日数 1日",
+      "deadline_text": "2027年2月9日",
+      "deadline": "2027-02-09",
+      "transport_type": "limit",
+      "transport_amount": 2000,
+      "transport_available": true,
+      "transport_original": "支給あり 会社規定あり 2,000円の支給有。 その他、市外、道外よりお越しの学生様は人事担当までご相談ください。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 会社規定あり 市外・道外よりご検討の学生様は人事担当までご相談ください。",
+      "eligibility_text": "短大、高専、専門学校、大学、大学院生の方",
+      "first_seen": "2026-07-18T19:52:01+09:00",
+      "last_checked": "2026-11-23T09:47:48+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "recruit@shin-ei-plant.co.jp",
+        "shin-ei-plant+27@recruit-mg.com"
+      ],
+      "contact_phones": [
+        "011-642-1749"
+      ],
+      "contact_homepages": [
+        "http://www.shin-ei-plant.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-23T09:47:48+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=221981&optNo=gNWia",
       "implementation_types": [
         "オープン・カンパニー等"
       ],
