@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-24T11:55:41+09:00",
-  "last_mode": "refresh",
+  "generated_at": "2026-11-24T14:02:44+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 20355,
     "collected_courses": 20254,
-    "displayed_courses": 3946,
+    "displayed_courses": 3947,
     "transport_supported_courses": 15134,
     "excluded_kanto_only_courses": 3999,
-    "excluded_closed_courses": 4642,
+    "excluded_closed_courses": 4639,
     "excluded_expired_courses": 1275,
-    "excluded_science_only_courses": 1272,
-    "amount_known_courses": 1894,
+    "excluded_science_only_courses": 1274,
+    "amount_known_courses": 1895,
     "amount_unlimited_courses": 369,
     "amount_unknown_courses": 1683,
     "excluded_no_transport_courses": 5120,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 350,
-    "details_checked_this_run": 350,
-    "details_closed_this_run": 0,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 22,
+    "details_closed_this_run": 128,
     "detail_failures_this_run": 0,
     "database_courses": 20254
   },
@@ -66079,6 +66079,58 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=108163&optNo=MeihD",
       "implementation_types": [
         "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:258366:course:gGhL6",
+      "company": "(株)丸信",
+      "course": "【60分/全国WEB参加OK】地場企業を支えるモノづくりの裏側！最新工場見学＆若手営業のリアル本音座談会",
+      "industries": [
+        "商社（文具・事務用品・日用品）",
+        "印刷・印刷関連",
+        "商社（その他製品）",
+        "商社（化学・石油・ガス・電気）",
+        "コンサルティングファーム"
+      ],
+      "locations": [
+        "WEB"
+      ],
+      "event_dates": [
+        "2027-09-28",
+        "2027-10-09",
+        "2027-10-21"
+      ],
+      "schedule_text": "・開催時期 9月28日、10月9日、10月21日※2027年2月まで月に2回程度開催予定 ・実施日数 1日",
+      "deadline_text": "2027年2月26日",
+      "deadline": "2027-02-26",
+      "transport_type": "limit",
+      "transport_amount": 5000,
+      "transport_available": true,
+      "transport_original": "支給あり 対面の場合、1回5000円まで交通費支給",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "全学年・全学部学科対象（どなたでも大歓迎！） 専門知識や事前準備は一切不要です。 対面（本社：福岡県久留米市）またはWEB（Zoom）のどちらかご都合の良い形式をお選びいただけます。",
+      "first_seen": "2026-09-21T16:21:06+09:00",
+      "last_checked": "2026-11-24T14:09:24+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "ml-marusinoubo@maru-sin.co.jp"
+      ],
+      "contact_phones": [
+        "0942-48-0939"
+      ],
+      "contact_homepages": [
+        "https://www.maru-sin.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-24T14:09:24+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=258366&optNo=gGhL6",
+      "implementation_types": [
+        "オープン・カンパニー等"
       ],
       "science_only": false,
       "kanto_only": false
