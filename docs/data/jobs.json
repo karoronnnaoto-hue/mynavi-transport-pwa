@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-27T09:38:23+09:00",
-  "last_mode": "refresh",
+  "generated_at": "2026-11-27T11:54:32+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 20425,
     "collected_courses": 20325,
-    "displayed_courses": 3887,
+    "displayed_courses": 3889,
     "transport_supported_courses": 15155,
     "excluded_kanto_only_courses": 4006,
-    "excluded_closed_courses": 4668,
-    "excluded_expired_courses": 1364,
-    "excluded_science_only_courses": 1230,
+    "excluded_closed_courses": 4662,
+    "excluded_expired_courses": 1366,
+    "excluded_science_only_courses": 1232,
     "amount_known_courses": 1859,
     "amount_unlimited_courses": 369,
-    "amount_unknown_courses": 1659,
+    "amount_unknown_courses": 1661,
     "excluded_no_transport_courses": 5170,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 350,
-    "details_checked_this_run": 349,
-    "details_closed_this_run": 1,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 41,
+    "details_closed_this_run": 109,
     "detail_failures_this_run": 0,
     "database_courses": 20325
   },
@@ -28212,6 +28212,58 @@
       "kanto_only": false
     },
     {
+      "id": "corp:80257:course:Fe4u-",
+      "company": "(株)大阪屋ショップ",
+      "course": "大阪屋ショップの「美味しい」をスマイルで届ける～店舗の仕事体験 (試食販売)編～",
+      "industries": [
+        "スーパーマーケット",
+        "食品",
+        "商社（食品・農林・水産）",
+        "専門店（食品・日用品）"
+      ],
+      "locations": [
+        "富山県",
+        "石川県"
+      ],
+      "event_dates": [
+        "2026-11-14",
+        "2026-11-28",
+        "2026-12-12"
+      ],
+      "schedule_text": "・開催時期 11月14日、11月28日、12月12日 ・実施日数 1日",
+      "deadline_text": "2027年2月25日",
+      "deadline": "2027-02-25",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 定額での支給です。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": false,
+      "lodging_text": "支給なし",
+      "eligibility_text": "※全学部全学科対象です。",
+      "first_seen": "2026-07-19T02:33:14+09:00",
+      "last_checked": "2026-11-27T12:00:24+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "saiyou@oosakaya-shop.co.jp"
+      ],
+      "contact_phones": [
+        "076-421-1500"
+      ],
+      "contact_homepages": [
+        "http://www.ohsakaya-shop.jp"
+      ],
+      "contact_checked_at": "2026-11-27T12:00:24+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=80257&optNo=Fe4u-",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:284600:course:y8tqH",
       "company": "トヨタモビリティパーツ(株) 北海道統括支社",
       "course": "【対面｜札幌開催】1dayオープン・カンパニー【BtoBの魅力を知る！】",
@@ -53765,6 +53817,57 @@
       "contact_homepages": [],
       "contact_checked_at": "2026-11-22T15:59:03+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=38803&optNo=WwjCv",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:85679:course:uAZm1",
+      "company": "中外テクノス(株)",
+      "course": "安全・安心を守る/総合検査企業の3DAYS仕事体験",
+      "industries": [
+        "専門コンサルティング",
+        "建設コンサルタント",
+        "機械設計",
+        "検査・整備・メンテナンス",
+        "受託開発"
+      ],
+      "locations": [
+        "広島県"
+      ],
+      "event_dates": [
+        "2027-02-03",
+        "2027-02-05",
+        "2027-02-24",
+        "2027-02-26"
+      ],
+      "schedule_text": "・開催時期 ・２月３日～２月５日 ・２月２４日～２月２６日 ・実施日数 2～4日",
+      "deadline_text": "2027年1月11日",
+      "deadline": "2027-01-11",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 宿泊が必要な場合は、宿泊先をご用意いたします",
+      "eligibility_text": "大学院理系/大学院文系/大学文系/大学理系/高専",
+      "first_seen": "2026-07-19T03:30:25+09:00",
+      "last_checked": "2026-11-27T11:55:11+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [],
+      "contact_phones": [
+        "082-295-2222"
+      ],
+      "contact_homepages": [
+        "https://www.chugai-tec.co.jp/"
+      ],
+      "contact_checked_at": "2026-11-27T11:55:11+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=85679&optNo=uAZm1",
       "implementation_types": [
         "仕事体験"
       ],
