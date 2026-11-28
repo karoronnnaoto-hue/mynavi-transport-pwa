@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-28T09:09:47+09:00",
-  "last_mode": "refresh",
+  "generated_at": "2026-11-28T11:34:03+09:00",
+  "last_mode": "cleanup",
   "stats": {
     "catalog_courses": 20425,
     "collected_courses": 20325,
-    "displayed_courses": 3833,
+    "displayed_courses": 3836,
     "transport_supported_courses": 15155,
     "excluded_kanto_only_courses": 4006,
-    "excluded_closed_courses": 4662,
-    "excluded_expired_courses": 1440,
-    "excluded_science_only_courses": 1214,
-    "amount_known_courses": 1837,
+    "excluded_closed_courses": 4656,
+    "excluded_expired_courses": 1442,
+    "excluded_science_only_courses": 1215,
+    "amount_known_courses": 1838,
     "amount_unlimited_courses": 364,
-    "amount_unknown_courses": 1632,
+    "amount_unknown_courses": 1634,
     "excluded_no_transport_courses": 5170,
     "discovered_links_this_run": 0,
     "new_courses_this_run": 0,
-    "details_attempted_this_run": 350,
-    "details_checked_this_run": 350,
-    "details_closed_this_run": 0,
+    "details_attempted_this_run": 150,
+    "details_checked_this_run": 26,
+    "details_closed_this_run": 124,
     "detail_failures_this_run": 0,
     "database_courses": 20325
   },
@@ -30839,6 +30839,57 @@
       "kanto_only": false
     },
     {
+      "id": "corp:76177:course:N4P2-",
+      "company": "(株)第一コンサルタンツ",
+      "course": "会社の仕事内容、雰囲気が分かる！会社説明会",
+      "industries": [
+        "建設コンサルタント",
+        "建設",
+        "建築設計",
+        "専門コンサルティング"
+      ],
+      "locations": [
+        "高知県",
+        "WEB"
+      ],
+      "event_dates": [
+        "2026-11-25",
+        "2026-12-08"
+      ],
+      "schedule_text": "・開催時期 11/25（11:00～・14:00～）、12/8（16:00～）、23（16:00～） ・実施日数 1日 ・詳細 お時間は、ご希望のお時間をお知らせください。 お申し込み希望の方は、こちらのメールか公式LINEまでご連絡ください。 recruit@daiichi-c.co.jp 株式会社 第一コンサルタンツ 人事課 明神・角田 公式LINEID: @514mitbs",
+      "deadline_text": "2026年12月22日",
+      "deadline": "2026-12-22",
+      "transport_type": "unknown",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 公共交通に限ります。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 必要に応じてこちらで手配いたします。",
+      "eligibility_text": "記載なし",
+      "first_seen": "2026-07-18T22:00:03+09:00",
+      "last_checked": "2026-11-28T11:37:08+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "recruit@daiichi-c.co.jp"
+      ],
+      "contact_phones": [
+        "088-821-7770"
+      ],
+      "contact_homepages": [
+        "https://www.daiichi-consul.com/recruit/intern/#visit"
+      ],
+      "contact_checked_at": "2026-11-28T11:37:08+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=76177&optNo=N4P2-",
+      "implementation_types": [
+        "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
       "id": "corp:219349:course:7Xne2",
       "company": "(株)築港",
       "course": "【輸出業務体験＆倉庫見学！】1day/対面（名古屋）",
@@ -46974,6 +47025,56 @@
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=98897&optNo=FVzCU",
       "implementation_types": [
         "オープン・カンパニー等"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:103194:course:4Du76",
+      "company": "(株)七呂建設",
+      "course": "【有償】展示イベントで仕事体験！",
+      "industries": [
+        "住宅",
+        "建設"
+      ],
+      "locations": [
+        "鹿児島県"
+      ],
+      "event_dates": [
+        "2027-01-09",
+        "2027-01-10",
+        "2027-01-11"
+      ],
+      "schedule_text": "・開催時期 1月9日、1月10日、1月11日 ・実施日数 1日 、 2～4日 ・詳細 予約枠に限りがございますので、確実にご参加可能な方でご予約ください",
+      "deadline_text": "2026年12月10日",
+      "deadline": "2026-12-10",
+      "transport_type": "conditional",
+      "transport_amount": null,
+      "transport_available": true,
+      "transport_original": "支給あり 日給とは別に交通費も支給します 近畿地方以東からのご参加の場合は、交通費の上限や交通手段をご相談させていただく場合がございます。",
+      "amount_analysis_status": "amount_unknown",
+      "lodging_provided": true,
+      "lodging_text": "支給あり 宿泊が必要な場合は、後日お送りします事前アンケートにてご連絡ください。こちらでお手配いたします。",
+      "eligibility_text": "特になし",
+      "first_seen": "2026-07-18T18:47:46+09:00",
+      "last_checked": "2026-11-28T11:39:06+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "ruka.tomono@shichiro.com"
+      ],
+      "contact_phones": [
+        "0120-928-776"
+      ],
+      "contact_homepages": [
+        "http://www.shichiro.com/",
+        "https://shichiro-recruit.com/topics/internship/#ac_entry"
+      ],
+      "contact_checked_at": "2026-11-28T11:39:06+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=103194&optNo=4Du76",
+      "implementation_types": [
+        "仕事体験"
       ],
       "science_only": false,
       "kanto_only": false
@@ -172964,6 +173065,57 @@
       ],
       "contact_checked_at": "2026-11-24T08:13:20+09:00",
       "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=102531&optNo=t54B4",
+      "implementation_types": [
+        "仕事体験"
+      ],
+      "science_only": false,
+      "kanto_only": false
+    },
+    {
+      "id": "corp:100799:course:j3We-",
+      "company": "社会福祉法人大阪福祉事業財団",
+      "course": "【大阪市】特別養護老人ホームへの謎は次第に『魅力』へ／高齢者施設での1day仕事体験",
+      "industries": [
+        "福祉サービス",
+        "幼稚園・保育園",
+        "教育",
+        "財団・社団・その他団体",
+        "医療機関"
+      ],
+      "locations": [
+        "大阪府"
+      ],
+      "event_dates": [],
+      "schedule_text": "・開催時期 2026年6月～2026年9月末※毎月開催予定(希望日を調整しての開催となります) ・実施日数 1日",
+      "deadline_text": "2027年2月1日",
+      "deadline": "2027-02-01",
+      "transport_type": "limit",
+      "transport_amount": 2000,
+      "transport_available": true,
+      "transport_original": "支給あり 交通費として、上限2000円まで支給制度あり。",
+      "amount_analysis_status": "amount_known",
+      "lodging_provided": false,
+      "lodging_text": "支給なし 宿泊でのお仕事体験はありません。",
+      "eligibility_text": "特に制約はありません。",
+      "first_seen": "2026-07-18T18:27:01+09:00",
+      "last_checked": "2026-11-28T11:38:00+09:00",
+      "is_new": false,
+      "status": "open",
+      "closed_at": null,
+      "contact_emails": [
+        "joto-rou@agate.plala.or.jp",
+        "saiyou-s@zaidanosaka.or.jp"
+      ],
+      "contact_phones": [
+        "06-6931-0098",
+        "06-6931-5190"
+      ],
+      "contact_homepages": [
+        "https://joto-tokuyou.com/",
+        "https://www.zaidanosaka.or.jp/"
+      ],
+      "contact_checked_at": "2026-11-28T11:38:00+09:00",
+      "url": "https://job.mynavi.jp/28/pc/corpinfo/displayInternship/index?corpId=100799&optNo=j3We-",
       "implementation_types": [
         "仕事体験"
       ],
